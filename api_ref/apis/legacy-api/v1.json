@@ -1,0 +1,61 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Legacy API",
+    "description": "Not fully implemented",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "https://roblox.com"
+    }
+  ],
+  "paths": {
+    "/games/shutdown-all-instances": {
+      "post": {
+        "operationId": "LegacyApi_Games_ShutdownServers",
+        "tags": ["LegacyGames"],
+        "description": "Shutdown game servers",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "required": ["placeId"],
+                "properties": {
+                  "placeId": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "replaceInstances": {
+                    "type": "boolean",
+                    "default": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "roblox-auth-cookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": ".ROBLOSECURITY"
+      }
+    }
+  },
+  "security": [
+    {
+      "roblox-auth-cookie": []
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+
+export { PremiumFeaturesUsersApiV1UsersUserIdPremiumUpsellPrecheckGetRequest, PremiumFeaturesUsersApiV1UsersUserIdValidateMembershipGetRequest, ObjectPremiumFeaturesUsersApi as PremiumFeaturesUsersApi } from './types/ObjectParamAPI';
+

@@ -1,0 +1,16 @@
+AssetFetchV2Api.md
+BatchV2Api.md
+apis/AssetFetchV2Api.ts
+apis/BatchV2Api.ts
+index.ts
+models/ObjectSerializer.ts
+models/RobloxWebAssetsAssetContentRepresentationSpecifier.ts
+models/RobloxWebAssetsAssetFormatLocation.ts
+models/RobloxWebAssetsBatchAssetRequestItem.ts
+models/RobloxWebAssetsIAssetItemError.ts
+models/RobloxWebAssetsIAssetResponseItem.ts
+models/RobloxWebAssetsIAssetResponseItemV2.ts
+models/all.ts
+types/ObjectParamAPI.ts
+types/ObservableAPI.ts
+types/PromiseAPI.ts

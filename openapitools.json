@@ -1,0 +1,54 @@
+{
+  "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "spaces": 2,
+  "generator-cli": {
+    "version": "7.6.0",
+    "generators": {
+      "rbxopencloud": {
+        "generatorName": "typescript",
+        "output": "#{cwd}/src/opencloud/#{name}",
+        "glob": "./api_ref/opencloud/**/*.json",
+        "skipValidateSpec": true,
+        "templateDir": "api_template",
+        "globalProperty": "models,apis,supportingFiles=index.ts:all.ts:ObjectSerializer.ts:PromiseAPI.ts:ObservableAPI.ts:ObjectParamAPI.ts",
+        "additionalProperties": {
+          "useObjectParameters": true,
+          "cleanupOutput": true,
+          "npmName": "roblox-cloud",
+          "moduleName": "RobloxOpenCloud",
+          "projectName": "roblox-cloud"
+        }
+      },
+      "rbxsiteapis": {
+        "generatorName": "typescript",
+        "output": "#{cwd}/src/siteapi/#{name}",
+        "glob": "./api_ref/siteapis/**/*.json",
+        "skipValidateSpec": true,
+        "templateDir": "api_template",
+        "globalProperty": "models,apis,supportingFiles=index.ts:all.ts:ObjectSerializer.ts:PromiseAPI.ts:ObservableAPI.ts:ObjectParamAPI.ts",
+        "additionalProperties": {
+          "useObjectParameters": true,
+          "cleanupOutput": true,
+          "npmName": "roblox-cloud",
+          "moduleName": "RobloxSiteApis",
+          "projectName": "roblox-cloud"
+        }
+      },
+      "apis": {
+        "generatorName": "typescript",
+        "output": "#{cwd}/src/apis/#{name}",
+        "glob": "./api_ref/apis/**/*.json",
+        "skipValidateSpec": true,
+        "templateDir": "api_template",
+        "globalProperty": "models,apis,supportingFiles=index.ts:all.ts:ObjectSerializer.ts:PromiseAPI.ts:ObservableAPI.ts:ObjectParamAPI.ts",
+        "additionalProperties": {
+          "useObjectParameters": true,
+          "cleanupOutput": true,
+          "npmName": "roblox-cloud",
+          "moduleName": "RobloxApisGateway",
+          "projectName": "roblox-cloud"
+        }
+      }
+    }
+  }
+}

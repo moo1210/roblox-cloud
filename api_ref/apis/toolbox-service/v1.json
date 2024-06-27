@@ -1,0 +1,1372 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Toolbox Service",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "https://apis.roblox.com/toolbox-service"
+    }
+  ],
+  "paths": {
+    "/v1/audio": {
+      "get": {
+        "tags": [
+          "ToolBoxService"
+        ],
+        "summary": "Search for audios",
+        "operationId": "ToolboxService_SearchAudios",
+        "parameters": [
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "creatorType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "creatorTargetId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "minDuration",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "maxDuration",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "sortDirection",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "artist",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "album",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "uiSortIntent",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tags",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "includeOnlyVerifiedCreators",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "querySource",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "originalUserQuery",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "originalCorrection",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ToolBoxServiceSearchV1Result"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/ToolBoxServiceError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/decals": {
+      "get": {
+        "tags": [
+          "ToolBoxService"
+        ],
+        "summary": "Search for decals",
+        "operationId": "ToolboxService_SearchDecals",
+        "parameters": [
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "creatorType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "creatorTargetId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "uiSortIntent",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tags",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "includeOnlyVerifiedCreators",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "querySource",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "originalUserQuery",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "originalCorrection",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ToolBoxServiceSearchV1Result"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/ToolBoxServiceError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/meshes": {
+      "get": {
+        "tags": [
+          "ToolBoxService"
+        ],
+        "summary": "Search for meshes",
+        "operationId": "ToolboxService_SearchMeshes",
+        "parameters": [
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "creatorType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "creatorTargetId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "uiSortIntent",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tags",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "includeOnlyVerifiedCreators",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "querySource",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "originalUserQuery",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "originalCorrection",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ToolBoxServiceSearchV1Result"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/ToolBoxServiceError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/plugins": {
+      "get": {
+        "tags": [
+          "ToolBoxService"
+        ],
+        "summary": "Search for plugins",
+        "operationId": "ToolboxService_SearchPlugins",
+        "parameters": [
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "creatorType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "creatorTargetId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "uiSortIntent",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tags",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "includeOnlyVerifiedCreators",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "querySource",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "originalUserQuery",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "originalCorrection",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ToolBoxServiceSearchV1Result"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/ToolBoxServiceError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/videos": {
+      "get": {
+        "tags": [
+          "ToolBoxService"
+        ],
+        "summary": "Search for videos",
+        "operationId": "ToolboxService_SearchVideos",
+        "parameters": [
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "creatorType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "creatorTargetId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "uiSortIntent",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tags",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "includeOnlyVerifiedCreators",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "querySource",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "originalUserQuery",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "originalCorrection",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ToolBoxServiceSearchV1Result"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/ToolBoxServiceError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/creations/groups/{ownerId}/{assetType}": {
+      "post": {
+        "tags": [
+          "ToolBoxService"
+        ],
+        "summary": "Get group creations",
+        "operationId": "ToolboxService_GetGroupCreations",
+        "parameters": [
+          {
+            "name": "ownerId",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true
+          },
+          {
+            "name": "assetType",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/ToolBoxServiceAssetTypes"
+            },
+            "required": true
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ToolBoxServiceSearchV1Result"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/ToolBoxServiceError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/creations/user/{userId}/{assetType}": {
+      "post": {
+        "tags": [
+          "ToolBoxService"
+        ],
+        "summary": "Get user creations",
+        "operationId": "ToolboxService_GetUserCreations",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true
+          },
+          {
+            "name": "assetType",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/ToolBoxServiceAssetTypes"
+            },
+            "required": true
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "separateModelsAndPackages",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ToolBoxServiceSearchV1Result"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/ToolBoxServiceError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication cookie is missing."
+          }
+        }
+      }
+    },
+    "/v1/marketplace/{assetType}": {
+      "post": {
+        "tags": [
+          "ToolBoxService"
+        ],
+        "summary": "Search for assets",
+        "operationId": "ToolboxService_SearchGetAssets",
+        "parameters": [
+          {
+            "name": "assetType",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/ToolBoxServiceAssetTypes"
+            },
+            "required": true
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "keyword",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "assetSubTypes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "excludeAssetSubTypes",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "creatorType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "creatorTargetId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "minDuration",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "maxDuration",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "sortDirection",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "artist",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "album",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "uiSortIntent",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "tags",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "includeOnlyVerifiedCreators",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "searchSource",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "querySource",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "originalUserQuery",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "originalCorrection",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "qualityFilter",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Roblox-Place-Id",
+            "in": "header",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ToolBoxServiceSearchV1Result"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/ToolBoxServiceError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication cookie is missing."
+          }
+        }
+      }
+    },
+    "/v1/home/{assetType}/section/{section}/assets": {
+      "get": {
+        "tags": [
+          "ToolBoxService"
+        ],
+        "summary": "Get home page assets for section",
+        "operationId": "ToolboxService_GetHomePageAssetsForSection",
+        "parameters": [
+          {
+            "name": "assetType",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/ToolBoxServiceAssetTypes"
+            },
+            "required": true
+          },
+          {
+            "name": "section",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "includeOnlyVerifiedCreators",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sortOrder",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "placeId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "developerSegment",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "assetsInCameraVicinity",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "assetsInCameraViewport",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "minPriceInCents",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "maxPriceInCents",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "qualityFilter",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "sections": {
+                        "type": "array"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/ToolBoxServiceError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/home/{assetType}/configuration": {
+      "get": {
+        "tags": [
+          "ToolBoxService"
+        ],
+        "summary": "Get home page configuration for asset type",
+        "operationId": "ToolboxService_GetHomePageConfiguration",
+        "parameters": [
+          {
+            "name": "assetType",
+            "in": "path",
+            "schema": {
+              "$ref": "#/components/schemas/ToolBoxServiceAssetTypes"
+            },
+            "required": true
+          },
+          {
+            "name": "locale",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "placeId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "developerSegment",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "sections": {
+                        "type": "array"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/ToolBoxServiceError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ToolBoxServiceAssetTypes": {
+        "type": "integer",
+        "description": "[ 'Audio' = 3, 'Plugin' = 38, 'MeshPart' = 40, 'Video' = 62, 'FontFamily' = 73  ] ",
+        "enum": [3, 38, 40, 62, 73],
+        "x-enum-varnames": ["Audio", "Plugin", "MeshPart", "Video", "FontFamily"]
+      },
+      "ToolBoxServiceError": {
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "object"
+          },
+          "type": {
+            "type": "string",
+            "format": "uri"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer"
+          },
+          "traceId": {
+            "type": "string"
+          }
+        }
+      },
+      "ToolBoxServiceSearchV1Result": {
+        "type": "object",
+        "properties": {
+          "totalResults": {
+            "type": "integer"
+          },
+          "filteredKeyword": {
+            "type": "string"
+          },
+          "searchDebugInfo": {
+            "type": "object",
+            "nullable": true,
+            "default": null
+          },
+          "spellCheckerResult": {
+            "type": "object",
+            "properties": {
+              "correctionState": {
+                "type": "integer"
+              },
+              "correctedQuery": {
+                "type": "string",
+                "nullable": true,
+                "default": null
+              },
+              "userQuery": {
+                "type": "string",
+                "nullable": true,
+                "default": null
+              }
+            }
+          },
+          "queryFacets": {
+            "type": "object",
+            "properties": {
+              "appliedFacets": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "availableFacets": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "imageSearchStatus": {
+            "type": "string",
+            "nullable": true,
+            "default": null
+          },
+          "nextPageCursor": {
+            "type": "string",
+            "nullable": true,
+            "default": null
+          },
+          "previousPageCursor": {
+            "type": "string",
+            "nullable": true,
+            "default": null
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ToolBoxServiceSearchV1ResultItem"
+            }
+          }
+        }
+      },
+      "ToolBoxServiceSearchV1ResultItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true,
+            "default": null
+          },
+          "searchResultSource": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "roblox-auth-cookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": ".ROBLOSECURITY"
+      }
+    }
+  },
+  "security": [
+    {
+      "roblox-auth-cookie": []
+    }
+  ]
+}

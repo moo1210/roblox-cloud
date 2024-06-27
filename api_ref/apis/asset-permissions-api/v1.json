@@ -1,0 +1,613 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Assets Permissions API",
+    "description": "Manages permissions between subjects (Universes/Groups/Users) & assets (between a variety of types)",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "https://apis.roblox.com/asset-permissions-api"
+    }
+  ],
+  "paths": {
+    "/v1/assets/check-permissions": {
+      "post": {
+        "tags": [
+          "AssetPermissions"
+        ],
+        "summary": "Check if a batch of assets have permission",
+        "operationId": "AssetPermissions_CheckBatchAssetPermissions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "requests": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/AssetPermissionItemRequest"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AssetBatchCheckPermissionsResponse"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "$ref": "#/components/schemas/AssetPermissionError"
+                          },
+                          "message": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    
+    "/v1/assets/permissions": {
+      "patch": {
+        "tags": [
+          "AssetPermissions"
+        ],
+        "summary": "Grants permissions to the specified asset ID in batch",
+        "operationId": "AssetPermissions_BatchGrantPermissions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/AssetBatchGrantRevokePermissionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/AssetBatchPermissionItemResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Invalid Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/AssetBatchPermissionItemResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "AssetPermissions"
+        ],
+        "summary": "Revokes permissions to the specified asset ID in batch where permitted",
+        "description": "Only available for certain asset types",
+        "operationId": "AssetPermissions_BatchRevokePermissions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/AssetBatchGrantRevokePermissionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/AssetBatchPermissionItemResponse"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Invalid Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/AssetBatchPermissionItemResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universes/{universeId}/assets": {
+      "get": {
+        "tags": [
+          "AssetPermissions"
+        ],
+        "summary": "List a universes permissions",
+        "operationId": "AssetPermissions_ListUniversePermission",
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "description": "The universe ID to list the permissions of.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxPageSize",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageToken",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AssetPermissionItem"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Invalid Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "properties": {
+                        "code": {
+                          "$ref": "#/components/schemas/AssetPermissionError"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/universes/{universeId}/permissions:copyInto": {
+      "post": {
+        "tags": [
+          "AssetPermissions"
+        ],
+        "summary": "Copies another universes asset permissions into another where permitted",
+        "operationId": "AssetPermissions_CopyUniversePermissions",
+        "parameters": [
+          {
+            "name": "universeId",
+            "in": "path",
+            "description": "The universe ID to copy the permissions into.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "sourceUniverseId": {
+                    "description": "The source universe ID",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "operationId": {
+                      "type": "string",
+                      "format": "uuid"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Invalid Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "properties": {
+                        "code": {
+                          "$ref": "#/components/schemas/AssetPermissionError"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/assets/{assetId}/permissions": {
+      "patch": {
+        "tags": [
+          "AssetPermissions"
+        ],
+        "summary": "Grants permissions to the specified subject",
+        "operationId": "AssetPermissions_GrantPermissions",
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "description": "The asset ID to grant permissions to.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "requests": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/AssetPermissionSubject"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Invalid Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "properties": {
+                        "code": {
+                          "$ref": "#/components/schemas/AssetPermissionError"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "AssetPermissions"
+        ],
+        "summary": "Revokes permissions from the specified subject where permitted",
+        "description": "Only available for certain asset types",
+        "operationId": "AssetPermissions_RevokePermissions",
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "description": "The asset ID to revoke permissions to.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+       "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "requests": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/AssetPermissionSubject"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "4XX": {
+            "description": "Invalid Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "properties": {
+                        "code": {
+                          "$ref": "#/components/schemas/AssetPermissionError"
+                        },
+                        "message": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AssetPermissionStatus": {
+        "type": "string",
+        "enum": [
+          "HasPermission",
+          "NoPermission",
+          "AssetNotFound",
+          "UnknownError"
+        ]
+      },
+      "AssetPermissionError": {
+        "type": "string",
+        "enum": [
+          "UnknownError",
+          "InvalidRequest",
+          "AssetNotFound",
+          "CannotManageAsset",
+          "PublicAssetCannotBeGrantedTo",
+          "CannotManageSubject",
+          "SubjectNotFound",
+          "AssetTypeNotEnabled",
+          "PermissionLimitReached"
+        ]
+      },
+      "AssetPermissionAction": {
+        "type": "string",
+        "enum": ["Use", "Edit"]
+      },
+      "AssetPermissionItemRequest": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "$ref": "#/components/schemas/AssetPermissionAction"
+          },
+          "assetId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "subject": {
+            "properties": {
+              "subjectId": {
+                "type": "string"
+              },
+              "subjectType": {
+                "type": "string",
+                "example": "Universe"
+              }
+            }
+          }
+        }
+      },
+      "AssetBatchPermissionItemResponse": {
+        "type": "object",
+        "properties": {
+          "successAssetIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        }
+      },
+      "AssetPermissionItem": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "$ref": "#/components/schemas/AssetPermissionAction"
+          },
+          "assetId": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "AssetPermissionSubject": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "$ref": "#/components/schemas/AssetPermissionAction"
+          },
+          "subjectId": {
+            "type": "string"
+          },
+          "subjectType": {
+            "type": "string",
+            "example": "Universe"
+          }
+        }
+      },
+      "AssetBatchCheckPermissionsResponse": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "properties": {
+              "status": {
+                "$ref": "#/components/schemas/AssetPermissionStatus",
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "AssetBatchGrantRevokePermissionRequest": {
+        "type": "object",
+        "properties": {
+          "assetIds": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          "subjectId": {
+            "type": "string"
+          },
+          "subjectType": {
+            "type": "string",
+            "example": "Universe"
+          },
+          "action": {
+            "$ref": "#/components/schemas/AssetPermissionAction"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "roblox-auth-cookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": ".ROBLOSECURITY"
+      }
+    }
+  },
+  "security": [
+    {
+      "roblox-auth-cookie": []
+    }
+  ]
+}

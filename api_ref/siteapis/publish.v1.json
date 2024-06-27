@@ -1,0 +1,581 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Publish Api v1",
+      "version": "v1"
+    },
+    "host": "publish.roblox.com",
+    "schemes": [
+      "https"
+    ],
+    "paths": {
+      "/v1/asset-quotas": {
+        "get": {
+          "tags": [
+            "AssetQuotas"
+          ],
+          "summary": "List asset quotas of the given resource type and asset type.",
+          "produces": [
+            "application/json",
+            "text/json"
+          ],
+          "parameters": [
+            {
+              "in": "query",
+              "name": "resourceType",
+              "description": "Resource type of the asset quota",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "in": "query",
+              "name": "assetType",
+              "description": "Asset type of the asset quota",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "in": "query",
+              "name": "useDummyData",
+              "description": "Use dummy data for testing. This is for internal use only",
+              "type": "boolean",
+              "default": false
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Roblox.Publish.Api.AssetQuotasResponse"
+              }
+            },
+            "400": {
+              "description": "7: The asset type is not appropriate for this request.\r\n8: The resource type is not appropriate for this request."
+            },
+            "401": {
+              "description": "0: Authorization has been denied for this request."
+            },
+            "500": {
+              "description": "0: Reserved for base level errors. Do not use in your endpoint directly, do not document."
+            }
+          },
+          "properties": {
+            "internal": false,
+            "metricIds": [
+              "AssetQuotas:ListAssetQuotas"
+            ]
+          }
+        }
+      },
+      "/v1/audio": {
+        "post": {
+          "tags": [
+            "Audio"
+          ],
+          "summary": "Published an audio file and returns the new asset info.",
+          "consumes": [
+            "application/json",
+            "text/json"
+          ],
+          "produces": [
+            "application/json",
+            "text/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "request",
+              "description": "The file upload request body. Roblox.Publish.Api.UploadAudioRequest",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Roblox.Publish.Api.UploadAudioRequest"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Roblox.Publish.Api.PublishAudioResponse"
+              }
+            },
+            "400": {
+              "description": "3: The request did not contain a file to be uploaded.\r\n4: The file in the request is too large.\r\n5: The duration of the audio file is too long.\r\n8: The file type is not supported.\r\n9: The file is corrupted\r\n11: Missing permissions to spend group funds.\r\n14: The user/group does not have suffiecient funds to publish.\r\n14: The user/group does not have suffiecient funds to publish.\r\n15: The audio file has already been reviewed and rejected.\r\n18: Too many requests. Try again later.\r\n20: Error while trying to purchase the product.\r\n22: The file size estimation error was greater than the acceptable margin of error.\r\n23: The duration estimation error was greater than the acceptable margin of error.\r\n24: Asset privacy is invalid.\r\n29: Invalid argument in the request."
+            },
+            "401": {
+              "description": "0: Authorization has been denied for this request.\r\n1: The request did not include an authorization."
+            },
+            "403": {
+              "description": "0: Token Validation Failed"
+            },
+            "500": {
+              "description": "7: Failed to parse the file.\r\n19: Asset creation was unavailable. Please try again."
+            }
+          },
+          "properties": {
+            "internal": false,
+            "metricIds": [
+              "Audio:PublishAudio"
+            ]
+          }
+        }
+      },
+      "/v1/audio/verify": {
+        "post": {
+          "tags": [
+            "Audio"
+          ],
+          "summary": "Verifies an audio file and returns a product that you can purchase to publish the audio file.",
+          "consumes": [
+            "application/json",
+            "text/json"
+          ],
+          "produces": [
+            "application/json",
+            "text/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "request",
+              "description": "The verify audio request body. Roblox.Publish.Api.VerifyAudioRequest",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Roblox.Publish.Api.VerifyAudioRequest"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Roblox.Publish.Api.VerifyAudioResponse"
+              }
+            },
+            "400": {
+              "description": "3: The request did not contain a file to be uploaded.\r\n4: The file in the request is too large.\r\n5: The duration of the audio file is too long.\r\n8: The file type is not supported.\r\n9: The file is corrupted\r\n18: Too many requests. Try again later."
+            },
+            "401": {
+              "description": "0: Authorization has been denied for this request.\r\n1: The request did not include an authorization."
+            },
+            "403": {
+              "description": "0: Token Validation Failed"
+            },
+            "500": {
+              "description": "7: Failed to parse the file."
+            }
+          },
+          "properties": {
+            "internal": false,
+            "metricIds": [
+              "Audio:VerifyAudioUpload"
+            ]
+          }
+        }
+      },
+      "/v1/badges/{badgeId}/icon": {
+        "post": {
+          "tags": [
+            "Badges"
+          ],
+          "summary": "Overwrites a badge icon with a new one.",
+          "consumes": [
+            "multipart/form-data"
+          ],
+          "produces": [
+            "application/json",
+            "text/json"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "badgeId",
+              "description": "The badge Id.",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            },
+            {
+              "in": "formData",
+              "name": "Files",
+              "type": "file"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Roblox.Publish.Api.UploadResponse"
+              }
+            },
+            "400": {
+              "description": "2: File not present in request.\r\n12: Name or description is moderated."
+            },
+            "401": {
+              "description": "0: Authorization has been denied for this request."
+            },
+            "403": {
+              "description": "0: Token Validation Failed\r\n5: You do not have permission to manage this item."
+            },
+            "404": {
+              "description": "4: Target item is invalid or does not exist."
+            },
+            "429": {
+              "description": "3: You're uploading too much, please wait and try again later."
+            }
+          },
+          "properties": {
+            "internal": false,
+            "metricIds": [
+              "Badges:UpdateBadgeIcon"
+            ]
+          }
+        }
+      },
+      "/v1/games/{gameId}/thumbnail/image": {
+        "post": {
+          "tags": [
+            "GameThumbnails"
+          ],
+          "summary": "Uploads a game thumbnail.",
+          "consumes": [
+            "multipart/form-data"
+          ],
+          "produces": [
+            "application/json",
+            "text/json"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "gameId",
+              "description": "The universe Id.",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            },
+            {
+              "in": "formData",
+              "name": "Files",
+              "type": "file"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Roblox.Publish.Api.UploadResponse"
+              }
+            },
+            "400": {
+              "description": "1: File uploaded does not match known image format. Try converting to png.\r\n2: File not present in request."
+            },
+            "401": {
+              "description": "0: Authorization has been denied for this request."
+            },
+            "403": {
+              "description": "0: Token Validation Failed\r\n5: You do not have permission to manage this item."
+            },
+            "404": {
+              "description": "4: Target item is invalid or does not exist."
+            },
+            "429": {
+              "description": "3: You're uploading too much, please wait and try again later."
+            }
+          },
+          "properties": {
+            "internal": false,
+            "metricIds": [
+              "GameThumbnails:UploadGameThumbnail"
+            ]
+          }
+        }
+      },
+      "/v1/plugins/{pluginId}/icon": {
+        "post": {
+          "tags": [
+            "Plugin"
+          ],
+          "summary": "Overwrites a plugin icon with a new one.",
+          "consumes": [
+            "multipart/form-data"
+          ],
+          "produces": [
+            "application/json",
+            "text/json"
+          ],
+          "parameters": [
+            {
+              "in": "path",
+              "name": "pluginId",
+              "description": "The plugin Id.",
+              "required": true,
+              "type": "integer",
+              "format": "int64"
+            },
+            {
+              "in": "formData",
+              "name": "Files",
+              "type": "file"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK",
+              "schema": {
+                "$ref": "#/definitions/Roblox.Publish.Api.UploadResponse"
+              }
+            },
+            "400": {
+              "description": "2: File not present in request."
+            },
+            "401": {
+              "description": "0: Authorization has been denied for this request."
+            },
+            "403": {
+              "description": "0: Token Validation Failed\r\n5: You do not have permission to manage this item."
+            },
+            "404": {
+              "description": "4: Target item is invalid or does not exist."
+            },
+            "429": {
+              "description": "3: You're uploading too much, please wait and try again later."
+            }
+          },
+          "properties": {
+            "internal": false,
+            "metricIds": [
+              "Plugin:UpdatePluginIcon"
+            ]
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Roblox.Publish.Api.AssetQuota": {
+        "description": "Model for asset quota.",
+        "type": "object",
+        "properties": {
+          "duration": {
+            "description": "Duration type of the quota.",
+            "type": "string"
+          },
+          "usage": {
+            "format": "int64",
+            "description": "Current usage of the quota.",
+            "type": "integer"
+          },
+          "capacity": {
+            "format": "int64",
+            "description": "Capacity of the quota.",
+            "type": "integer"
+          },
+          "expirationTime": {
+            "description": "Expiration time of current usage limit.",
+            "type": "string"
+          }
+        }
+      },
+      "Roblox.Publish.Api.AssetQuotasResponse": {
+        "description": "Response model for asset quotas.",
+        "type": "object",
+        "properties": {
+          "quotas": {
+            "description": "A list of quotas.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Roblox.Publish.Api.AssetQuota"
+            }
+          }
+        }
+      },
+      "Roblox.Publish.Api.PublishAudioResponse": {
+        "description": "Response model for publish audio.",
+        "type": "object",
+        "properties": {
+          "Id": {
+            "format": "int64",
+            "description": "Id of the published asset.",
+            "type": "integer"
+          },
+          "Name": {
+            "description": "Name of the published asset.",
+            "type": "string"
+          }
+        }
+      },
+      "Roblox.Publish.Api.UploadAudioRequest": {
+        "description": "A request model for uploading an audio file.",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name for the audio file.",
+            "type": "string"
+          },
+          "file": {
+            "description": "File to be uploaded. Formatted as a base64 string.",
+            "type": "string"
+          },
+          "groupId": {
+            "format": "int64",
+            "description": "Id of the group you are publishing the audio asset for. Null if not publishing under a group.",
+            "type": "integer"
+          },
+          "paymentSource": {
+            "description": "The source of funds for payment.\r\n  User: Use personal funds of authenticated user.\r\n  Group: Use group funds from Roblox.Publish.Api.UploadAudioRequest.GroupId.\r\n  Null/Empty: Will default to authenticated user funds.",
+            "type": "string"
+          },
+          "estimatedFileSize": {
+            "format": "int64",
+            "description": "Estimated file size of the audio file in bytes.",
+            "type": "integer"
+          },
+          "estimatedDuration": {
+            "format": "double",
+            "description": "Estimated duration of the audio file in seconds.",
+            "type": "number"
+          },
+          "assetPrivacy": {
+            "format": "int32",
+            "description": "The asset privacy of the audio asset.",
+            "enum": [
+              1,
+              2
+            ],
+            "type": "integer"
+          }
+        }
+      },
+      "Roblox.Publish.Api.UploadResponse": {
+        "description": "A response used when an upload has completed.",
+        "type": "object",
+        "properties": {
+          "targetId": {
+            "format": "int64",
+            "description": "The target Id of the uploaded item.",
+            "type": "integer"
+          }
+        }
+      },
+      "Roblox.Publish.Api.VerifyAudioRequest": {
+        "description": "Request model to publish an audio asset.",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Gets or sets the name of the audio asset.",
+            "type": "string"
+          },
+          "file": {
+            "description": "File to be uploaded. Formatted as a base64 string.",
+            "type": "string"
+          },
+          "groupId": {
+            "format": "int64",
+            "description": "Gets or sets the ID of the group if applicable. Optional.",
+            "type": "integer"
+          },
+          "paymentSource": {
+            "description": "Gets or sets the payment source. 'User' or 'Group'. Required if Group ID is set.",
+            "type": "string"
+          },
+          "fileSize": {
+            "format": "int64",
+            "description": "Gets or sets the size of the audio file in bytes.",
+            "type": "integer"
+          },
+          "duration": {
+            "format": "double",
+            "description": "Gets or sets the duration of the audio in seconds.",
+            "type": "number"
+          }
+        }
+      },
+      "Roblox.Publish.Api.VerifyAudioResponse": {
+        "description": "Response model for verify audio endpoint.",
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name of the audio file.",
+            "type": "string"
+          },
+          "price": {
+            "format": "int64",
+            "description": "Price in robux to publish the audio file.",
+            "type": "integer"
+          },
+          "balance": {
+            "format": "int64",
+            "description": "User's current Robux balance.",
+            "type": "integer"
+          },
+          "canAfford": {
+            "description": "Boolean, true if the user can afford to purchase the publishing of the audio file.",
+            "type": "boolean"
+          }
+        }
+      },
+      "Roblox.Web.WebApi.FormData.IUploadedFile": {
+        "type": "file",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "readOnly": true
+          },
+          "Stream": {
+            "$ref": "#/definitions/System.IO.Stream"
+          },
+          "ContentEncoding": {
+            "format": "int32",
+            "description": " ['None' = 0, 'GZip' = 1, 'Deflate' = 2, 'Brotli' = 4, 'All' = -1]",
+            "enum": [
+              0,
+              1,
+              2,
+              4,
+              -1
+            ],
+            "type": "integer",
+            "readOnly": true
+          }
+        }
+      },
+      "System.IO.Stream": {
+        "type": "object",
+        "properties": {
+          "CanRead": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "CanWrite": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "CanSeek": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "CanTimeout": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "Length": {
+            "format": "int64",
+            "type": "integer",
+            "readOnly": true
+          },
+          "Position": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "ReadTimeout": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "WriteTimeout": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }

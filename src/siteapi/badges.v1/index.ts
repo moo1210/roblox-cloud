@@ -1,0 +1,4 @@
+export * from "./models/all";
+
+export { BadgeAwardsApiV1UserBadgesBadgeIdDeleteRequest, BadgeAwardsApiV1UserUserIdBadgesBadgeIdDeleteRequest, BadgeAwardsApiV1UsersUserIdBadgesAwardedDatesGetRequest, BadgeAwardsApiV1UsersUserIdBadgesBadgeIdAwardedDateGetRequest, ObjectBadgeAwardsApi as BadgeAwardsApi,  BadgesApiV1BadgesBadgeIdGetRequest, BadgesApiV1BadgesBadgeIdPatchRequest, BadgesApiV1BadgesMetadataGetRequest, BadgesApiV1UniversesUniverseIdBadgesGetRequest, BadgesApiV1UniversesUniverseIdBadgesPostRequest, BadgesApiV1UniversesUniverseIdFreeBadgesQuotaGetRequest, BadgesApiV1UsersUserIdBadgesGetRequest, ObjectBadgesApi as BadgesApi } from './types/ObjectParamAPI';
+

@@ -1,0 +1,395 @@
+import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../../../common/http/http';
+import { Configuration} from '../../../common/configuration'
+import { Observable, of, from } from '../../../common/rxjsStub';
+import {mergeMap, map} from  '../../../common/rxjsStub';
+import { DataStore } from '../models/DataStore';
+import { DatastoresListDatastoresAsync200Response } from '../models/DatastoresListDatastoresAsync200Response';
+import { EntriesGetEntryAsync200Response } from '../models/EntriesGetEntryAsync200Response';
+import { EntriesGetEntryVersionAsync200Response } from '../models/EntriesGetEntryVersionAsync200Response';
+import { EntriesIncrementEntryAsync200Response } from '../models/EntriesIncrementEntryAsync200Response';
+import { EntriesListKeysAsync200Response } from '../models/EntriesListKeysAsync200Response';
+import { EntryVersion } from '../models/EntryVersion';
+
+import { DatastoresApiRequestFactory, DatastoresApiResponseProcessor} from "../apis/DatastoresApi";
+export class ObservableDatastoresApi {
+    private requestFactory: DatastoresApiRequestFactory;
+    private responseProcessor: DatastoresApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: DatastoresApiRequestFactory,
+        responseProcessor?: DatastoresApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new DatastoresApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new DatastoresApiResponseProcessor();
+    }
+
+    /**
+     * Returns a list of an experience\'s data stores.
+     * List data stores in an experience
+     * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
+     * @param cursor Provide to request the next set of data. See [Cursors](../../../cloud/open-cloud/data-store-api-handling.md#cursors).
+     * @param limit The maximum number of items to return. Each call only reads one partition, so it can return fewer than the given value when running out of objectives on one partition.
+     * @param prefix Provide to return only data stores with this prefix. 
+     */
+    public datastoresListDatastoresAsyncWithHttpInfo(universeId: number, cursor?: string, limit?: number, prefix?: string, _options?: Configuration): Observable<HttpInfo<DatastoresListDatastoresAsync200Response>> {
+        const requestContextPromise = this.requestFactory.datastoresListDatastoresAsync(universeId, cursor, limit, prefix, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.datastoresListDatastoresAsyncWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns a list of an experience\'s data stores.
+     * List data stores in an experience
+     * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
+     * @param cursor Provide to request the next set of data. See [Cursors](../../../cloud/open-cloud/data-store-api-handling.md#cursors).
+     * @param limit The maximum number of items to return. Each call only reads one partition, so it can return fewer than the given value when running out of objectives on one partition.
+     * @param prefix Provide to return only data stores with this prefix. 
+     */
+    public datastoresListDatastoresAsync(universeId: number, cursor?: string, limit?: number, prefix?: string, _options?: Configuration): Observable<DatastoresListDatastoresAsync200Response> {
+        return this.datastoresListDatastoresAsyncWithHttpInfo(universeId, cursor, limit, prefix, _options).pipe(map((apiResponse: HttpInfo<DatastoresListDatastoresAsync200Response>) => apiResponse.data));
+    }
+
+}
+
+import { EntriesApiRequestFactory, EntriesApiResponseProcessor} from "../apis/EntriesApi";
+export class ObservableEntriesApi {
+    private requestFactory: EntriesApiRequestFactory;
+    private responseProcessor: EntriesApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: EntriesApiRequestFactory,
+        responseProcessor?: EntriesApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new EntriesApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new EntriesApiResponseProcessor();
+    }
+
+    /**
+     * Marks the entry as deleted by creating a tombstone version. Entries are deleted permanently after 30 days.
+     * Delete entry.
+     * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
+     * @param datastoreName The name of the data store.
+     * @param entryKey The key identifying the entry.
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     */
+    public entriesDeleteEntryAsyncWithHttpInfo(universeId: number, datastoreName?: string, entryKey?: string, scope?: string, _options?: Configuration): Observable<HttpInfo<void>> {
+        const requestContextPromise = this.requestFactory.entriesDeleteEntryAsync(universeId, datastoreName, entryKey, scope, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.entriesDeleteEntryAsyncWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Marks the entry as deleted by creating a tombstone version. Entries are deleted permanently after 30 days.
+     * Delete entry.
+     * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
+     * @param datastoreName The name of the data store.
+     * @param entryKey The key identifying the entry.
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     */
+    public entriesDeleteEntryAsync(universeId: number, datastoreName?: string, entryKey?: string, scope?: string, _options?: Configuration): Observable<void> {
+        return this.entriesDeleteEntryAsyncWithHttpInfo(universeId, datastoreName, entryKey, scope, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Returns the value and metadata associated with an entry.
+     * Get entry.
+     * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
+     * @param datastoreName The name of the data store.
+     * @param entryKey The key identifying the entry.
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     */
+    public entriesGetEntryAsyncWithHttpInfo(universeId: number, datastoreName?: string, entryKey?: string, scope?: string, _options?: Configuration): Observable<HttpInfo<void | EntriesGetEntryAsync200Response>> {
+        const requestContextPromise = this.requestFactory.entriesGetEntryAsync(universeId, datastoreName, entryKey, scope, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.entriesGetEntryAsyncWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns the value and metadata associated with an entry.
+     * Get entry.
+     * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
+     * @param datastoreName The name of the data store.
+     * @param entryKey The key identifying the entry.
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     */
+    public entriesGetEntryAsync(universeId: number, datastoreName?: string, entryKey?: string, scope?: string, _options?: Configuration): Observable<void | EntriesGetEntryAsync200Response> {
+        return this.entriesGetEntryAsyncWithHttpInfo(universeId, datastoreName, entryKey, scope, _options).pipe(map((apiResponse: HttpInfo<void | EntriesGetEntryAsync200Response>) => apiResponse.data));
+    }
+
+    /**
+     * Returns the value and metadata of a specific version of an entry.
+     * Get entry version.
+     * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
+     * @param datastoreName The name of the data store.
+     * @param entryKey The key identifying the entry.
+     * @param versionId The version to inspect.
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     */
+    public entriesGetEntryVersionAsyncWithHttpInfo(universeId: number, datastoreName?: string, entryKey?: string, versionId?: string, scope?: string, _options?: Configuration): Observable<HttpInfo<EntriesGetEntryVersionAsync200Response>> {
+        const requestContextPromise = this.requestFactory.entriesGetEntryVersionAsync(universeId, datastoreName, entryKey, versionId, scope, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.entriesGetEntryVersionAsyncWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns the value and metadata of a specific version of an entry.
+     * Get entry version.
+     * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
+     * @param datastoreName The name of the data store.
+     * @param entryKey The key identifying the entry.
+     * @param versionId The version to inspect.
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     */
+    public entriesGetEntryVersionAsync(universeId: number, datastoreName?: string, entryKey?: string, versionId?: string, scope?: string, _options?: Configuration): Observable<EntriesGetEntryVersionAsync200Response> {
+        return this.entriesGetEntryVersionAsyncWithHttpInfo(universeId, datastoreName, entryKey, versionId, scope, _options).pipe(map((apiResponse: HttpInfo<EntriesGetEntryVersionAsync200Response>) => apiResponse.data));
+    }
+
+    /**
+     * Increments the value for an entry by a given amount, or create a new entry with that amount.
+     * Increment entry
+     * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
+     * @param datastoreName The name of the data store.
+     * @param entryKey The key identifying the entry.
+     * @param incrementBy The amount by which the entry should be incremented, or the starting value if it doesn\&#39;t exist.
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param robloxEntryAttributes Attributes to be associated with new version of the entry. Serialized by JSON map objects. If not provided, existing attributes are cleared.
+     * @param robloxEntryUserids A comma-separated list of Roblox user IDs that the entry is tagged with. If not provided, existing user IDs are cleared.
+     */
+    public entriesIncrementEntryAsyncWithHttpInfo(universeId: number, datastoreName?: string, entryKey?: string, incrementBy?: number, scope?: string, robloxEntryAttributes?: string, robloxEntryUserids?: string, _options?: Configuration): Observable<HttpInfo<void | EntriesIncrementEntryAsync200Response>> {
+        const requestContextPromise = this.requestFactory.entriesIncrementEntryAsync(universeId, datastoreName, entryKey, incrementBy, scope, robloxEntryAttributes, robloxEntryUserids, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.entriesIncrementEntryAsyncWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Increments the value for an entry by a given amount, or create a new entry with that amount.
+     * Increment entry
+     * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
+     * @param datastoreName The name of the data store.
+     * @param entryKey The key identifying the entry.
+     * @param incrementBy The amount by which the entry should be incremented, or the starting value if it doesn\&#39;t exist.
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param robloxEntryAttributes Attributes to be associated with new version of the entry. Serialized by JSON map objects. If not provided, existing attributes are cleared.
+     * @param robloxEntryUserids A comma-separated list of Roblox user IDs that the entry is tagged with. If not provided, existing user IDs are cleared.
+     */
+    public entriesIncrementEntryAsync(universeId: number, datastoreName?: string, entryKey?: string, incrementBy?: number, scope?: string, robloxEntryAttributes?: string, robloxEntryUserids?: string, _options?: Configuration): Observable<void | EntriesIncrementEntryAsync200Response> {
+        return this.entriesIncrementEntryAsyncWithHttpInfo(universeId, datastoreName, entryKey, incrementBy, scope, robloxEntryAttributes, robloxEntryUserids, _options).pipe(map((apiResponse: HttpInfo<void | EntriesIncrementEntryAsync200Response>) => apiResponse.data));
+    }
+
+    /**
+     * Returns a list of versions for an entry.
+     * List entry versions
+     * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
+     * @param datastoreName The name of the data store.
+     * @param entryKey The key identifying the entry.
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param cursor Provide to request the next set of data (see [Cursors](../../../cloud/open-cloud/data-store-api-handling.md#cursors)).
+     * @param startTime Provide to not include versions earlier than this timestamp.
+     * @param endTime Provide to not include versions later than this timestamp.
+     * @param sortOrder Either &#x60;Ascending&#x60; (earlier versions first) or &#x60;Descending&#x60; (later versions first).
+     * @param limit The maximum number of items to return. Each call only reads one partition, so it can return fewer than the given value when running out of objectives on one partition.
+     */
+    public entriesListEntryVersionsAsyncWithHttpInfo(universeId: number, datastoreName?: string, entryKey?: string, scope?: string, cursor?: Date, startTime?: Date, endTime?: string, sortOrder?: string, limit?: number, _options?: Configuration): Observable<HttpInfo<EntryVersion>> {
+        const requestContextPromise = this.requestFactory.entriesListEntryVersionsAsync(universeId, datastoreName, entryKey, scope, cursor, startTime, endTime, sortOrder, limit, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.entriesListEntryVersionsAsyncWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns a list of versions for an entry.
+     * List entry versions
+     * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
+     * @param datastoreName The name of the data store.
+     * @param entryKey The key identifying the entry.
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param cursor Provide to request the next set of data (see [Cursors](../../../cloud/open-cloud/data-store-api-handling.md#cursors)).
+     * @param startTime Provide to not include versions earlier than this timestamp.
+     * @param endTime Provide to not include versions later than this timestamp.
+     * @param sortOrder Either &#x60;Ascending&#x60; (earlier versions first) or &#x60;Descending&#x60; (later versions first).
+     * @param limit The maximum number of items to return. Each call only reads one partition, so it can return fewer than the given value when running out of objectives on one partition.
+     */
+    public entriesListEntryVersionsAsync(universeId: number, datastoreName?: string, entryKey?: string, scope?: string, cursor?: Date, startTime?: Date, endTime?: string, sortOrder?: string, limit?: number, _options?: Configuration): Observable<EntryVersion> {
+        return this.entriesListEntryVersionsAsyncWithHttpInfo(universeId, datastoreName, entryKey, scope, cursor, startTime, endTime, sortOrder, limit, _options).pipe(map((apiResponse: HttpInfo<EntryVersion>) => apiResponse.data));
+    }
+
+    /**
+     * Returns a list of entry keys within a data store.
+     * List entries
+     * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
+     * @param datastoreName The name of the data store.
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param allScopes Set to true to return keys from all scopes.
+     * @param prefix Provide to return only keys with this prefix.
+     * @param cursor Provide to request the next set of data. See [Cursors](../../../cloud/open-cloud/data-store-api-handling.md#cursors).
+     * @param limit The maximum number of items to return. Each call only reads one partition, so it can return fewer than the given value when running out of objectives on one partition.
+     */
+    public entriesListKeysAsyncWithHttpInfo(universeId: number, datastoreName?: string, scope?: string, allScopes?: boolean, prefix?: string, cursor?: string, limit?: number, _options?: Configuration): Observable<HttpInfo<EntriesListKeysAsync200Response>> {
+        const requestContextPromise = this.requestFactory.entriesListKeysAsync(universeId, datastoreName, scope, allScopes, prefix, cursor, limit, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.entriesListKeysAsyncWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns a list of entry keys within a data store.
+     * List entries
+     * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
+     * @param datastoreName The name of the data store.
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param allScopes Set to true to return keys from all scopes.
+     * @param prefix Provide to return only keys with this prefix.
+     * @param cursor Provide to request the next set of data. See [Cursors](../../../cloud/open-cloud/data-store-api-handling.md#cursors).
+     * @param limit The maximum number of items to return. Each call only reads one partition, so it can return fewer than the given value when running out of objectives on one partition.
+     */
+    public entriesListKeysAsync(universeId: number, datastoreName?: string, scope?: string, allScopes?: boolean, prefix?: string, cursor?: string, limit?: number, _options?: Configuration): Observable<EntriesListKeysAsync200Response> {
+        return this.entriesListKeysAsyncWithHttpInfo(universeId, datastoreName, scope, allScopes, prefix, cursor, limit, _options).pipe(map((apiResponse: HttpInfo<EntriesListKeysAsync200Response>) => apiResponse.data));
+    }
+
+    /**
+     * Sets the value, metadata and user IDs associated with an entry.
+     * Set entry.
+     * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
+     * @param datastoreName The name of the data store.
+     * @param entryKey The key identifying the entry.
+     * @param matchVersion Provide to update only if the current version matches this.
+     * @param exclusiveCreate Create the entry only if it does not exist.
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param robloxEntryAttributes Attributes to be associated with new version of the entry. Serialized by JSON map objects. If not provided, existing attributes are cleared.
+     * @param robloxEntryUserids Comma-separated list of Roblox user IDs tagged with the entry. If not provided, existing user IDs are cleared.
+     * @param contentMd5 The base-64 encoded MD5 checksum of the content. See [Content-MD5](../../../cloud/open-cloud/data-store-api-handling.md#content-md5).
+     * @param body 
+     */
+    public entriesSetEntryAsyncWithHttpInfo(universeId: number, datastoreName?: string, entryKey?: string, matchVersion?: string, exclusiveCreate?: boolean, scope?: string, robloxEntryAttributes?: string, robloxEntryUserids?: string, contentMd5?: string, body?: string, _options?: Configuration): Observable<HttpInfo<EntryVersion>> {
+        const requestContextPromise = this.requestFactory.entriesSetEntryAsync(universeId, datastoreName, entryKey, matchVersion, exclusiveCreate, scope, robloxEntryAttributes, robloxEntryUserids, contentMd5, body, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.entriesSetEntryAsyncWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Sets the value, metadata and user IDs associated with an entry.
+     * Set entry.
+     * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
+     * @param datastoreName The name of the data store.
+     * @param entryKey The key identifying the entry.
+     * @param matchVersion Provide to update only if the current version matches this.
+     * @param exclusiveCreate Create the entry only if it does not exist.
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param robloxEntryAttributes Attributes to be associated with new version of the entry. Serialized by JSON map objects. If not provided, existing attributes are cleared.
+     * @param robloxEntryUserids Comma-separated list of Roblox user IDs tagged with the entry. If not provided, existing user IDs are cleared.
+     * @param contentMd5 The base-64 encoded MD5 checksum of the content. See [Content-MD5](../../../cloud/open-cloud/data-store-api-handling.md#content-md5).
+     * @param body 
+     */
+    public entriesSetEntryAsync(universeId: number, datastoreName?: string, entryKey?: string, matchVersion?: string, exclusiveCreate?: boolean, scope?: string, robloxEntryAttributes?: string, robloxEntryUserids?: string, contentMd5?: string, body?: string, _options?: Configuration): Observable<EntryVersion> {
+        return this.entriesSetEntryAsyncWithHttpInfo(universeId, datastoreName, entryKey, matchVersion, exclusiveCreate, scope, robloxEntryAttributes, robloxEntryUserids, contentMd5, body, _options).pipe(map((apiResponse: HttpInfo<EntryVersion>) => apiResponse.data));
+    }
+
+}

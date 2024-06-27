@@ -1,0 +1,39 @@
+{
+  "name": "roblox-cloud",
+  "version": "0.1.0",
+  "description": "An OpenAPI TypeScript API client for most of Roblox's Cloud APIs",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js",
+      "default": "./dist/cjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "api-gen": "openapi-generator-cli generate",
+    "build": "tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json ./tsconfig.types.json && tsconfig-to-dual-package ./tsconfig.esm.json ./tsconfig.cjs.json"
+  },
+  "keywords": [
+    "roblox",
+    "openapi",
+    "api",
+    "open cloud"
+  ],
+  "author": "Carter Schuller <moo1210@moo1210.dev>",
+  "license": "MIT",
+  "dependencies": {
+    "@openapitools/openapi-generator-cli": "^2.13.4",
+    "es6-promise": "^4.2.4",
+    "form-data": "^2.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "tsconfig-to-dual-package": "^1.2.0",
+    "typescript": "^5.0"
+  }
+}

@@ -1,0 +1,15 @@
+PresenceApi.md
+apis/PresenceApi.ts
+index.ts
+models/ObjectSerializer.ts
+models/RobloxPresenceApiModelsRequestLastOnlineRequest.ts
+models/RobloxPresenceApiModelsRequestRegisterAppPresenceRequest.ts
+models/RobloxPresenceApiModelsRequestUserPresenceRequest.ts
+models/RobloxPresenceApiModelsResponseLastOnline.ts
+models/RobloxPresenceApiModelsResponseLastOnlineResponse.ts
+models/RobloxPresenceApiModelsResponseUserPresence.ts
+models/RobloxPresenceApiModelsResponseUserPresencesResponse.ts
+models/all.ts
+types/ObjectParamAPI.ts
+types/ObservableAPI.ts
+types/PromiseAPI.ts

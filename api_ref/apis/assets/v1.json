@@ -1,0 +1,526 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Assets API",
+    "description": "Requires user authentication, not open cloud asset API; Not fully implemented",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "https://apis.roblox.com/assets/user-auth"
+    }
+  ],
+  "paths": {
+    "/v1/operations/{operationId}": {
+      "get": {
+        "tags": [
+          "Assets"
+        ],
+        "operationId": "Assets_GetOperation",
+        "summary": "Get the result of an asset creation or update.",
+        "parameters": [
+          {
+            "name": "operationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation retrieved successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid argument. Failed to parse the request or the file.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication cookie is missing."
+          },
+          "500": {
+            "description": "Server internal error / Unknown error."
+          }
+        }
+      }
+    },
+    "/v1/assets": {
+      "post": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Creates an asset with provided content and metadata.",
+        "description": "Creates an asset with provided content and metadata.",
+        "operationId": "Assets_CreateAsset",
+        "responses": {
+          "200": {
+            "description": "Returns the Operation ID for checking the creation status.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Operation"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid argument. Failed to parse the request or the file.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication cookie is missing."
+          },
+          "500": {
+            "description": "Server internal error / Unknown error."
+          }
+        }
+      }
+    },
+    "/v1/assets/{assetId}": {
+      "get": {
+        "tags": [
+          "Assets"
+        ],
+        "operationId": "Assets_GetAsset",
+        "summary": "Retrieve specific asset content. Include the `readMask` parameter for additional asset metadata.",
+        "description": "Retrieve specific asset content and metadata.",
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "description": "The unique identifier of the asset.",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/Asset"
+            }
+          },
+          {
+            "name": "readMask",
+            "in": "query",
+            "description": "Asset metadata fields to retrieve, including the description, display name, icon, and previews. Example: `description%2CdisplayName`, `previews`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Asset resource retrieved successfully."
+          },
+          "400": {
+            "description": "Malformed request, likely due to an invalid read mask."
+          },
+          "401": {
+            "description": "Authentication cookie is missing."
+          },
+          "403": {
+            "description": "Doesn't have the required permission."
+          },
+          "404": {
+            "description": "Asset doesn't exist."
+          },
+          "500": {
+            "description": "Server internal error / Unknown error."
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Assets"
+        ],
+        "operationId": "Assets_UpdateAsset",
+        "summary": "Updates an asset with provided content and metadata.",
+        "parameters": [
+          {
+            "name": "updateMask",
+            "in": "query",
+            "required": false,
+            "description": "Asset metadata fields to update, including the description, display name, icon, and previews. Example: `description%2CdisplayName`, `previews`.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "request": {
+                    "$ref": "#/components/schemas/Asset"
+                  },
+                  "fileContent": {
+                    "description": "The binary asset file path and the content type. Format: `fileContent=@\"/filepath/{File}\";type={ContentType}`. Example: `fileContent=@\"/filepath/model.fbx\";type=model/fbx`. See [Content Types](../../../cloud/open-cloud/usage-assets.md#supported-asset-types-and-limits).",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Returns the Operation ID for checking the update status / Returns the updated metadata fields.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Operation",
+                  "example": "{\\\"previews\\\": [\\n    {\\\"asset\\\": \\\"assets/123\\\", \\\"altText\\\": \\\"preview 1\\\"},\\n    {\\\"asset\\\": \\\"assets/456\\\", \\\"altText\\\": \\\"preview 2\\\"}\\n]}"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid argument. Failed to parse the request or the file.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Status"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication cookie is missing."
+          },
+          "500": {
+            "description": "Server internal error / Unknown error."
+          }
+        }
+      }
+    },
+    "/v1/assets/{assetId}:archive": {
+      "post": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Archives an asset",
+        "operationId": "Assets_ArchiveAsset",
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/v1/assets/{assetId}:restore": {
+      "post": {
+        "tags": [
+          "Assets"
+        ],
+        "summary": "Restores an asset",
+        "operationId": "Assets_RestoreAsset",
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Any": {
+        "type": "object",
+        "properties": {
+          "@type": {
+            "type": "string",
+            "description": "The type of the serialized message."
+          }
+        },
+        "description": "Contains an arbitrary serialized message along with a `@type` that describes the type of the serialized message."
+      },
+      "Asset": {
+        "type": "object",
+        "properties": {
+          "assetType": {
+            "$ref": "#/components/schemas/AssetType"
+          },
+          "assetId": {
+            "type": "integer",
+            "description": "The unique identifier of the asset.",
+            "format": "int64",
+            "readOnly": true
+          },
+          "creationContext": {
+            "$ref": "#/components/schemas/CreationContext"
+          },
+          "description": {
+            "type": "string",
+            "description": "The description of the asset. Limit to 1000 characters."
+          },
+          "displayName": {
+            "type": "string",
+            "description": "Display name of the asset."
+          },
+          "path": {
+            "type": "string",
+            "description": "The returned resource path of the asset."
+          },
+          "revisionId": {
+            "type": "string",
+            "description": "Revision ID of the asset. Equivalent to `versionNumber`. Every change of the asset automatically commits a new version. The format is an integer string. Example: `1`.",
+            "readOnly": true
+          },
+          "revisionCreateTime": {
+            "type": "string",
+            "description": "The creation timestamp of the current revision.",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "moderationResult": {
+            "$ref": "#/components/schemas/ModerationResult"
+          },
+          "icon": {
+            "type": "string",
+            "description": "The resource path for the icon."
+          },
+          "previews": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Preview"
+            },
+            "description": "A list of previews, each with an asset path and alt text. Previews must be either **Image** or **YoutubeVideo** assets."
+          }
+        },
+        "description": "Represents an asset."
+      },
+      "AssetType": {
+        "type": "string",
+        "description": "The asset type.",
+        "enum": [
+          "Unspecified",
+          "Image",
+          "Tshirt",
+          "Audio",
+          "Mesh",
+          "Lua",
+          "Html",
+          "Text",
+          "Hat",
+          "Place",
+          "Model",
+          "Shirt",
+          "Pants",
+          "Decal",
+          "Avatar",
+          "Head",
+          "Face",
+          "Gear",
+          "Badge",
+          "GroupEmblem",
+          "Animation",
+          "Arms",
+          "Legs",
+          "Torso",
+          "RightArm",
+          "LeftArm",
+          "LeftLeg",
+          "RightLeg",
+          "Package",
+          "YoutubeVideo",
+          "GamePass",
+          "App",
+          "Code",
+          "Plugin",
+          "SolidModel",
+          "MeshPart",
+          "HairAccessory",
+          "FaceAccessory",
+          "NeckAccessory",
+          "ShoulderAccessory",
+          "FrontAccessory",
+          "BackAccessory",
+          "WaistAccessory",
+          "ClimbAnimation",
+          "DeathAnimation",
+          "FallAnimation",
+          "IdleAnimation",
+          "JumpAnimation",
+          "RunAnimation",
+          "SwimAnimation",
+          "WalkAnimation",
+          "PoseAnimation",
+          "LocalizationTableManifest",
+          "LocalizationTableTranslation",
+          "EmoteAnimation",
+          "Video",
+          "TexturePack",
+          "TshirtAccessory",
+          "ShirtAccessory",
+          "PantsAccessory",
+          "JacketAccessory",
+          "SweaterAccessory",
+          "ShortsAccessory",
+          "LeftShoeAccessory",
+          "RightShoeAccessory",
+          "DressSkirtAccessory",
+          "FontFamily",
+          "FontFace",
+          "MeshHiddenSurfaceRemoval",
+          "EyebrowAccessory",
+          "EyelashAccessory",
+          "MoodAnimation",
+          "DynamicHead",
+          "CodeSnippet",
+          "AdsVideo"
+        ]
+      },
+      "CreationContext": {
+        "type": "object",
+        "properties": {
+          "creator": {
+            "$ref": "#/components/schemas/Creator",
+            "required": true
+          },
+          "expectedPrice": {
+            "type": "integer",
+            "description": "Expected asset upload fee in Robux. When the actual price is more than expected, the operation fails with a 400 error.",
+            "format": "int64",
+            "writeOnly": true
+          }
+        },
+        "description": "The context of creation that is not part of the asset content, such as metadata and creator information."
+      },
+      "Creator": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "description": "The User ID the creator. Required if the asset is individual-user-owned.",
+            "format": "int64"
+          },
+          "groupId": {
+            "type": "integer",
+            "description": "The Group ID. Required if the asset is group-owned.",
+            "format": "int64"
+          }
+        },
+        "description": "Represents a creator."
+      },
+      "ModerationResult": {
+        "type": "object",
+        "properties": {
+          "moderationState": {
+            "type": "string",
+            "description": "The moderation state of the asset. Can be `MODERATION_STATE_REVIEWING`, `MODERATION_STATE_REJECTED`, or `MODERATION_STATE_APPROVED`."
+          }
+        },
+        "description": "The moderation result of the asset. "
+      },
+      "Operation": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "The server-assigned resource path. The default format is `operations/{operation_id}`."
+          },
+          "metadata": {
+            "$ref": "#/components/schemas/Any"
+          },
+          "done": {
+            "type": "boolean",
+            "description": "If `false`, the operation is still in progress. If `true`, the operation is completed."
+          },
+          "error": {
+            "$ref": "#/components/schemas/Status"
+          },
+          "response": {
+            "$ref": "#/components/schemas/Any"
+          }
+        },
+        "description": "This resource represents a long-running operation that is the result of a network API call."
+      },
+      "Preview": {
+        "type": "object",
+        "properties": {
+          "asset": {
+            "type": "string",
+            "description": "The preview asset path."
+          },
+          "altText": {
+            "type": "string",
+            "description": "Alt text for the preview asset."
+          }
+        },
+        "description": "An asset preview."
+      },
+      "Status": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "description": "The HTTP status code.",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string",
+            "description": "The error message."
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Any"
+            },
+            "description": "A list of messages carrying error details."
+          }
+        },
+        "description": "The logical error model explaining the error status."
+      }
+    },
+    "securitySchemes": {
+      "roblox-auth-cookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": ".ROBLOSECURITY"
+      }
+    }
+  },
+  "security": [
+    {
+      "roblox-auth-cookie": []
+    }
+  ]
+}
