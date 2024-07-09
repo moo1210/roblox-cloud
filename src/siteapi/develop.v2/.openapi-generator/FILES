@@ -2,12 +2,10 @@ AssetsV2Api.md
 PlacesV2Api.md
 TeamTestV2Api.md
 UniverseSettingsApi.md
-UniversesApi.md
 apis/AssetsV2Api.ts
 apis/PlacesV2Api.ts
 apis/TeamTestV2Api.ts
 apis/UniverseSettingsApi.ts
-apis/UniversesApi.ts
 index.ts
 models/ObjectSerializer.ts
 models/RobloxApiDevelopAssetVersion.ts

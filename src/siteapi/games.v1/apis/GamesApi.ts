@@ -8,8 +8,6 @@ import {SecurityAuthentication} from '../../../common/auth/auth';
 
 
 import { RobloxGamesApiModelsResponseGameRecommendationsResponse } from '../models/RobloxGamesApiModelsResponseGameRecommendationsResponse';
-import { RobloxGamesApiModelsResponseGameSortsResponse } from '../models/RobloxGamesApiModelsResponseGameSortsResponse';
-import { RobloxGamesApiModelsResponseGamesSearchResponse } from '../models/RobloxGamesApiModelsResponseGamesSearchResponse';
 import { RobloxGamesApiModelsResponsePlaceDetails } from '../models/RobloxGamesApiModelsResponsePlaceDetails';
 import { RobloxGamesApiModelsResponsePlayabilityStatusResponse } from '../models/RobloxGamesApiModelsResponsePlayabilityStatusResponse';
 import { RobloxGamesApiModelsResponseThumbnail } from '../models/RobloxGamesApiModelsResponseThumbnail';
@@ -179,221 +177,6 @@ export class GamesApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (universeIds !== undefined) {
             requestContext.setQueryParam("universeIds", ObjectSerializer.serialize(universeIds, "Array<number>", "int64"));
-        }
-
-
-        
-        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Gets a list of games
-     * @param sortToken Sort token.
-     * @param gameFilter Game filter.
-     * @param timeFilter Time filter.
-     * @param genreFilter Genre filter.
-     * @param exclusiveStartId Id to start getting entities.
-     * @param sortOrder Sort order.
-     * @param gameSetTargetId Extra id needed for specific Game Sets.
-     * @param keyword Keyword
-     * @param startRows StartRows
-     * @param maxRows MaxRows
-     * @param contextCountryRegionId ContextCountryRegionId
-     * @param contextUniverseId ContextUniverseId
-     * @param pageContextPageId Id to identify the page as shown to the user.
-     * @param pageContextIsSeeAllPage SortPosition
-     * @param sortPosition SortPosition
-     * @param sessionId SessionId
-     */
-    public async v1GamesListGet(sortToken: string, gameFilter: string, timeFilter: string, genreFilter: string, exclusiveStartId: number, sortOrder: number, gameSetTargetId: number, keyword: string, startRows: number, maxRows: number, contextCountryRegionId: number, contextUniverseId: number, pageContextPageId: string, pageContextIsSeeAllPage: boolean, sortPosition: number, sessionId: string, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'sortToken' is not null or undefined
-        if (sortToken === null || sortToken === undefined) {
-            throw new RequiredError("GamesApi", "v1GamesListGet", "sortToken");
-        }
-
-
-        // verify required parameter 'gameFilter' is not null or undefined
-        if (gameFilter === null || gameFilter === undefined) {
-            throw new RequiredError("GamesApi", "v1GamesListGet", "gameFilter");
-        }
-
-
-        // verify required parameter 'timeFilter' is not null or undefined
-        if (timeFilter === null || timeFilter === undefined) {
-            throw new RequiredError("GamesApi", "v1GamesListGet", "timeFilter");
-        }
-
-
-        // verify required parameter 'genreFilter' is not null or undefined
-        if (genreFilter === null || genreFilter === undefined) {
-            throw new RequiredError("GamesApi", "v1GamesListGet", "genreFilter");
-        }
-
-
-        // verify required parameter 'exclusiveStartId' is not null or undefined
-        if (exclusiveStartId === null || exclusiveStartId === undefined) {
-            throw new RequiredError("GamesApi", "v1GamesListGet", "exclusiveStartId");
-        }
-
-
-        // verify required parameter 'sortOrder' is not null or undefined
-        if (sortOrder === null || sortOrder === undefined) {
-            throw new RequiredError("GamesApi", "v1GamesListGet", "sortOrder");
-        }
-
-
-        // verify required parameter 'gameSetTargetId' is not null or undefined
-        if (gameSetTargetId === null || gameSetTargetId === undefined) {
-            throw new RequiredError("GamesApi", "v1GamesListGet", "gameSetTargetId");
-        }
-
-
-        // verify required parameter 'keyword' is not null or undefined
-        if (keyword === null || keyword === undefined) {
-            throw new RequiredError("GamesApi", "v1GamesListGet", "keyword");
-        }
-
-
-        // verify required parameter 'startRows' is not null or undefined
-        if (startRows === null || startRows === undefined) {
-            throw new RequiredError("GamesApi", "v1GamesListGet", "startRows");
-        }
-
-
-        // verify required parameter 'maxRows' is not null or undefined
-        if (maxRows === null || maxRows === undefined) {
-            throw new RequiredError("GamesApi", "v1GamesListGet", "maxRows");
-        }
-
-
-        // verify required parameter 'contextCountryRegionId' is not null or undefined
-        if (contextCountryRegionId === null || contextCountryRegionId === undefined) {
-            throw new RequiredError("GamesApi", "v1GamesListGet", "contextCountryRegionId");
-        }
-
-
-        // verify required parameter 'contextUniverseId' is not null or undefined
-        if (contextUniverseId === null || contextUniverseId === undefined) {
-            throw new RequiredError("GamesApi", "v1GamesListGet", "contextUniverseId");
-        }
-
-
-        // verify required parameter 'pageContextPageId' is not null or undefined
-        if (pageContextPageId === null || pageContextPageId === undefined) {
-            throw new RequiredError("GamesApi", "v1GamesListGet", "pageContextPageId");
-        }
-
-
-        // verify required parameter 'pageContextIsSeeAllPage' is not null or undefined
-        if (pageContextIsSeeAllPage === null || pageContextIsSeeAllPage === undefined) {
-            throw new RequiredError("GamesApi", "v1GamesListGet", "pageContextIsSeeAllPage");
-        }
-
-
-        // verify required parameter 'sortPosition' is not null or undefined
-        if (sortPosition === null || sortPosition === undefined) {
-            throw new RequiredError("GamesApi", "v1GamesListGet", "sortPosition");
-        }
-
-
-        // verify required parameter 'sessionId' is not null or undefined
-        if (sessionId === null || sessionId === undefined) {
-            throw new RequiredError("GamesApi", "v1GamesListGet", "sessionId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v1/games/list';
-
-        // Make Request Context
-        const requestContext = _config.getServer('https://games.roblox.com').makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (sortToken !== undefined) {
-            requestContext.setQueryParam("SortToken", ObjectSerializer.serialize(sortToken, "string", ""));
-        }
-
-        // Query Params
-        if (gameFilter !== undefined) {
-            requestContext.setQueryParam("GameFilter", ObjectSerializer.serialize(gameFilter, "string", ""));
-        }
-
-        // Query Params
-        if (timeFilter !== undefined) {
-            requestContext.setQueryParam("TimeFilter", ObjectSerializer.serialize(timeFilter, "string", ""));
-        }
-
-        // Query Params
-        if (genreFilter !== undefined) {
-            requestContext.setQueryParam("GenreFilter", ObjectSerializer.serialize(genreFilter, "string", ""));
-        }
-
-        // Query Params
-        if (exclusiveStartId !== undefined) {
-            requestContext.setQueryParam("ExclusiveStartId", ObjectSerializer.serialize(exclusiveStartId, "number", "int64"));
-        }
-
-        // Query Params
-        if (sortOrder !== undefined) {
-            requestContext.setQueryParam("SortOrder", ObjectSerializer.serialize(sortOrder, "number", "int32"));
-        }
-
-        // Query Params
-        if (gameSetTargetId !== undefined) {
-            requestContext.setQueryParam("GameSetTargetId", ObjectSerializer.serialize(gameSetTargetId, "number", "int64"));
-        }
-
-        // Query Params
-        if (keyword !== undefined) {
-            requestContext.setQueryParam("Keyword", ObjectSerializer.serialize(keyword, "string", ""));
-        }
-
-        // Query Params
-        if (startRows !== undefined) {
-            requestContext.setQueryParam("StartRows", ObjectSerializer.serialize(startRows, "number", "int32"));
-        }
-
-        // Query Params
-        if (maxRows !== undefined) {
-            requestContext.setQueryParam("MaxRows", ObjectSerializer.serialize(maxRows, "number", "int32"));
-        }
-
-        // Query Params
-        if (contextCountryRegionId !== undefined) {
-            requestContext.setQueryParam("ContextCountryRegionId", ObjectSerializer.serialize(contextCountryRegionId, "number", "int32"));
-        }
-
-        // Query Params
-        if (contextUniverseId !== undefined) {
-            requestContext.setQueryParam("ContextUniverseId", ObjectSerializer.serialize(contextUniverseId, "number", "int64"));
-        }
-
-        // Query Params
-        if (pageContextPageId !== undefined) {
-            requestContext.setQueryParam("PageContext.PageId", ObjectSerializer.serialize(pageContextPageId, "string", "uuid"));
-        }
-
-        // Query Params
-        if (pageContextIsSeeAllPage !== undefined) {
-            requestContext.setQueryParam("PageContext.IsSeeAllPage", ObjectSerializer.serialize(pageContextIsSeeAllPage, "boolean", ""));
-        }
-
-        // Query Params
-        if (sortPosition !== undefined) {
-            requestContext.setQueryParam("SortPosition", ObjectSerializer.serialize(sortPosition, "number", "int32"));
-        }
-
-        // Query Params
-        if (sessionId !== undefined) {
-            requestContext.setQueryParam("SessionId", ObjectSerializer.serialize(sessionId, "string", ""));
         }
 
 
@@ -634,41 +417,6 @@ export class GamesApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Gets an ordered list of all sorts
-     * @param gameSortsContext Context to determine which game sorts are being requested.
-     */
-    public async v1GamesSortsGet(gameSortsContext: 0 | 1 | 2 | 3 | 4 | 6 | 7, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'gameSortsContext' is not null or undefined
-        if (gameSortsContext === null || gameSortsContext === undefined) {
-            throw new RequiredError("GamesApi", "v1GamesSortsGet", "gameSortsContext");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v1/games/sorts';
-
-        // Make Request Context
-        const requestContext = _config.getServer('https://games.roblox.com').makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (gameSortsContext !== undefined) {
-            requestContext.setQueryParam("GameSortsContext", ObjectSerializer.serialize(gameSortsContext, "0 | 1 | 2 | 3 | 4 | 6 | 7", "int32"));
-        }
-
-
-        
-        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
      * Get the game media data
      * @param universeId The id of the universe we get media data from.
      */
@@ -821,38 +569,6 @@ export class GamesApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "RobloxWebWebAPIModelsApiArrayResponseRobloxGamesApiModelsResponseGameDetailResponse", ""
             ) as RobloxWebWebAPIModelsApiArrayResponseRobloxGamesApiModelsResponseGameDetailResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to v1GamesListGet
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async v1GamesListGetWithHttpInfo(response: ResponseContext): Promise<HttpInfo<RobloxGamesApiModelsResponseGamesSearchResponse >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: RobloxGamesApiModelsResponseGamesSearchResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "RobloxGamesApiModelsResponseGamesSearchResponse", ""
-            ) as RobloxGamesApiModelsResponseGamesSearchResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("500", response.httpStatusCode)) {
-            throw new ApiException<undefined>(response.httpStatusCode, "0: Compliance Context service is unavailable.", undefined, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: RobloxGamesApiModelsResponseGamesSearchResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "RobloxGamesApiModelsResponseGamesSearchResponse", ""
-            ) as RobloxGamesApiModelsResponseGamesSearchResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -1019,35 +735,6 @@ export class GamesApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "RobloxGamesApiModelsResponseGameRecommendationsResponse", ""
             ) as RobloxGamesApiModelsResponseGameRecommendationsResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to v1GamesSortsGet
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async v1GamesSortsGetWithHttpInfo(response: ResponseContext): Promise<HttpInfo<RobloxGamesApiModelsResponseGameSortsResponse >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: RobloxGamesApiModelsResponseGameSortsResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "RobloxGamesApiModelsResponseGameSortsResponse", ""
-            ) as RobloxGamesApiModelsResponseGameSortsResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: RobloxGamesApiModelsResponseGameSortsResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "RobloxGamesApiModelsResponseGameSortsResponse", ""
-            ) as RobloxGamesApiModelsResponseGameSortsResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

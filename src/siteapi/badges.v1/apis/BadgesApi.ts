@@ -184,14 +184,16 @@ export class BadgesApiRequestFactory extends BaseAPIRequestFactory {
      * @param paymentSourceType Whether or not to pay for the badge with user funds, or group funds. [\\\&#39;User\\\&#39; &#x3D; 1, \\\&#39;Group\\\&#39; &#x3D; 2]
      * @param files The badge icon.
      * @param expectedCost User expected cost of a badge.
+     * @param isActive Whether or not the badge should be created in the active state.
      */
-    public async v1UniversesUniverseIdBadgesPost(universeId: number, name?: string, description?: string, paymentSourceType?: number, files?: HttpFile, expectedCost?: number, _options?: Configuration): Promise<RequestContext> {
+    public async v1UniversesUniverseIdBadgesPost(universeId: number, name?: string, description?: string, paymentSourceType?: number, files?: HttpFile, expectedCost?: number, isActive?: boolean, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'universeId' is not null or undefined
         if (universeId === null || universeId === undefined) {
             throw new RequiredError("BadgesApi", "v1UniversesUniverseIdBadgesPost", "universeId");
         }
+
 
 
 
@@ -240,6 +242,10 @@ export class BadgesApiRequestFactory extends BaseAPIRequestFactory {
         if (expectedCost !== undefined) {
              // TODO: replace .append with .set
              localVarFormParams.append('expectedCost', expectedCost as any);
+        }
+        if (isActive !== undefined) {
+             // TODO: replace .append with .set
+             localVarFormParams.append('isActive', isActive as any);
         }
 
         requestContext.setBody(localVarFormParams);

@@ -154,59 +154,6 @@ export class ObservableAssetFetchV2Api {
     }
 
     /**
-     * @param hash 
-     * @param acceptEncoding 
-     * @param robloxPlaceId 
-     * @param assetType 
-     * @param accept 
-     * @param assetFormat 
-     * @param robloxAssetFormat 
-     * @param skipSigningScripts 
-     * @param clientInsert 
-     * @param scriptinsert 
-     * @param modulePlaceId 
-     * @param serverplaceid 
-     * @param expectedAssetType 
-     */
-    public v2AssetHashHashGetWithHttpInfo(hash: string, acceptEncoding: string, robloxPlaceId: number, assetType: string, accept: string, assetFormat: string, robloxAssetFormat: string, skipSigningScripts?: boolean, clientInsert?: number, scriptinsert?: number, modulePlaceId?: number, serverplaceid?: number, expectedAssetType?: string, _options?: Configuration): Observable<HttpInfo<RobloxWebAssetsIAssetResponseItemV2>> {
-        const requestContextPromise = this.requestFactory.v2AssetHashHashGet(hash, acceptEncoding, robloxPlaceId, assetType, accept, assetFormat, robloxAssetFormat, skipSigningScripts, clientInsert, scriptinsert, modulePlaceId, serverplaceid, expectedAssetType, _options);
-
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (let middleware of this.configuration.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (let middleware of this.configuration.middleware) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v2AssetHashHashGetWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * @param hash 
-     * @param acceptEncoding 
-     * @param robloxPlaceId 
-     * @param assetType 
-     * @param accept 
-     * @param assetFormat 
-     * @param robloxAssetFormat 
-     * @param skipSigningScripts 
-     * @param clientInsert 
-     * @param scriptinsert 
-     * @param modulePlaceId 
-     * @param serverplaceid 
-     * @param expectedAssetType 
-     */
-    public v2AssetHashHashGet(hash: string, acceptEncoding: string, robloxPlaceId: number, assetType: string, accept: string, assetFormat: string, robloxAssetFormat: string, skipSigningScripts?: boolean, clientInsert?: number, scriptinsert?: number, modulePlaceId?: number, serverplaceid?: number, expectedAssetType?: string, _options?: Configuration): Observable<RobloxWebAssetsIAssetResponseItemV2> {
-        return this.v2AssetHashHashGetWithHttpInfo(hash, acceptEncoding, robloxPlaceId, assetType, accept, assetFormat, robloxAssetFormat, skipSigningScripts, clientInsert, scriptinsert, modulePlaceId, serverplaceid, expectedAssetType, _options).pipe(map((apiResponse: HttpInfo<RobloxWebAssetsIAssetResponseItemV2>) => apiResponse.data));
-    }
-
-    /**
      * @param assetId 
      * @param acceptEncoding 
      * @param robloxPlaceId 

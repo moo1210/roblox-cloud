@@ -21,14 +21,6 @@ export class CreatorStoreProduct {
     * The resource path of the Creator Store product.   Format: creator-store-products/{creator_store_product}
     */
     'path'?: string;
-    /**
-    * The display name of the product.
-    */
-    'displayName'?: string;
-    /**
-    * The description of the product.
-    */
-    'description'?: string;
     'basePrice'?: Money;
     'purchasePrice'?: Money;
     /**
@@ -44,7 +36,7 @@ export class CreatorStoreProduct {
     */
     'purchasable'?: boolean;
     /**
-    * The Roblox user selling the product. For now, this value is always a  Roblox user, but code should assume this field may expand to other types  of sellers, such as groups, in the future.
+    * The Roblox user selling the product.
     */
     'userSeller'?: string;
     /**
@@ -86,18 +78,6 @@ export class CreatorStoreProduct {
         {
             "name": "path",
             "baseName": "path",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "displayName",
-            "baseName": "displayName",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "description",
-            "baseName": "description",
             "type": "string",
             "format": ""
         },

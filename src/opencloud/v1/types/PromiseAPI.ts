@@ -73,7 +73,7 @@ export class PromiseEntriesApi {
      * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
      * @param datastoreName The name of the data store.
      * @param entryKey The key identifying the entry.
-     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      */
     public entriesDeleteEntryAsyncWithHttpInfo(universeId: number, datastoreName?: string, entryKey?: string, scope?: string, _options?: Configuration): Promise<HttpInfo<void>> {
         const result = this.api.entriesDeleteEntryAsyncWithHttpInfo(universeId, datastoreName, entryKey, scope, _options);
@@ -86,7 +86,7 @@ export class PromiseEntriesApi {
      * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
      * @param datastoreName The name of the data store.
      * @param entryKey The key identifying the entry.
-     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      */
     public entriesDeleteEntryAsync(universeId: number, datastoreName?: string, entryKey?: string, scope?: string, _options?: Configuration): Promise<void> {
         const result = this.api.entriesDeleteEntryAsync(universeId, datastoreName, entryKey, scope, _options);
@@ -99,7 +99,7 @@ export class PromiseEntriesApi {
      * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
      * @param datastoreName The name of the data store.
      * @param entryKey The key identifying the entry.
-     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      */
     public entriesGetEntryAsyncWithHttpInfo(universeId: number, datastoreName?: string, entryKey?: string, scope?: string, _options?: Configuration): Promise<HttpInfo<void | EntriesGetEntryAsync200Response>> {
         const result = this.api.entriesGetEntryAsyncWithHttpInfo(universeId, datastoreName, entryKey, scope, _options);
@@ -112,7 +112,7 @@ export class PromiseEntriesApi {
      * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
      * @param datastoreName The name of the data store.
      * @param entryKey The key identifying the entry.
-     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      */
     public entriesGetEntryAsync(universeId: number, datastoreName?: string, entryKey?: string, scope?: string, _options?: Configuration): Promise<void | EntriesGetEntryAsync200Response> {
         const result = this.api.entriesGetEntryAsync(universeId, datastoreName, entryKey, scope, _options);
@@ -126,7 +126,7 @@ export class PromiseEntriesApi {
      * @param datastoreName The name of the data store.
      * @param entryKey The key identifying the entry.
      * @param versionId The version to inspect.
-     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      */
     public entriesGetEntryVersionAsyncWithHttpInfo(universeId: number, datastoreName?: string, entryKey?: string, versionId?: string, scope?: string, _options?: Configuration): Promise<HttpInfo<EntriesGetEntryVersionAsync200Response>> {
         const result = this.api.entriesGetEntryVersionAsyncWithHttpInfo(universeId, datastoreName, entryKey, versionId, scope, _options);
@@ -140,7 +140,7 @@ export class PromiseEntriesApi {
      * @param datastoreName The name of the data store.
      * @param entryKey The key identifying the entry.
      * @param versionId The version to inspect.
-     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      */
     public entriesGetEntryVersionAsync(universeId: number, datastoreName?: string, entryKey?: string, versionId?: string, scope?: string, _options?: Configuration): Promise<EntriesGetEntryVersionAsync200Response> {
         const result = this.api.entriesGetEntryVersionAsync(universeId, datastoreName, entryKey, versionId, scope, _options);
@@ -154,7 +154,7 @@ export class PromiseEntriesApi {
      * @param datastoreName The name of the data store.
      * @param entryKey The key identifying the entry.
      * @param incrementBy The amount by which the entry should be incremented, or the starting value if it doesn\&#39;t exist.
-     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      * @param robloxEntryAttributes Attributes to be associated with new version of the entry. Serialized by JSON map objects. If not provided, existing attributes are cleared.
      * @param robloxEntryUserids A comma-separated list of Roblox user IDs that the entry is tagged with. If not provided, existing user IDs are cleared.
      */
@@ -170,7 +170,7 @@ export class PromiseEntriesApi {
      * @param datastoreName The name of the data store.
      * @param entryKey The key identifying the entry.
      * @param incrementBy The amount by which the entry should be incremented, or the starting value if it doesn\&#39;t exist.
-     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      * @param robloxEntryAttributes Attributes to be associated with new version of the entry. Serialized by JSON map objects. If not provided, existing attributes are cleared.
      * @param robloxEntryUserids A comma-separated list of Roblox user IDs that the entry is tagged with. If not provided, existing user IDs are cleared.
      */
@@ -185,7 +185,7 @@ export class PromiseEntriesApi {
      * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
      * @param datastoreName The name of the data store.
      * @param entryKey The key identifying the entry.
-     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      * @param cursor Provide to request the next set of data (see [Cursors](../../../cloud/open-cloud/data-store-api-handling.md#cursors)).
      * @param startTime Provide to not include versions earlier than this timestamp.
      * @param endTime Provide to not include versions later than this timestamp.
@@ -203,7 +203,7 @@ export class PromiseEntriesApi {
      * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
      * @param datastoreName The name of the data store.
      * @param entryKey The key identifying the entry.
-     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      * @param cursor Provide to request the next set of data (see [Cursors](../../../cloud/open-cloud/data-store-api-handling.md#cursors)).
      * @param startTime Provide to not include versions earlier than this timestamp.
      * @param endTime Provide to not include versions later than this timestamp.
@@ -220,7 +220,7 @@ export class PromiseEntriesApi {
      * List entries
      * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
      * @param datastoreName The name of the data store.
-     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      * @param allScopes Set to true to return keys from all scopes.
      * @param prefix Provide to return only keys with this prefix.
      * @param cursor Provide to request the next set of data. See [Cursors](../../../cloud/open-cloud/data-store-api-handling.md#cursors).
@@ -236,7 +236,7 @@ export class PromiseEntriesApi {
      * List entries
      * @param universeId The identifier of the experience with data stores that you want to access. You can [copy your experience\&#39;s Universe ID](../../../cloud/open-cloud/usage-data-stores.md#getting-the-universe-id) on the **Creator Dashboard**.
      * @param datastoreName The name of the data store.
-     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      * @param allScopes Set to true to return keys from all scopes.
      * @param prefix Provide to return only keys with this prefix.
      * @param cursor Provide to request the next set of data. See [Cursors](../../../cloud/open-cloud/data-store-api-handling.md#cursors).
@@ -255,7 +255,7 @@ export class PromiseEntriesApi {
      * @param entryKey The key identifying the entry.
      * @param matchVersion Provide to update only if the current version matches this.
      * @param exclusiveCreate Create the entry only if it does not exist.
-     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      * @param robloxEntryAttributes Attributes to be associated with new version of the entry. Serialized by JSON map objects. If not provided, existing attributes are cleared.
      * @param robloxEntryUserids Comma-separated list of Roblox user IDs tagged with the entry. If not provided, existing user IDs are cleared.
      * @param contentMd5 The base-64 encoded MD5 checksum of the content. See [Content-MD5](../../../cloud/open-cloud/data-store-api-handling.md#content-md5).
@@ -274,7 +274,7 @@ export class PromiseEntriesApi {
      * @param entryKey The key identifying the entry.
      * @param matchVersion Provide to update only if the current version matches this.
      * @param exclusiveCreate Create the entry only if it does not exist.
-     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * @param scope The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      * @param robloxEntryAttributes Attributes to be associated with new version of the entry. Serialized by JSON map objects. If not provided, existing attributes are cleared.
      * @param robloxEntryUserids Comma-separated list of Roblox user IDs tagged with the entry. If not provided, existing user IDs are cleared.
      * @param contentMd5 The base-64 encoded MD5 checksum of the content. See [Content-MD5](../../../cloud/open-cloud/data-store-api-handling.md#content-md5).

@@ -21,7 +21,7 @@ export class RobloxUsersApiMultiGetByUsernameRequest {
     */
     'usernames'?: Array<string>;
     /**
-    * Whether or not the response should exclude banned users
+    * Whether the response should exclude banned users
     */
     'excludeBannedUsers'?: boolean;
 

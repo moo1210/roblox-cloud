@@ -23,19 +23,23 @@ export class MemoryStoreQueueItem {
     /**
     * Represents a dynamically typed value which can be either null, a number, a string, a boolean, a recursive struct value, or a list of values.
     */
-    'value'?: any | null;
+    'data'?: any | null;
     /**
-    * The priority of the queue item
+    * The priority of the queue item.
     */
     'priority'?: number;
     /**
-    * The expiration time of the item
+    * The TTL for the item.
+    */
+    'ttl'?: string;
+    /**
+    * The expiration time of the item.
     */
     'expireTime'?: Date;
     /**
-    * Input only. The TTL for the item.
+    * The name of the item.
     */
-    'ttl'?: string;
+    'id'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -47,8 +51,8 @@ export class MemoryStoreQueueItem {
             "format": ""
         },
         {
-            "name": "value",
-            "baseName": "value",
+            "name": "data",
+            "baseName": "data",
             "type": "any",
             "format": ""
         },
@@ -56,7 +60,13 @@ export class MemoryStoreQueueItem {
             "name": "priority",
             "baseName": "priority",
             "type": "number",
-            "format": "int32"
+            "format": "double"
+        },
+        {
+            "name": "ttl",
+            "baseName": "ttl",
+            "type": "string",
+            "format": "duration"
         },
         {
             "name": "expireTime",
@@ -65,10 +75,10 @@ export class MemoryStoreQueueItem {
             "format": "date-time"
         },
         {
-            "name": "ttl",
-            "baseName": "ttl",
+            "name": "id",
+            "baseName": "id",
             "type": "string",
-            "format": "duration"
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {

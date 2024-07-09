@@ -61,6 +61,7 @@ import { RobloxGroupsApiUpdatePermissionsRequestPermissions } from '../models/Ro
 import { RobloxGroupsApiUpdateUserRoleRequest } from '../models/RobloxGroupsApiUpdateUserRoleRequest';
 import { RobloxGroupsApiUserGroupMembershipResponse } from '../models/RobloxGroupsApiUserGroupMembershipResponse';
 import { RobloxGroupsApiUserGroupRoleResponse } from '../models/RobloxGroupsApiUserGroupRoleResponse';
+import { RobloxGroupsClientGroupFeaturedContentResponse } from '../models/RobloxGroupsClientGroupFeaturedContentResponse';
 import { RobloxPagingExclusiveStartKeyCursorSystemString } from '../models/RobloxPagingExclusiveStartKeyCursorSystemString';
 import { RobloxPagingStartIndexCursor } from '../models/RobloxPagingStartIndexCursor';
 import { RobloxPlatformCoreExclusiveStartPagingIExclusiveStartKeyInfoSystemInt32 } from '../models/RobloxPlatformCoreExclusiveStartPagingIExclusiveStartKeyInfoSystemInt32';
@@ -85,6 +86,105 @@ import { RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiModelsResponseUserMo
 import { RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiUserGroupRoleResponse } from '../models/RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiUserGroupRoleResponse';
 import { SystemIOStream } from '../models/SystemIOStream';
 import { SystemValueTupleRobloxWebWebAPIExclusiveStartRequestSystemInt64RobloxPagingExclusiveStartKeyCursorSystemString } from '../models/SystemValueTupleRobloxWebWebAPIExclusiveStartRequestSystemInt64RobloxPagingExclusiveStartKeyCursorSystemString';
+
+import { ObservableFeaturedContentApi } from "./ObservableAPI";
+import { FeaturedContentApiRequestFactory, FeaturedContentApiResponseProcessor} from "../apis/FeaturedContentApi";
+
+export interface FeaturedContentApiV1FeaturedContentEventDeleteRequest {
+    /**
+     * The group Id.
+     * @type number
+     * @memberof FeaturedContentApiv1FeaturedContentEventDelete
+     */
+    groupId: number
+    /**
+     * The event Id.
+     * @type number
+     * @memberof FeaturedContentApiv1FeaturedContentEventDelete
+     */
+    eventId: number
+}
+
+export interface FeaturedContentApiV1FeaturedContentEventGetRequest {
+    /**
+     * The group Id.
+     * @type number
+     * @memberof FeaturedContentApiv1FeaturedContentEventGet
+     */
+    groupId: number
+}
+
+export interface FeaturedContentApiV1FeaturedContentEventPostRequest {
+    /**
+     * The group Id.
+     * @type number
+     * @memberof FeaturedContentApiv1FeaturedContentEventPost
+     */
+    groupId: number
+    /**
+     * The event Id.
+     * @type number
+     * @memberof FeaturedContentApiv1FeaturedContentEventPost
+     */
+    eventId: number
+}
+
+export class ObjectFeaturedContentApi {
+    private api: ObservableFeaturedContentApi
+
+    public constructor(configuration: Configuration, requestFactory?: FeaturedContentApiRequestFactory, responseProcessor?: FeaturedContentApiResponseProcessor) {
+        this.api = new ObservableFeaturedContentApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Deletes the featured event for a group
+     * @param param the request object
+     */
+    public v1FeaturedContentEventDeleteWithHttpInfo(param: FeaturedContentApiV1FeaturedContentEventDeleteRequest, options?: Configuration): Promise<HttpInfo<void>> {
+        return this.api.v1FeaturedContentEventDeleteWithHttpInfo(param.groupId, param.eventId,  options).toPromise();
+    }
+
+    /**
+     * Deletes the featured event for a group
+     * @param param the request object
+     */
+    public v1FeaturedContentEventDelete(param: FeaturedContentApiV1FeaturedContentEventDeleteRequest, options?: Configuration): Promise<void> {
+        return this.api.v1FeaturedContentEventDelete(param.groupId, param.eventId,  options).toPromise();
+    }
+
+    /**
+     * Gets the featured event for a group
+     * @param param the request object
+     */
+    public v1FeaturedContentEventGetWithHttpInfo(param: FeaturedContentApiV1FeaturedContentEventGetRequest, options?: Configuration): Promise<HttpInfo<RobloxGroupsClientGroupFeaturedContentResponse>> {
+        return this.api.v1FeaturedContentEventGetWithHttpInfo(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Gets the featured event for a group
+     * @param param the request object
+     */
+    public v1FeaturedContentEventGet(param: FeaturedContentApiV1FeaturedContentEventGetRequest, options?: Configuration): Promise<RobloxGroupsClientGroupFeaturedContentResponse> {
+        return this.api.v1FeaturedContentEventGet(param.groupId,  options).toPromise();
+    }
+
+    /**
+     * Sets the featured event for a group
+     * @param param the request object
+     */
+    public v1FeaturedContentEventPostWithHttpInfo(param: FeaturedContentApiV1FeaturedContentEventPostRequest, options?: Configuration): Promise<HttpInfo<RobloxGroupsClientGroupFeaturedContentResponse>> {
+        return this.api.v1FeaturedContentEventPostWithHttpInfo(param.groupId, param.eventId,  options).toPromise();
+    }
+
+    /**
+     * Sets the featured event for a group
+     * @param param the request object
+     */
+    public v1FeaturedContentEventPost(param: FeaturedContentApiV1FeaturedContentEventPostRequest, options?: Configuration): Promise<RobloxGroupsClientGroupFeaturedContentResponse> {
+        return this.api.v1FeaturedContentEventPost(param.groupId, param.eventId,  options).toPromise();
+    }
+
+}
 
 import { ObservableGroupSearchApi } from "./ObservableAPI";
 import { GroupSearchApiRequestFactory, GroupSearchApiResponseProcessor} from "../apis/GroupSearchApi";

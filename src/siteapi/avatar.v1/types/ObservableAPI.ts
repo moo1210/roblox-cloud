@@ -677,39 +677,6 @@ export class ObservableOutfitsApi {
         return this.v1OutfitsUserOutfitIdUpdatePostWithHttpInfo(userOutfitId, outfitUpdateModel, _options).pipe(map((apiResponse: HttpInfo<RobloxApiAvatarModelsAvatarApiSuccessResponse>) => apiResponse.data));
     }
 
-    /**
-     * Applies the outfit\'s appearance to your avatar  If the user no longer owns one or more of the assets, invalidAssetIds will be populated with the unwearable assets.
-     * Wears the outfit
-     * @param userOutfitId The user outfit id
-     */
-    public v1OutfitsUserOutfitIdWearPostWithHttpInfo(userOutfitId: number, _options?: Configuration): Observable<HttpInfo<RobloxApiAvatarModelsWearResponseModel>> {
-        const requestContextPromise = this.requestFactory.v1OutfitsUserOutfitIdWearPost(userOutfitId, _options);
-
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (let middleware of this.configuration.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (let middleware of this.configuration.middleware) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1OutfitsUserOutfitIdWearPostWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Applies the outfit\'s appearance to your avatar  If the user no longer owns one or more of the assets, invalidAssetIds will be populated with the unwearable assets.
-     * Wears the outfit
-     * @param userOutfitId The user outfit id
-     */
-    public v1OutfitsUserOutfitIdWearPost(userOutfitId: number, _options?: Configuration): Observable<RobloxApiAvatarModelsWearResponseModel> {
-        return this.v1OutfitsUserOutfitIdWearPostWithHttpInfo(userOutfitId, _options).pipe(map((apiResponse: HttpInfo<RobloxApiAvatarModelsWearResponseModel>) => apiResponse.data));
-    }
-
 }
 
 import { RecentItemApiRequestFactory, RecentItemApiResponseProcessor} from "../apis/RecentItemApi";

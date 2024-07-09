@@ -34,7 +34,7 @@ export class RobloxGroupsApiGroupSearchResponseItem {
     'memberCount'?: number;
     'previousName'?: string;
     /**
-    * When true anyone can join the group. When false manual approval   is required to join the group
+    * When true anyone can join the group. When false manual approval  is required to join the group
     */
     'publicEntryAllowed'?: boolean;
     /**

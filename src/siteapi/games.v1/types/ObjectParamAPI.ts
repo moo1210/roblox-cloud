@@ -6,30 +6,21 @@ import { RobloxGamesApiGameResponse } from '../models/RobloxGamesApiGameResponse
 import { RobloxGamesApiGameServerPlayerResponse } from '../models/RobloxGamesApiGameServerPlayerResponse';
 import { RobloxGamesApiModelsRequestGameFavoritesRequest } from '../models/RobloxGamesApiModelsRequestGameFavoritesRequest';
 import { RobloxGamesApiModelsRequestSetUserGameVoteRequest } from '../models/RobloxGamesApiModelsRequestSetUserGameVoteRequest';
-import { RobloxGamesApiModelsResponseElasticSearchDebugInfoModel } from '../models/RobloxGamesApiModelsResponseElasticSearchDebugInfoModel';
 import { RobloxGamesApiModelsResponseGameCreator } from '../models/RobloxGamesApiModelsResponseGameCreator';
 import { RobloxGamesApiModelsResponseGameDetailResponse } from '../models/RobloxGamesApiModelsResponseGameDetailResponse';
 import { RobloxGamesApiModelsResponseGameFavoriteResponse } from '../models/RobloxGamesApiModelsResponseGameFavoriteResponse';
 import { RobloxGamesApiModelsResponseGameFavoritesCountResponse } from '../models/RobloxGamesApiModelsResponseGameFavoritesCountResponse';
-import { RobloxGamesApiModelsResponseGameFilter } from '../models/RobloxGamesApiModelsResponseGameFilter';
 import { RobloxGamesApiModelsResponseGameMediaItem } from '../models/RobloxGamesApiModelsResponseGameMediaItem';
 import { RobloxGamesApiModelsResponseGamePassResponse } from '../models/RobloxGamesApiModelsResponseGamePassResponse';
 import { RobloxGamesApiModelsResponseGameProductResponse } from '../models/RobloxGamesApiModelsResponseGameProductResponse';
 import { RobloxGamesApiModelsResponseGameRecommendationsResponse } from '../models/RobloxGamesApiModelsResponseGameRecommendationsResponse';
 import { RobloxGamesApiModelsResponseGameResponseModel } from '../models/RobloxGamesApiModelsResponseGameResponseModel';
-import { RobloxGamesApiModelsResponseGameSort } from '../models/RobloxGamesApiModelsResponseGameSort';
-import { RobloxGamesApiModelsResponseGameSortTopicLayoutData } from '../models/RobloxGamesApiModelsResponseGameSortTopicLayoutData';
-import { RobloxGamesApiModelsResponseGameSortsResponse } from '../models/RobloxGamesApiModelsResponseGameSortsResponse';
 import { RobloxGamesApiModelsResponseGameSpotlightResponse } from '../models/RobloxGamesApiModelsResponseGameSpotlightResponse';
 import { RobloxGamesApiModelsResponseGameVoteResponse } from '../models/RobloxGamesApiModelsResponseGameVoteResponse';
-import { RobloxGamesApiModelsResponseGamesSearchResponse } from '../models/RobloxGamesApiModelsResponseGamesSearchResponse';
-import { RobloxGamesApiModelsResponseGenreFilter } from '../models/RobloxGamesApiModelsResponseGenreFilter';
-import { RobloxGamesApiModelsResponsePageContext } from '../models/RobloxGamesApiModelsResponsePageContext';
 import { RobloxGamesApiModelsResponsePlaceDetails } from '../models/RobloxGamesApiModelsResponsePlaceDetails';
 import { RobloxGamesApiModelsResponsePlayabilityStatusResponse } from '../models/RobloxGamesApiModelsResponsePlayabilityStatusResponse';
 import { RobloxGamesApiModelsResponsePrivateServersEnabledInUniverseResponse } from '../models/RobloxGamesApiModelsResponsePrivateServersEnabledInUniverseResponse';
 import { RobloxGamesApiModelsResponseThumbnail } from '../models/RobloxGamesApiModelsResponseThumbnail';
-import { RobloxGamesApiModelsResponseTimeFilter } from '../models/RobloxGamesApiModelsResponseTimeFilter';
 import { RobloxGamesApiModelsResponseUserGameVoteResponse } from '../models/RobloxGamesApiModelsResponseUserGameVoteResponse';
 import { RobloxGamesApiModelsResponseVerifiedBadgeUserResponse } from '../models/RobloxGamesApiModelsResponseVerifiedBadgeUserResponse';
 import { RobloxGamesApiPlaceResponse } from '../models/RobloxGamesApiPlaceResponse';
@@ -376,105 +367,6 @@ export interface GamesApiV1GamesGetRequest {
     universeIds: Array<number>
 }
 
-export interface GamesApiV1GamesListGetRequest {
-    /**
-     * Sort token.
-     * @type string
-     * @memberof GamesApiv1GamesListGet
-     */
-    sortToken: string
-    /**
-     * Game filter.
-     * @type string
-     * @memberof GamesApiv1GamesListGet
-     */
-    gameFilter: string
-    /**
-     * Time filter.
-     * @type string
-     * @memberof GamesApiv1GamesListGet
-     */
-    timeFilter: string
-    /**
-     * Genre filter.
-     * @type string
-     * @memberof GamesApiv1GamesListGet
-     */
-    genreFilter: string
-    /**
-     * Id to start getting entities.
-     * @type number
-     * @memberof GamesApiv1GamesListGet
-     */
-    exclusiveStartId: number
-    /**
-     * Sort order.
-     * @type number
-     * @memberof GamesApiv1GamesListGet
-     */
-    sortOrder: number
-    /**
-     * Extra id needed for specific Game Sets.
-     * @type number
-     * @memberof GamesApiv1GamesListGet
-     */
-    gameSetTargetId: number
-    /**
-     * Keyword
-     * @type string
-     * @memberof GamesApiv1GamesListGet
-     */
-    keyword: string
-    /**
-     * StartRows
-     * @type number
-     * @memberof GamesApiv1GamesListGet
-     */
-    startRows: number
-    /**
-     * MaxRows
-     * @type number
-     * @memberof GamesApiv1GamesListGet
-     */
-    maxRows: number
-    /**
-     * ContextCountryRegionId
-     * @type number
-     * @memberof GamesApiv1GamesListGet
-     */
-    contextCountryRegionId: number
-    /**
-     * ContextUniverseId
-     * @type number
-     * @memberof GamesApiv1GamesListGet
-     */
-    contextUniverseId: number
-    /**
-     * Id to identify the page as shown to the user.
-     * @type string
-     * @memberof GamesApiv1GamesListGet
-     */
-    pageContextPageId: string
-    /**
-     * SortPosition
-     * @type boolean
-     * @memberof GamesApiv1GamesListGet
-     */
-    pageContextIsSeeAllPage: boolean
-    /**
-     * SortPosition
-     * @type number
-     * @memberof GamesApiv1GamesListGet
-     */
-    sortPosition: number
-    /**
-     * SessionId
-     * @type string
-     * @memberof GamesApiv1GamesListGet
-     */
-    sessionId: string
-}
-
 export interface GamesApiV1GamesListSpotlightGetRequest {
 }
 
@@ -548,15 +440,6 @@ export interface GamesApiV1GamesRecommendationsGameUniverseIdGetRequest {
      * @memberof GamesApiv1GamesRecommendationsGameUniverseIdGet
      */
     isTruncatedResultsEnabled: boolean
-}
-
-export interface GamesApiV1GamesSortsGetRequest {
-    /**
-     * Context to determine which game sorts are being requested.
-     * @type 0 | 1 | 2 | 3 | 4 | 6 | 7
-     * @memberof GamesApiv1GamesSortsGet
-     */
-    gameSortsContext: 0 | 1 | 2 | 3 | 4 | 6 | 7
 }
 
 export interface GamesApiV1GamesUniverseIdMediaGetRequest {
@@ -640,22 +523,6 @@ export class ObjectGamesApi {
     }
 
     /**
-     * Gets a list of games
-     * @param param the request object
-     */
-    public v1GamesListGetWithHttpInfo(param: GamesApiV1GamesListGetRequest, options?: Configuration): Promise<HttpInfo<RobloxGamesApiModelsResponseGamesSearchResponse>> {
-        return this.api.v1GamesListGetWithHttpInfo(param.sortToken, param.gameFilter, param.timeFilter, param.genreFilter, param.exclusiveStartId, param.sortOrder, param.gameSetTargetId, param.keyword, param.startRows, param.maxRows, param.contextCountryRegionId, param.contextUniverseId, param.pageContextPageId, param.pageContextIsSeeAllPage, param.sortPosition, param.sessionId,  options).toPromise();
-    }
-
-    /**
-     * Gets a list of games
-     * @param param the request object
-     */
-    public v1GamesListGet(param: GamesApiV1GamesListGetRequest, options?: Configuration): Promise<RobloxGamesApiModelsResponseGamesSearchResponse> {
-        return this.api.v1GamesListGet(param.sortToken, param.gameFilter, param.timeFilter, param.genreFilter, param.exclusiveStartId, param.sortOrder, param.gameSetTargetId, param.keyword, param.startRows, param.maxRows, param.contextCountryRegionId, param.contextUniverseId, param.pageContextPageId, param.pageContextIsSeeAllPage, param.sortPosition, param.sessionId,  options).toPromise();
-    }
-
-    /**
      * Gets games that the client should spotlight.
      * @param param the request object
      */
@@ -733,22 +600,6 @@ export class ObjectGamesApi {
      */
     public v1GamesRecommendationsGameUniverseIdGet(param: GamesApiV1GamesRecommendationsGameUniverseIdGetRequest, options?: Configuration): Promise<RobloxGamesApiModelsResponseGameRecommendationsResponse> {
         return this.api.v1GamesRecommendationsGameUniverseIdGet(param.universeId, param.paginationKey, param.maxRows, param.isTruncatedResultsEnabled,  options).toPromise();
-    }
-
-    /**
-     * Gets an ordered list of all sorts
-     * @param param the request object
-     */
-    public v1GamesSortsGetWithHttpInfo(param: GamesApiV1GamesSortsGetRequest, options?: Configuration): Promise<HttpInfo<RobloxGamesApiModelsResponseGameSortsResponse>> {
-        return this.api.v1GamesSortsGetWithHttpInfo(param.gameSortsContext,  options).toPromise();
-    }
-
-    /**
-     * Gets an ordered list of all sorts
-     * @param param the request object
-     */
-    public v1GamesSortsGet(param: GamesApiV1GamesSortsGetRequest, options?: Configuration): Promise<RobloxGamesApiModelsResponseGameSortsResponse> {
-        return this.api.v1GamesSortsGet(param.gameSortsContext,  options).toPromise();
     }
 
     /**

@@ -5,12 +5,19 @@
     "version": "v1"
   },
   "host": "friends.roblox.com",
-  "schemes": ["https"],
+  "schemes": [
+    "https"
+  ],
   "paths": {
     "/v1/metadata": {
       "get": {
-        "tags": ["Friends"],
-        "produces": ["application/json", "text/json"],
+        "tags": [
+          "Friends"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -30,15 +37,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Friends:GetMetadata"]
+          "metricIds": [
+            "Friends:GetMetadata"
+          ]
         }
       }
     },
     "/v1/my/friends/count": {
       "get": {
-        "tags": ["Friends"],
+        "tags": [
+          "Friends"
+        ],
         "summary": "Get the number of friends a user has",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -52,15 +66,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Friends:GetFriendsCount"]
+          "metricIds": [
+            "Friends:GetFriendsCount"
+          ]
         }
       }
     },
     "/v1/my/friends/requests": {
       "get": {
-        "tags": ["Friends"],
+        "tags": [
+          "Friends"
+        ],
         "summary": "Get all users that friend requests with targetUserId using exclusive start paging",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -69,7 +90,13 @@
             "type": "integer",
             "format": "int32",
             "default": 10,
-            "enum": [10, 18, 25, 50, 100]
+            "enum": [
+              10,
+              18,
+              25,
+              50,
+              100
+            ]
           },
           {
             "in": "query",
@@ -83,7 +110,10 @@
             "description": "Sorted by scoring requests based on request time, mutual friends, and request origin",
             "type": "string",
             "default": "Desc",
-            "enum": ["Asc", "Desc"]
+            "enum": [
+              "Asc",
+              "Desc"
+            ]
           }
         ],
         "responses": {
@@ -108,15 +138,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Friends:GetFriendRequests"]
+          "metricIds": [
+            "Friends:GetFriendRequests"
+          ]
         }
       }
     },
     "/v1/recommended-users": {
       "get": {
-        "tags": ["UserRecommendations"],
+        "tags": [
+          "UserRecommendations"
+        ],
         "summary": "Return a list of Recommendations for the Authenticated User.\r\nV1 API to just return list of existing friends for the Authenticated user.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -130,15 +167,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["UserRecommendations:GetRecommendedUsers"]
+          "metricIds": [
+            "UserRecommendations:GetRecommendedUsers"
+          ]
         }
       }
     },
     "/v1/user/friend-requests/count": {
       "get": {
-        "tags": ["Friends"],
+        "tags": [
+          "Friends"
+        ],
         "summary": "Return the number of pending friend requests.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -152,15 +196,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Friends:GetPendingFriendRequestCount"]
+          "metricIds": [
+            "Friends:GetPendingFriendRequestCount"
+          ]
         }
       }
     },
     "/v1/users/{targetUserId}/followers": {
       "get": {
-        "tags": ["Followings"],
+        "tags": [
+          "Followings"
+        ],
         "summary": "Get all users that follow user with targetUserId in page response format",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -177,7 +228,13 @@
             "type": "integer",
             "format": "int32",
             "default": 10,
-            "enum": [10, 18, 25, 50, 100]
+            "enum": [
+              10,
+              18,
+              25,
+              50,
+              100
+            ]
           },
           {
             "in": "query",
@@ -191,7 +248,10 @@
             "description": "The order the results are sorted in.",
             "type": "string",
             "default": "Asc",
-            "enum": ["Asc", "Desc"]
+            "enum": [
+              "Asc",
+              "Desc"
+            ]
           }
         ],
         "responses": {
@@ -213,15 +273,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Followings:GetFollowers"]
+          "metricIds": [
+            "Followings:GetFollowers"
+          ]
         }
       }
     },
     "/v1/users/{targetUserId}/followers/count": {
       "get": {
-        "tags": ["Followings"],
+        "tags": [
+          "Followings"
+        ],
         "summary": "Get the number of following a user has",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -245,15 +312,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Followings:GetFollowersCount"]
+          "metricIds": [
+            "Followings:GetFollowersCount"
+          ]
         }
       }
     },
     "/v1/users/{targetUserId}/followings": {
       "get": {
-        "tags": ["Followings"],
+        "tags": [
+          "Followings"
+        ],
         "summary": "Get all users that user with targetUserId is following in page response format",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -270,7 +344,13 @@
             "type": "integer",
             "format": "int32",
             "default": 10,
-            "enum": [10, 18, 25, 50, 100]
+            "enum": [
+              10,
+              18,
+              25,
+              50,
+              100
+            ]
           },
           {
             "in": "query",
@@ -284,7 +364,10 @@
             "description": "The order the results are sorted in.",
             "type": "string",
             "default": "Asc",
-            "enum": ["Asc", "Desc"]
+            "enum": [
+              "Asc",
+              "Desc"
+            ]
           }
         ],
         "responses": {
@@ -306,15 +389,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Followings:GetFollowings"]
+          "metricIds": [
+            "Followings:GetFollowings"
+          ]
         }
       }
     },
     "/v1/users/{targetUserId}/followings/count": {
       "get": {
-        "tags": ["Followings"],
+        "tags": [
+          "Followings"
+        ],
         "summary": "Get the number of following a user has",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -338,15 +428,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Followings:GetFollowingCount"]
+          "metricIds": [
+            "Followings:GetFollowingCount"
+          ]
         }
       }
     },
     "/v1/users/{userId}/friends": {
       "get": {
-        "tags": ["Friends"],
+        "tags": [
+          "Friends"
+        ],
         "summary": "Get list of all friends for the specified user.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -362,7 +459,11 @@
             "description": "Specifies how to sort the returned friends.",
             "type": "integer",
             "format": "int32",
-            "enum": [0, 1, 2]
+            "enum": [
+              0,
+              1,
+              2
+            ]
           }
         ],
         "responses": {
@@ -378,15 +479,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Friends:GetAllFriends"]
+          "metricIds": [
+            "Friends:GetAllFriends"
+          ]
         }
       }
     },
     "/v1/users/{userId}/friends/count": {
       "get": {
-        "tags": ["Friends"],
+        "tags": [
+          "Friends"
+        ],
         "summary": "Get the number of friends a user has",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -409,15 +517,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Friends:GetUsersFriendsCount"]
+          "metricIds": [
+            "Friends:GetUsersFriendsCount"
+          ]
         }
       }
     },
     "/v1/users/{userId}/friends/find": {
       "get": {
-        "tags": ["Friends"],
+        "tags": [
+          "Friends"
+        ],
         "summary": "Get a paginated list of all friends for the specified user.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -433,7 +548,11 @@
             "description": "Specifies how to sort the returned friends.",
             "type": "integer",
             "format": "int32",
-            "enum": [0, 1, 2]
+            "enum": [
+              0,
+              1,
+              2
+            ]
           },
           {
             "in": "query",
@@ -466,15 +585,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Friends:FindFriends"]
+          "metricIds": [
+            "Friends:FindFriends"
+          ]
         }
       }
     },
     "/v1/users/{userId}/friends/inactive": {
       "get": {
-        "tags": ["Friends"],
+        "tags": [
+          "Friends"
+        ],
         "summary": "Get list of inactive friends for the specified user.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -501,15 +627,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Friends:GetInactiveFriends"]
+          "metricIds": [
+            "Friends:GetInactiveFriends"
+          ]
         }
       }
     },
     "/v1/users/{userId}/friends/online": {
       "get": {
-        "tags": ["Friends"],
+        "tags": [
+          "Friends"
+        ],
         "summary": "Get list of all online friends for the specified user.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -524,7 +657,11 @@
             "name": "userSort",
             "type": "integer",
             "format": "int32",
-            "enum": [0, 1, 2]
+            "enum": [
+              0,
+              1,
+              2
+            ]
           }
         ],
         "responses": {
@@ -543,15 +680,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Friends:GetAllOnlineFriends"]
+          "metricIds": [
+            "Friends:GetAllOnlineFriends"
+          ]
         }
       }
     },
     "/v1/users/{userId}/friends/search": {
       "get": {
-        "tags": ["Friends"],
+        "tags": [
+          "Friends"
+        ],
         "summary": "Search for friends by name using a text query.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -573,7 +717,9 @@
             "description": "Specifies how to sort the returned friends.",
             "type": "integer",
             "format": "int32",
-            "enum": [0]
+            "enum": [
+              0
+            ]
           },
           {
             "in": "query",
@@ -606,15 +752,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Friends:SearchFriends"]
+          "metricIds": [
+            "Friends:SearchFriends"
+          ]
         }
       }
     },
     "/v1/users/{userId}/friends/statuses": {
       "get": {
-        "tags": ["Friends"],
+        "tags": [
+          "Friends"
+        ],
         "summary": "Gets a list of friend statuses of specified users against the specified user.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -650,15 +803,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Friends:GetFriendStatuses"]
+          "metricIds": [
+            "Friends:GetFriendStatuses"
+          ]
         }
       }
     },
     "/v1/contacts/{targetContactId}/request-friendship": {
       "post": {
-        "tags": ["Friends"],
+        "tags": [
+          "Friends"
+        ],
         "summary": "Send a contact friend request to target user",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -690,16 +850,26 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Friends:RequestContactFriendship"]
+          "metricIds": [
+            "Friends:RequestContactFriendship"
+          ]
         }
       }
     },
     "/v1/user/following-exists": {
       "post": {
-        "tags": ["Followings"],
+        "tags": [
+          "Followings"
+        ],
         "summary": "Returns whether or not the current user is following each userId in a list of userIds",
-        "consumes": ["application/json", "text/json"],
-        "produces": ["application/json", "text/json"],
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "body",
@@ -733,15 +903,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Followings:FollowingExists"]
+          "metricIds": [
+            "Followings:FollowingExists"
+          ]
         }
       }
     },
     "/v1/user/friend-requests/decline-all": {
       "post": {
-        "tags": ["Friends"],
+        "tags": [
+          "Friends"
+        ],
         "summary": "Decline all pending friend requests for the authenticated user.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -758,15 +935,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Friends:DeclineAllFriendRequests"]
+          "metricIds": [
+            "Friends:DeclineAllFriendRequests"
+          ]
         }
       }
     },
     "/v1/users/{requesterUserId}/accept-friend-request": {
       "post": {
-        "tags": ["Friends"],
+        "tags": [
+          "Friends"
+        ],
         "summary": "Accept a friend request.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -796,15 +980,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Friends:AcceptFriendRequest"]
+          "metricIds": [
+            "Friends:AcceptFriendRequest"
+          ]
         }
       }
     },
     "/v1/users/{requesterUserId}/decline-friend-request": {
       "post": {
-        "tags": ["Friends"],
+        "tags": [
+          "Friends"
+        ],
         "summary": "Decline a friend request.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -834,16 +1025,26 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Friends:DeclineFriendRequest"]
+          "metricIds": [
+            "Friends:DeclineFriendRequest"
+          ]
         }
       }
     },
     "/v1/users/{senderUserId}/accept-friend-request-with-token": {
       "post": {
-        "tags": ["Friends"],
+        "tags": [
+          "Friends"
+        ],
         "summary": "Accept a friend request with an Off Network Friending token.",
-        "consumes": ["application/json", "text/json"],
-        "produces": ["application/json", "text/json"],
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -881,16 +1082,26 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Friends:AcceptFriendRequestWithToken"]
+          "metricIds": [
+            "Friends:AcceptFriendRequestWithToken"
+          ]
         }
       }
     },
     "/v1/users/{targetUserId}/follow": {
       "post": {
-        "tags": ["Followings"],
+        "tags": [
+          "Followings"
+        ],
         "summary": "Creates the following between a user and user with targetUserId",
-        "consumes": ["application/json", "text/json"],
-        "produces": ["application/json", "text/json"],
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -931,16 +1142,26 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Followings:FollowUser"]
+          "metricIds": [
+            "Followings:FollowUser"
+          ]
         }
       }
     },
     "/v1/users/{targetUserId}/request-friendship": {
       "post": {
-        "tags": ["Friends"],
+        "tags": [
+          "Friends"
+        ],
         "summary": "Send a friend request to target user",
-        "consumes": ["application/json", "text/json"],
-        "produces": ["application/json", "text/json"],
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -982,15 +1203,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Friends:RequestFriendship"]
+          "metricIds": [
+            "Friends:RequestFriendship"
+          ]
         }
       }
     },
     "/v1/users/{targetUserId}/unfollow": {
       "post": {
-        "tags": ["Followings"],
+        "tags": [
+          "Followings"
+        ],
         "summary": "Deletes the following between a user and user with targetUserId",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -1023,15 +1251,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Followings:UnFollowUser"]
+          "metricIds": [
+            "Followings:UnFollowUser"
+          ]
         }
       }
     },
     "/v1/users/{targetUserId}/unfriend": {
       "post": {
-        "tags": ["Friends"],
+        "tags": [
+          "Friends"
+        ],
         "summary": "Unfriend a user",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -1061,7 +1296,9 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Friends:UnFriend"]
+          "metricIds": [
+            "Friends:UnFriend"
+          ]
         }
       }
     }
@@ -1127,7 +1364,18 @@
         "originSourceType": {
           "format": "int32",
           "description": "The origin source type associated with the friend request. ['Unknown' = 0, 'PlayerSearch' = 1, 'QrCode' = 2, 'InGame' = 3, 'UserProfile' = 4, 'QqContactImporter' = 5, 'WeChatContactImporter' = 6, 'ProfileShare' = 7, 'PhoneContactImporter' = 8, 'FriendRecommendations' = 9]",
-          "enum": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
           "type": "integer"
         },
         "contactName": {
@@ -1191,7 +1439,12 @@
         "status": {
           "format": "int32",
           "description": "The friendship status. ['NotFriends' = 0, 'Friends' = 1, 'RequestSent' = 2, 'RequestReceived' = 3]",
-          "enum": [0, 1, 2, 3],
+          "enum": [
+            0,
+            1,
+            2,
+            3
+          ],
           "type": "integer"
         }
       }
@@ -1213,7 +1466,18 @@
         "friendshipOriginSourceType": {
           "format": "int32",
           "description": "Which source the friend request originated from ['Unknown' = 0, 'PlayerSearch' = 1, 'QrCode' = 2, 'InGame' = 3, 'UserProfile' = 4, 'QqContactImporter' = 5, 'WeChatContactImporter' = 6, 'ProfileShare' = 7, 'PhoneContactImporter' = 8, 'FriendRecommendations' = 9]",
-          "enum": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
           "type": "integer"
         }
       }
@@ -1390,7 +1654,13 @@
         "userPresenceType": {
           "format": "int32",
           "description": " ['Offline' = 0, 'Online' = 1, 'InGame' = 2, 'InStudio' = 3, 'Invisible' = 4]",
-          "enum": [0, 1, 2, 3, 4],
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
           "type": "integer"
         }
       }
@@ -1418,7 +1688,13 @@
         "presenceType": {
           "format": "int32",
           "description": "Where the user is online. ['Offline' = 0, 'Online' = 1, 'InGame' = 2, 'InStudio' = 3, 'Invisible' = 4]",
-          "enum": [0, 1, 2, 3, 4],
+          "enum": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
           "type": "integer"
         },
         "isDeleted": {
@@ -1504,13 +1780,19 @@
         "sortOrder": {
           "format": "int32",
           "description": " ['Asc' = 1, 'Desc' = 2]",
-          "enum": [1, 2],
+          "enum": [
+            1,
+            2
+          ],
           "type": "integer"
         },
         "pagingDirection": {
           "format": "int32",
           "description": " ['Forward' = 1, 'Backward' = 2]",
-          "enum": [1, 2],
+          "enum": [
+            1,
+            2
+          ],
           "type": "integer"
         },
         "pageNumber": {
@@ -1532,14 +1814,20 @@
         "SortOrder": {
           "format": "int32",
           "description": " ['Asc' = 1, 'Desc' = 2]",
-          "enum": [1, 2],
+          "enum": [
+            1,
+            2
+          ],
           "type": "integer",
           "readOnly": true
         },
         "PagingDirection": {
           "format": "int32",
           "description": " ['Forward' = 1, 'Backward' = 2]",
-          "enum": [1, 2],
+          "enum": [
+            1,
+            2
+          ],
           "type": "integer",
           "readOnly": true
         },
@@ -1556,14 +1844,20 @@
         "SortOrder": {
           "format": "int32",
           "description": " ['Asc' = 1, 'Desc' = 2]",
-          "enum": [1, 2],
+          "enum": [
+            1,
+            2
+          ],
           "type": "integer",
           "readOnly": true
         },
         "PagingDirection": {
           "format": "int32",
           "description": " ['Forward' = 1, 'Backward' = 2]",
-          "enum": [1, 2],
+          "enum": [
+            1,
+            2
+          ],
           "type": "integer",
           "readOnly": true
         },

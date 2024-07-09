@@ -465,15 +465,6 @@ export interface OutfitsApiV1OutfitsUserOutfitIdUpdatePostRequest {
     outfitUpdateModel: RobloxApiAvatarModelsOutfitUpdateModelV1
 }
 
-export interface OutfitsApiV1OutfitsUserOutfitIdWearPostRequest {
-    /**
-     * The user outfit id
-     * @type number
-     * @memberof OutfitsApiv1OutfitsUserOutfitIdWearPost
-     */
-    userOutfitId: number
-}
-
 export class ObjectOutfitsApi {
     private api: ObservableOutfitsApi
 
@@ -565,24 +556,6 @@ export class ObjectOutfitsApi {
      */
     public v1OutfitsUserOutfitIdUpdatePost(param: OutfitsApiV1OutfitsUserOutfitIdUpdatePostRequest, options?: Configuration): Promise<RobloxApiAvatarModelsAvatarApiSuccessResponse> {
         return this.api.v1OutfitsUserOutfitIdUpdatePost(param.userOutfitId, param.outfitUpdateModel,  options).toPromise();
-    }
-
-    /**
-     * Applies the outfit\'s appearance to your avatar  If the user no longer owns one or more of the assets, invalidAssetIds will be populated with the unwearable assets.
-     * Wears the outfit
-     * @param param the request object
-     */
-    public v1OutfitsUserOutfitIdWearPostWithHttpInfo(param: OutfitsApiV1OutfitsUserOutfitIdWearPostRequest, options?: Configuration): Promise<HttpInfo<RobloxApiAvatarModelsWearResponseModel>> {
-        return this.api.v1OutfitsUserOutfitIdWearPostWithHttpInfo(param.userOutfitId,  options).toPromise();
-    }
-
-    /**
-     * Applies the outfit\'s appearance to your avatar  If the user no longer owns one or more of the assets, invalidAssetIds will be populated with the unwearable assets.
-     * Wears the outfit
-     * @param param the request object
-     */
-    public v1OutfitsUserOutfitIdWearPost(param: OutfitsApiV1OutfitsUserOutfitIdWearPostRequest, options?: Configuration): Promise<RobloxApiAvatarModelsWearResponseModel> {
-        return this.api.v1OutfitsUserOutfitIdWearPost(param.userOutfitId,  options).toPromise();
     }
 
 }

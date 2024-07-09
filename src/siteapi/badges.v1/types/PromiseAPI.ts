@@ -211,9 +211,10 @@ export class PromiseBadgesApi {
      * @param paymentSourceType Whether or not to pay for the badge with user funds, or group funds. [\\\&#39;User\\\&#39; &#x3D; 1, \\\&#39;Group\\\&#39; &#x3D; 2]
      * @param files The badge icon.
      * @param expectedCost User expected cost of a badge.
+     * @param isActive Whether or not the badge should be created in the active state.
      */
-    public v1UniversesUniverseIdBadgesPostWithHttpInfo(universeId: number, name?: string, description?: string, paymentSourceType?: number, files?: HttpFile, expectedCost?: number, _options?: Configuration): Promise<HttpInfo<RobloxWebResponsesBadgesBadgeResponseV2>> {
-        const result = this.api.v1UniversesUniverseIdBadgesPostWithHttpInfo(universeId, name, description, paymentSourceType, files, expectedCost, _options);
+    public v1UniversesUniverseIdBadgesPostWithHttpInfo(universeId: number, name?: string, description?: string, paymentSourceType?: number, files?: HttpFile, expectedCost?: number, isActive?: boolean, _options?: Configuration): Promise<HttpInfo<RobloxWebResponsesBadgesBadgeResponseV2>> {
+        const result = this.api.v1UniversesUniverseIdBadgesPostWithHttpInfo(universeId, name, description, paymentSourceType, files, expectedCost, isActive, _options);
         return result.toPromise();
     }
 
@@ -225,9 +226,10 @@ export class PromiseBadgesApi {
      * @param paymentSourceType Whether or not to pay for the badge with user funds, or group funds. [\\\&#39;User\\\&#39; &#x3D; 1, \\\&#39;Group\\\&#39; &#x3D; 2]
      * @param files The badge icon.
      * @param expectedCost User expected cost of a badge.
+     * @param isActive Whether or not the badge should be created in the active state.
      */
-    public v1UniversesUniverseIdBadgesPost(universeId: number, name?: string, description?: string, paymentSourceType?: number, files?: HttpFile, expectedCost?: number, _options?: Configuration): Promise<RobloxWebResponsesBadgesBadgeResponseV2> {
-        const result = this.api.v1UniversesUniverseIdBadgesPost(universeId, name, description, paymentSourceType, files, expectedCost, _options);
+    public v1UniversesUniverseIdBadgesPost(universeId: number, name?: string, description?: string, paymentSourceType?: number, files?: HttpFile, expectedCost?: number, isActive?: boolean, _options?: Configuration): Promise<RobloxWebResponsesBadgesBadgeResponseV2> {
+        const result = this.api.v1UniversesUniverseIdBadgesPost(universeId, name, description, paymentSourceType, files, expectedCost, isActive, _options);
         return result.toPromise();
     }
 

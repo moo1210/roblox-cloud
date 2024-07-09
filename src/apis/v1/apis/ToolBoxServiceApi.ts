@@ -1187,6 +1187,13 @@ export class ToolBoxServiceApiResponseProcessor {
             ) as ToolBoxServiceSearchV1Result;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: ToolBoxServiceError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ToolBoxServiceError", ""
+            ) as ToolBoxServiceError;
+            throw new ApiException<ToolBoxServiceError>(response.httpStatusCode, "Invalid Request", body, response.headers);
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
@@ -1216,7 +1223,7 @@ export class ToolBoxServiceApiResponseProcessor {
             ) as ToolboxServiceGetHomePageAssetsForSection200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
-        if (isCodeInRange("4XX", response.httpStatusCode)) {
+        if (isCodeInRange("400", response.httpStatusCode)) {
             const body: ToolBoxServiceError = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "ToolBoxServiceError", ""
@@ -1288,6 +1295,16 @@ export class ToolBoxServiceApiResponseProcessor {
             ) as ToolBoxServiceSearchV1Result;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: ToolBoxServiceError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ToolBoxServiceError", ""
+            ) as ToolBoxServiceError;
+            throw new ApiException<ToolBoxServiceError>(response.httpStatusCode, "Invalid Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            throw new ApiException<undefined>(response.httpStatusCode, "Authentication cookie is missing.", undefined, response.headers);
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
@@ -1316,6 +1333,13 @@ export class ToolBoxServiceApiResponseProcessor {
                 "ToolBoxServiceSearchV1Result", ""
             ) as ToolBoxServiceSearchV1Result;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: ToolBoxServiceError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ToolBoxServiceError", ""
+            ) as ToolBoxServiceError;
+            throw new ApiException<ToolBoxServiceError>(response.httpStatusCode, "Invalid Request", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1346,6 +1370,13 @@ export class ToolBoxServiceApiResponseProcessor {
             ) as ToolBoxServiceSearchV1Result;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: ToolBoxServiceError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ToolBoxServiceError", ""
+            ) as ToolBoxServiceError;
+            throw new ApiException<ToolBoxServiceError>(response.httpStatusCode, "Invalid Request", body, response.headers);
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
@@ -1374,6 +1405,16 @@ export class ToolBoxServiceApiResponseProcessor {
                 "ToolBoxServiceSearchV1Result", ""
             ) as ToolBoxServiceSearchV1Result;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: ToolBoxServiceError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ToolBoxServiceError", ""
+            ) as ToolBoxServiceError;
+            throw new ApiException<ToolBoxServiceError>(response.httpStatusCode, "Invalid Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            throw new ApiException<undefined>(response.httpStatusCode, "Authentication cookie is missing.", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -1404,6 +1445,13 @@ export class ToolBoxServiceApiResponseProcessor {
             ) as ToolBoxServiceSearchV1Result;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: ToolBoxServiceError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ToolBoxServiceError", ""
+            ) as ToolBoxServiceError;
+            throw new ApiException<ToolBoxServiceError>(response.httpStatusCode, "Invalid Request", body, response.headers);
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
@@ -1433,6 +1481,13 @@ export class ToolBoxServiceApiResponseProcessor {
             ) as ToolBoxServiceSearchV1Result;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: ToolBoxServiceError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ToolBoxServiceError", ""
+            ) as ToolBoxServiceError;
+            throw new ApiException<ToolBoxServiceError>(response.httpStatusCode, "Invalid Request", body, response.headers);
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
@@ -1461,6 +1516,13 @@ export class ToolBoxServiceApiResponseProcessor {
                 "ToolBoxServiceSearchV1Result", ""
             ) as ToolBoxServiceSearchV1Result;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: ToolBoxServiceError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ToolBoxServiceError", ""
+            ) as ToolBoxServiceError;
+            throw new ApiException<ToolBoxServiceError>(response.httpStatusCode, "Invalid Request", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml

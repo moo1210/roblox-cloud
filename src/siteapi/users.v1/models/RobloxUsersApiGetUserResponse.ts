@@ -25,7 +25,7 @@ export class RobloxUsersApiGetUserResponse {
     */
     'created'?: Date;
     /**
-    * Whether or not the user is banned
+    * Whether the user is banned
     */
     'isBanned'?: boolean;
     /**

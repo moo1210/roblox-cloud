@@ -237,87 +237,6 @@ export interface AssetFetchApiV1AssetGetRequest {
     contentRepresentationPriorityList?: string
 }
 
-export interface AssetFetchApiV1AssetHashHashGetRequest {
-    /**
-     * the hash of the asset to retrieve.
-     * @type string
-     * @memberof AssetFetchApiv1AssetHashHashGet
-     */
-    hash: string
-    /**
-     * 
-     * @type string
-     * @memberof AssetFetchApiv1AssetHashHashGet
-     */
-    acceptEncoding: string
-    /**
-     * 
-     * @type number
-     * @memberof AssetFetchApiv1AssetHashHashGet
-     */
-    robloxPlaceId: number
-    /**
-     * 
-     * @type string
-     * @memberof AssetFetchApiv1AssetHashHashGet
-     */
-    assetType: string
-    /**
-     * 
-     * @type string
-     * @memberof AssetFetchApiv1AssetHashHashGet
-     */
-    accept: string
-    /**
-     * 
-     * @type string
-     * @memberof AssetFetchApiv1AssetHashHashGet
-     */
-    assetFormat: string
-    /**
-     * 
-     * @type string
-     * @memberof AssetFetchApiv1AssetHashHashGet
-     */
-    robloxAssetFormat: string
-    /**
-     * 
-     * @type boolean
-     * @memberof AssetFetchApiv1AssetHashHashGet
-     */
-    skipSigningScripts?: boolean
-    /**
-     * 
-     * @type number
-     * @memberof AssetFetchApiv1AssetHashHashGet
-     */
-    clientInsert?: number
-    /**
-     * 
-     * @type number
-     * @memberof AssetFetchApiv1AssetHashHashGet
-     */
-    scriptinsert?: number
-    /**
-     * 
-     * @type number
-     * @memberof AssetFetchApiv1AssetHashHashGet
-     */
-    modulePlaceId?: number
-    /**
-     * 
-     * @type number
-     * @memberof AssetFetchApiv1AssetHashHashGet
-     */
-    serverplaceid?: number
-    /**
-     * 
-     * @type string
-     * @memberof AssetFetchApiv1AssetHashHashGet
-     */
-    expectedAssetType?: string
-}
-
 export interface AssetFetchApiV1AssetIdAssetIdGetRequest {
     /**
      * The ID of the asset to retrieve.
@@ -794,22 +713,6 @@ export class ObjectAssetFetchApi {
      */
     public v1AssetGet(param: AssetFetchApiV1AssetGetRequest, options?: Configuration): Promise<void> {
         return this.api.v1AssetGet(param.acceptEncoding, param.robloxPlaceId, param.assetType, param.accept, param.assetFormat, param.robloxAssetFormat, param.id, param.userAssetId, param.assetVersionId, param.version, param.universeId, param.clientInsert, param.scriptinsert, param.modulePlaceId, param.serverplaceid, param.assetName, param.hash, param.marAssetHash, param.marCheckSum, param.expectedAssetType, param.skipSigningScripts, param.permissionContext, param.doNotFallbackToBaselineRepresentation, param.contentRepresentationPriorityList,  options).toPromise();
-    }
-
-    /**
-     * Retrieves an asset by its hash.
-     * @param param the request object
-     */
-    public v1AssetHashHashGetWithHttpInfo(param: AssetFetchApiV1AssetHashHashGetRequest, options?: Configuration): Promise<HttpInfo<RobloxWebAssetsIAssetResponseItem>> {
-        return this.api.v1AssetHashHashGetWithHttpInfo(param.hash, param.acceptEncoding, param.robloxPlaceId, param.assetType, param.accept, param.assetFormat, param.robloxAssetFormat, param.skipSigningScripts, param.clientInsert, param.scriptinsert, param.modulePlaceId, param.serverplaceid, param.expectedAssetType,  options).toPromise();
-    }
-
-    /**
-     * Retrieves an asset by its hash.
-     * @param param the request object
-     */
-    public v1AssetHashHashGet(param: AssetFetchApiV1AssetHashHashGetRequest, options?: Configuration): Promise<RobloxWebAssetsIAssetResponseItem> {
-        return this.api.v1AssetHashHashGet(param.hash, param.acceptEncoding, param.robloxPlaceId, param.assetType, param.accept, param.assetFormat, param.robloxAssetFormat, param.skipSigningScripts, param.clientInsert, param.scriptinsert, param.modulePlaceId, param.serverplaceid, param.expectedAssetType,  options).toPromise();
     }
 
     /**

@@ -206,7 +206,7 @@ export class OrderedDataStoresApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Increments the value of the key by the provided amount and returns the updated entry.
+     * Increments the value of the key by the provided amount and returns the updated entry.  Known issue: Entry values can increment past the valid range and this may persist in the backend. Returned values will clamp to the valid range.
      * @param universeId The identifier of the experience with ordered data stores that you want to access. See [Universe ID](../../../cloud/open-cloud/data-store-api-handling.md#universe-id) on how to copy it on [Creator Dashboard](https://create.roblox.com/creations).
      * @param orderedDataStore The name of the ordered data store.
      * @param scope The name of the data store scope. See [Scopes](../../../cloud/open-cloud/data-store-api-handling.md#scopes).

@@ -89,7 +89,7 @@ export interface EntriesApiEntriesDeleteEntryAsyncRequest {
      */
     entryKey?: string
     /**
-     * The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      * @type string
      * @memberof EntriesApientriesDeleteEntryAsync
      */
@@ -116,7 +116,7 @@ export interface EntriesApiEntriesGetEntryAsyncRequest {
      */
     entryKey?: string
     /**
-     * The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      * @type string
      * @memberof EntriesApientriesGetEntryAsync
      */
@@ -149,7 +149,7 @@ export interface EntriesApiEntriesGetEntryVersionAsyncRequest {
      */
     versionId?: string
     /**
-     * The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      * @type string
      * @memberof EntriesApientriesGetEntryVersionAsync
      */
@@ -182,7 +182,7 @@ export interface EntriesApiEntriesIncrementEntryAsyncRequest {
      */
     incrementBy?: number
     /**
-     * The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      * @type string
      * @memberof EntriesApientriesIncrementEntryAsync
      */
@@ -221,7 +221,7 @@ export interface EntriesApiEntriesListEntryVersionsAsyncRequest {
      */
     entryKey?: string
     /**
-     * The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      * @type string
      * @memberof EntriesApientriesListEntryVersionsAsync
      */
@@ -272,7 +272,7 @@ export interface EntriesApiEntriesListKeysAsyncRequest {
      */
     datastoreName?: string
     /**
-     * The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      * @type string
      * @memberof EntriesApientriesListKeysAsync
      */
@@ -335,7 +335,7 @@ export interface EntriesApiEntriesSetEntryAsyncRequest {
      */
     exclusiveCreate?: boolean
     /**
-     * The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/datastores.md#scopes).
+     * The value is &#x60;global&#x60; by default. See [Scopes](../../../cloud-services/data-stores/index.md#scopes).
      * @type string
      * @memberof EntriesApientriesSetEntryAsync
      */

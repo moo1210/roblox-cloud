@@ -10,11 +10,12 @@ import {SecurityAuthentication} from '../../../common/auth/auth';
 import { AssetBatchGrantRevokePermissionRequest } from '../models/AssetBatchGrantRevokePermissionRequest';
 import { AssetBatchPermissionItemResponse } from '../models/AssetBatchPermissionItemResponse';
 import { AssetPermissionsCheckBatchAssetPermissions200Response } from '../models/AssetPermissionsCheckBatchAssetPermissions200Response';
+import { AssetPermissionsCheckBatchAssetPermissions4XXResponse } from '../models/AssetPermissionsCheckBatchAssetPermissions4XXResponse';
 import { AssetPermissionsCheckBatchAssetPermissionsRequest } from '../models/AssetPermissionsCheckBatchAssetPermissionsRequest';
 import { AssetPermissionsCopyUniversePermissions200Response } from '../models/AssetPermissionsCopyUniversePermissions200Response';
-import { AssetPermissionsCopyUniversePermissions4XXResponse } from '../models/AssetPermissionsCopyUniversePermissions4XXResponse';
 import { AssetPermissionsCopyUniversePermissionsRequest } from '../models/AssetPermissionsCopyUniversePermissionsRequest';
 import { AssetPermissionsListUniversePermission200Response } from '../models/AssetPermissionsListUniversePermission200Response';
+import { AssetPermissionsListUniversePermission4XXResponse } from '../models/AssetPermissionsListUniversePermission4XXResponse';
 import { AssetPermissionsRevokePermissionsRequest } from '../models/AssetPermissionsRevokePermissionsRequest';
 
 /**
@@ -448,6 +449,13 @@ export class AssetPermissionsApiResponseProcessor {
             ) as AssetPermissionsCheckBatchAssetPermissions200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("4XX", response.httpStatusCode)) {
+            const body: AssetPermissionsCheckBatchAssetPermissions4XXResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "AssetPermissionsCheckBatchAssetPermissions4XXResponse", ""
+            ) as AssetPermissionsCheckBatchAssetPermissions4XXResponse;
+            throw new ApiException<AssetPermissionsCheckBatchAssetPermissions4XXResponse>(response.httpStatusCode, "OK", body, response.headers);
+        }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
@@ -478,11 +486,11 @@ export class AssetPermissionsApiResponseProcessor {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("4XX", response.httpStatusCode)) {
-            const body: AssetPermissionsCopyUniversePermissions4XXResponse = ObjectSerializer.deserialize(
+            const body: AssetPermissionsListUniversePermission4XXResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "AssetPermissionsCopyUniversePermissions4XXResponse", ""
-            ) as AssetPermissionsCopyUniversePermissions4XXResponse;
-            throw new ApiException<AssetPermissionsCopyUniversePermissions4XXResponse>(response.httpStatusCode, "Invalid Request", body, response.headers);
+                "AssetPermissionsListUniversePermission4XXResponse", ""
+            ) as AssetPermissionsListUniversePermission4XXResponse;
+            throw new ApiException<AssetPermissionsListUniversePermission4XXResponse>(response.httpStatusCode, "Invalid Request", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -514,11 +522,11 @@ export class AssetPermissionsApiResponseProcessor {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("4XX", response.httpStatusCode)) {
-            const body: AssetPermissionsCopyUniversePermissions4XXResponse = ObjectSerializer.deserialize(
+            const body: AssetPermissionsListUniversePermission4XXResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "AssetPermissionsCopyUniversePermissions4XXResponse", ""
-            ) as AssetPermissionsCopyUniversePermissions4XXResponse;
-            throw new ApiException<AssetPermissionsCopyUniversePermissions4XXResponse>(response.httpStatusCode, "Invalid Request", body, response.headers);
+                "AssetPermissionsListUniversePermission4XXResponse", ""
+            ) as AssetPermissionsListUniversePermission4XXResponse;
+            throw new ApiException<AssetPermissionsListUniversePermission4XXResponse>(response.httpStatusCode, "Invalid Request", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -548,6 +556,13 @@ export class AssetPermissionsApiResponseProcessor {
                 "AssetPermissionsListUniversePermission200Response", ""
             ) as AssetPermissionsListUniversePermission200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("4XX", response.httpStatusCode)) {
+            const body: AssetPermissionsListUniversePermission4XXResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "AssetPermissionsListUniversePermission4XXResponse", ""
+            ) as AssetPermissionsListUniversePermission4XXResponse;
+            throw new ApiException<AssetPermissionsListUniversePermission4XXResponse>(response.httpStatusCode, "Invalid Request", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -579,11 +594,11 @@ export class AssetPermissionsApiResponseProcessor {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("4XX", response.httpStatusCode)) {
-            const body: AssetPermissionsCopyUniversePermissions4XXResponse = ObjectSerializer.deserialize(
+            const body: AssetPermissionsListUniversePermission4XXResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "AssetPermissionsCopyUniversePermissions4XXResponse", ""
-            ) as AssetPermissionsCopyUniversePermissions4XXResponse;
-            throw new ApiException<AssetPermissionsCopyUniversePermissions4XXResponse>(response.httpStatusCode, "Invalid Request", body, response.headers);
+                "AssetPermissionsListUniversePermission4XXResponse", ""
+            ) as AssetPermissionsListUniversePermission4XXResponse;
+            throw new ApiException<AssetPermissionsListUniversePermission4XXResponse>(response.httpStatusCode, "Invalid Request", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml

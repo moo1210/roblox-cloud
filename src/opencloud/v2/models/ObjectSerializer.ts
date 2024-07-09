@@ -1,10 +1,15 @@
-export * from '../models/AcceptGroupJoinRequestRequest';
 export * from '../models/AvatarAsset';
 export * from '../models/AvatarAssetAssetPosition';
 export * from '../models/AvatarAssetAssetRotation';
 export * from '../models/AvatarAssetAssetScale';
 export * from '../models/AvatarAssetMeta';
 export * from '../models/AvatarBody';
+export * from '../models/AvatarCreation';
+export * from '../models/AvatarCreationAvatarAsset';
+export * from '../models/AvatarCreationBody';
+export * from '../models/AvatarCreationBodyAssets';
+export * from '../models/AvatarCreationHead';
+export * from '../models/AvatarCreationHeadAssets';
 export * from '../models/AvatarMarketplaceOrder';
 export * from '../models/AvatarMarketplaceOrderContext';
 export * from '../models/AvatarMarketplaceOrderFulfillmentGroup';
@@ -18,8 +23,11 @@ export * from '../models/DataStore';
 export * from '../models/DataStoreEntry';
 export * from '../models/DataStoreScope';
 export * from '../models/Decimal';
-export * from '../models/DeclineGroupJoinRequestRequest';
+export * from '../models/DeveloperProduct';
+export * from '../models/DiscardMemoryStoreQueueItemsRequest';
 export * from '../models/DynamicHead';
+export * from '../models/GamePass';
+export * from '../models/GamePassSalesStats';
 export * from '../models/GenerateUserThumbnailResponse';
 export * from '../models/GoogleProtobufAny';
 export * from '../models/Group';
@@ -29,6 +37,7 @@ export * from '../models/GroupRole';
 export * from '../models/GroupRoleRolePermissions';
 export * from '../models/GroupShout';
 export * from '../models/Instance';
+export * from '../models/Interval';
 export * from '../models/InventoryItem';
 export * from '../models/InventoryItemAssetDetails';
 export * from '../models/InventoryItemBadgeDetails';
@@ -40,6 +49,8 @@ export * from '../models/ListGroupMembershipsResponse';
 export * from '../models/ListGroupRolesResponse';
 export * from '../models/ListInstanceChildrenResponse';
 export * from '../models/ListInventoryItemsResponse';
+export * from '../models/ListMemoryStoreSortedMapItemsResponse';
+export * from '../models/ListUserRestrictionLogsResponse';
 export * from '../models/MemoryStore';
 export * from '../models/MemoryStoreQueue';
 export * from '../models/MemoryStoreQueueItem';
@@ -51,7 +62,7 @@ export * from '../models/OrderedDataStore';
 export * from '../models/OrderedDataStoreEntry';
 export * from '../models/OrderedDataStoreScope';
 export * from '../models/Place';
-export * from '../models/RestartUniverseServersRequest';
+export * from '../models/ReadMemoryStoreQueueItemsResponse';
 export * from '../models/RobloxEngineInstance';
 export * from '../models/RobloxEngineInstanceDetails';
 export * from '../models/RobloxEngineLocalScript';
@@ -63,6 +74,11 @@ export * from '../models/Subscription';
 export * from '../models/SubscriptionExpirationDetails';
 export * from '../models/SubscriptionProduct';
 export * from '../models/Universe';
+export * from '../models/UniverseBadge';
+export * from '../models/UniverseBadgeCreationCost';
+export * from '../models/UniverseBadgeStatistics';
+export * from '../models/UniverseEvent';
+export * from '../models/UniverseEventCategory';
 export * from '../models/UniverseSocialLink';
 export * from '../models/User';
 export * from '../models/UserNotification';
@@ -73,15 +89,23 @@ export * from '../models/UserNotificationPayloadParameterValue';
 export * from '../models/UserNotificationSource';
 export * from '../models/UserRestriction';
 export * from '../models/UserRestrictionGameJoinRestriction';
+export * from '../models/UserRestrictionLog';
+export * from '../models/UserRestrictionLogModerator';
+export * from '../models/UserRestrictionLogRestrictionType';
 export * from '../models/UserSocialNetworkProfiles';
 
-import { AcceptGroupJoinRequestRequest } from '../models/AcceptGroupJoinRequestRequest';
 import { AvatarAsset } from '../models/AvatarAsset';
 import { AvatarAssetAssetPosition } from '../models/AvatarAssetAssetPosition';
 import { AvatarAssetAssetRotation } from '../models/AvatarAssetAssetRotation';
 import { AvatarAssetAssetScale } from '../models/AvatarAssetAssetScale';
 import { AvatarAssetMeta } from '../models/AvatarAssetMeta';
 import { AvatarBody      , AvatarBodyAvatarTypeEnum    } from '../models/AvatarBody';
+import { AvatarCreation   , AvatarCreationCreationStateEnum  , AvatarCreationModerationStateEnum  , AvatarCreationCreationFailureReasonEnum     } from '../models/AvatarCreation';
+import { AvatarCreationAvatarAsset } from '../models/AvatarCreationAvatarAsset';
+import { AvatarCreationBody } from '../models/AvatarCreationBody';
+import { AvatarCreationBodyAssets } from '../models/AvatarCreationBodyAssets';
+import { AvatarCreationHead } from '../models/AvatarCreationHead';
+import { AvatarCreationHeadAssets } from '../models/AvatarCreationHeadAssets';
 import { AvatarMarketplaceOrder      , AvatarMarketplaceOrderStatusEnum     } from '../models/AvatarMarketplaceOrder';
 import { AvatarMarketplaceOrderContext, AvatarMarketplaceOrderContextProductSurfaceEnum   } from '../models/AvatarMarketplaceOrderContext';
 import { AvatarMarketplaceOrderFulfillmentGroup, AvatarMarketplaceOrderFulfillmentGroupStrategyEnum   , AvatarMarketplaceOrderFulfillmentGroupStatusEnum   } from '../models/AvatarMarketplaceOrderFulfillmentGroup';
@@ -90,13 +114,16 @@ import { AvatarMarketplaceOrderReceipt } from '../models/AvatarMarketplaceOrderR
 import { BodyAssets } from '../models/BodyAssets';
 import { BodyColors } from '../models/BodyColors';
 import { BodyScale } from '../models/BodyScale';
-import { CreatorStoreProduct      , CreatorStoreProductRestrictionsEnum             } from '../models/CreatorStoreProduct';
+import { CreatorStoreProduct    , CreatorStoreProductRestrictionsEnum             } from '../models/CreatorStoreProduct';
 import { DataStore } from '../models/DataStore';
 import { DataStoreEntry    , DataStoreEntryStateEnum        } from '../models/DataStoreEntry';
 import { DataStoreScope } from '../models/DataStoreScope';
 import { Decimal } from '../models/Decimal';
-import { DeclineGroupJoinRequestRequest } from '../models/DeclineGroupJoinRequestRequest';
+import { DeveloperProduct } from '../models/DeveloperProduct';
+import { DiscardMemoryStoreQueueItemsRequest } from '../models/DiscardMemoryStoreQueueItemsRequest';
 import { DynamicHead } from '../models/DynamicHead';
+import { GamePass } from '../models/GamePass';
+import { GamePassSalesStats } from '../models/GamePassSalesStats';
 import { GenerateUserThumbnailResponse } from '../models/GenerateUserThumbnailResponse';
 import { GoogleProtobufAny } from '../models/GoogleProtobufAny';
 import { Group } from '../models/Group';
@@ -106,6 +133,7 @@ import { GroupRole } from '../models/GroupRole';
 import { GroupRoleRolePermissions } from '../models/GroupRoleRolePermissions';
 import { GroupShout } from '../models/GroupShout';
 import { Instance } from '../models/Instance';
+import { Interval } from '../models/Interval';
 import { InventoryItem } from '../models/InventoryItem';
 import { InventoryItemAssetDetails , InventoryItemAssetDetailsInventoryItemAssetTypeEnum     } from '../models/InventoryItemAssetDetails';
 import { InventoryItemBadgeDetails } from '../models/InventoryItemBadgeDetails';
@@ -117,6 +145,8 @@ import { ListGroupMembershipsResponse } from '../models/ListGroupMembershipsResp
 import { ListGroupRolesResponse } from '../models/ListGroupRolesResponse';
 import { ListInstanceChildrenResponse } from '../models/ListInstanceChildrenResponse';
 import { ListInventoryItemsResponse } from '../models/ListInventoryItemsResponse';
+import { ListMemoryStoreSortedMapItemsResponse } from '../models/ListMemoryStoreSortedMapItemsResponse';
+import { ListUserRestrictionLogsResponse } from '../models/ListUserRestrictionLogsResponse';
 import { MemoryStore } from '../models/MemoryStore';
 import { MemoryStoreQueue } from '../models/MemoryStoreQueue';
 import { MemoryStoreQueueItem } from '../models/MemoryStoreQueueItem';
@@ -128,7 +158,7 @@ import { OrderedDataStore } from '../models/OrderedDataStore';
 import { OrderedDataStoreEntry } from '../models/OrderedDataStoreEntry';
 import { OrderedDataStoreScope } from '../models/OrderedDataStoreScope';
 import { Place } from '../models/Place';
-import { RestartUniverseServersRequest } from '../models/RestartUniverseServersRequest';
+import { ReadMemoryStoreQueueItemsResponse } from '../models/ReadMemoryStoreQueueItemsResponse';
 import { RobloxEngineInstance } from '../models/RobloxEngineInstance';
 import { RobloxEngineInstanceDetails } from '../models/RobloxEngineInstanceDetails';
 import { RobloxEngineLocalScript , RobloxEngineLocalScriptRunContextEnum    } from '../models/RobloxEngineLocalScript';
@@ -140,6 +170,11 @@ import { Subscription        , SubscriptionStateEnum   , SubscriptionPurchasePla
 import { SubscriptionExpirationDetails, SubscriptionExpirationDetailsReasonEnum   } from '../models/SubscriptionExpirationDetails';
 import { SubscriptionProduct    , SubscriptionProductStateEnum    } from '../models/SubscriptionProduct';
 import { Universe       , UniverseVisibilityEnum          , UniverseAgeRatingEnum         } from '../models/Universe';
+import { UniverseBadge } from '../models/UniverseBadge';
+import { UniverseBadgeCreationCost } from '../models/UniverseBadgeCreationCost';
+import { UniverseBadgeStatistics } from '../models/UniverseBadgeStatistics';
+import { UniverseEvent     , UniverseEventStateEnum    } from '../models/UniverseEvent';
+import { UniverseEventCategory } from '../models/UniverseEventCategory';
 import { UniverseSocialLink } from '../models/UniverseSocialLink';
 import { User } from '../models/User';
 import { UserNotification } from '../models/UserNotification';
@@ -150,6 +185,9 @@ import { UserNotificationPayloadParameterValue } from '../models/UserNotificatio
 import { UserNotificationSource } from '../models/UserNotificationSource';
 import { UserRestriction } from '../models/UserRestriction';
 import { UserRestrictionGameJoinRestriction } from '../models/UserRestrictionGameJoinRestriction';
+import { UserRestrictionLog } from '../models/UserRestrictionLog';
+import { UserRestrictionLogModerator } from '../models/UserRestrictionLogModerator';
+import { UserRestrictionLogRestrictionType } from '../models/UserRestrictionLogRestrictionType';
 import { UserSocialNetworkProfiles     , UserSocialNetworkProfilesVisibilityEnum   } from '../models/UserSocialNetworkProfiles';
 
 /* tslint:disable:no-unused-variable */
@@ -166,6 +204,9 @@ let primitives = [
 
 let enumsMap: Set<string> = new Set<string>([
     "AvatarBodyAvatarTypeEnum",
+    "AvatarCreationCreationStateEnum",
+    "AvatarCreationModerationStateEnum",
+    "AvatarCreationCreationFailureReasonEnum",
     "AvatarMarketplaceOrderStatusEnum",
     "AvatarMarketplaceOrderContextProductSurfaceEnum",
     "AvatarMarketplaceOrderFulfillmentGroupStrategyEnum",
@@ -185,18 +226,24 @@ let enumsMap: Set<string> = new Set<string>([
     "SubscriptionProductStateEnum",
     "UniverseVisibilityEnum",
     "UniverseAgeRatingEnum",
+    "UniverseEventStateEnum",
     "UserNotificationPayloadTypeEnum",
     "UserSocialNetworkProfilesVisibilityEnum",
 ]);
 
 let typeMap: {[index: string]: any} = {
-    "AcceptGroupJoinRequestRequest": AcceptGroupJoinRequestRequest,
     "AvatarAsset": AvatarAsset,
     "AvatarAssetAssetPosition": AvatarAssetAssetPosition,
     "AvatarAssetAssetRotation": AvatarAssetAssetRotation,
     "AvatarAssetAssetScale": AvatarAssetAssetScale,
     "AvatarAssetMeta": AvatarAssetMeta,
     "AvatarBody": AvatarBody,
+    "AvatarCreation": AvatarCreation,
+    "AvatarCreationAvatarAsset": AvatarCreationAvatarAsset,
+    "AvatarCreationBody": AvatarCreationBody,
+    "AvatarCreationBodyAssets": AvatarCreationBodyAssets,
+    "AvatarCreationHead": AvatarCreationHead,
+    "AvatarCreationHeadAssets": AvatarCreationHeadAssets,
     "AvatarMarketplaceOrder": AvatarMarketplaceOrder,
     "AvatarMarketplaceOrderContext": AvatarMarketplaceOrderContext,
     "AvatarMarketplaceOrderFulfillmentGroup": AvatarMarketplaceOrderFulfillmentGroup,
@@ -210,8 +257,11 @@ let typeMap: {[index: string]: any} = {
     "DataStoreEntry": DataStoreEntry,
     "DataStoreScope": DataStoreScope,
     "Decimal": Decimal,
-    "DeclineGroupJoinRequestRequest": DeclineGroupJoinRequestRequest,
+    "DeveloperProduct": DeveloperProduct,
+    "DiscardMemoryStoreQueueItemsRequest": DiscardMemoryStoreQueueItemsRequest,
     "DynamicHead": DynamicHead,
+    "GamePass": GamePass,
+    "GamePassSalesStats": GamePassSalesStats,
     "GenerateUserThumbnailResponse": GenerateUserThumbnailResponse,
     "GoogleProtobufAny": GoogleProtobufAny,
     "Group": Group,
@@ -221,6 +271,7 @@ let typeMap: {[index: string]: any} = {
     "GroupRoleRolePermissions": GroupRoleRolePermissions,
     "GroupShout": GroupShout,
     "Instance": Instance,
+    "Interval": Interval,
     "InventoryItem": InventoryItem,
     "InventoryItemAssetDetails": InventoryItemAssetDetails,
     "InventoryItemBadgeDetails": InventoryItemBadgeDetails,
@@ -232,6 +283,8 @@ let typeMap: {[index: string]: any} = {
     "ListGroupRolesResponse": ListGroupRolesResponse,
     "ListInstanceChildrenResponse": ListInstanceChildrenResponse,
     "ListInventoryItemsResponse": ListInventoryItemsResponse,
+    "ListMemoryStoreSortedMapItemsResponse": ListMemoryStoreSortedMapItemsResponse,
+    "ListUserRestrictionLogsResponse": ListUserRestrictionLogsResponse,
     "MemoryStore": MemoryStore,
     "MemoryStoreQueue": MemoryStoreQueue,
     "MemoryStoreQueueItem": MemoryStoreQueueItem,
@@ -243,7 +296,7 @@ let typeMap: {[index: string]: any} = {
     "OrderedDataStoreEntry": OrderedDataStoreEntry,
     "OrderedDataStoreScope": OrderedDataStoreScope,
     "Place": Place,
-    "RestartUniverseServersRequest": RestartUniverseServersRequest,
+    "ReadMemoryStoreQueueItemsResponse": ReadMemoryStoreQueueItemsResponse,
     "RobloxEngineInstance": RobloxEngineInstance,
     "RobloxEngineInstanceDetails": RobloxEngineInstanceDetails,
     "RobloxEngineLocalScript": RobloxEngineLocalScript,
@@ -255,6 +308,11 @@ let typeMap: {[index: string]: any} = {
     "SubscriptionExpirationDetails": SubscriptionExpirationDetails,
     "SubscriptionProduct": SubscriptionProduct,
     "Universe": Universe,
+    "UniverseBadge": UniverseBadge,
+    "UniverseBadgeCreationCost": UniverseBadgeCreationCost,
+    "UniverseBadgeStatistics": UniverseBadgeStatistics,
+    "UniverseEvent": UniverseEvent,
+    "UniverseEventCategory": UniverseEventCategory,
     "UniverseSocialLink": UniverseSocialLink,
     "User": User,
     "UserNotification": UserNotification,
@@ -265,6 +323,9 @@ let typeMap: {[index: string]: any} = {
     "UserNotificationSource": UserNotificationSource,
     "UserRestriction": UserRestriction,
     "UserRestrictionGameJoinRestriction": UserRestrictionGameJoinRestriction,
+    "UserRestrictionLog": UserRestrictionLog,
+    "UserRestrictionLogModerator": UserRestrictionLogModerator,
+    "UserRestrictionLogRestrictionType": UserRestrictionLogRestrictionType,
     "UserSocialNetworkProfiles": UserSocialNetworkProfiles,
 }
 

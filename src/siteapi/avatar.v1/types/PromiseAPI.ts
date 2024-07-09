@@ -427,26 +427,6 @@ export class PromiseOutfitsApi {
         return result.toPromise();
     }
 
-    /**
-     * Applies the outfit\'s appearance to your avatar  If the user no longer owns one or more of the assets, invalidAssetIds will be populated with the unwearable assets.
-     * Wears the outfit
-     * @param userOutfitId The user outfit id
-     */
-    public v1OutfitsUserOutfitIdWearPostWithHttpInfo(userOutfitId: number, _options?: Configuration): Promise<HttpInfo<RobloxApiAvatarModelsWearResponseModel>> {
-        const result = this.api.v1OutfitsUserOutfitIdWearPostWithHttpInfo(userOutfitId, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * Applies the outfit\'s appearance to your avatar  If the user no longer owns one or more of the assets, invalidAssetIds will be populated with the unwearable assets.
-     * Wears the outfit
-     * @param userOutfitId The user outfit id
-     */
-    public v1OutfitsUserOutfitIdWearPost(userOutfitId: number, _options?: Configuration): Promise<RobloxApiAvatarModelsWearResponseModel> {
-        const result = this.api.v1OutfitsUserOutfitIdWearPost(userOutfitId, _options);
-        return result.toPromise();
-    }
-
 
 }
 

@@ -3,30 +3,21 @@ export * from '../models/RobloxGamesApiGameResponse';
 export * from '../models/RobloxGamesApiGameServerPlayerResponse';
 export * from '../models/RobloxGamesApiModelsRequestGameFavoritesRequest';
 export * from '../models/RobloxGamesApiModelsRequestSetUserGameVoteRequest';
-export * from '../models/RobloxGamesApiModelsResponseElasticSearchDebugInfoModel';
 export * from '../models/RobloxGamesApiModelsResponseGameCreator';
 export * from '../models/RobloxGamesApiModelsResponseGameDetailResponse';
 export * from '../models/RobloxGamesApiModelsResponseGameFavoriteResponse';
 export * from '../models/RobloxGamesApiModelsResponseGameFavoritesCountResponse';
-export * from '../models/RobloxGamesApiModelsResponseGameFilter';
 export * from '../models/RobloxGamesApiModelsResponseGameMediaItem';
 export * from '../models/RobloxGamesApiModelsResponseGamePassResponse';
 export * from '../models/RobloxGamesApiModelsResponseGameProductResponse';
 export * from '../models/RobloxGamesApiModelsResponseGameRecommendationsResponse';
 export * from '../models/RobloxGamesApiModelsResponseGameResponseModel';
-export * from '../models/RobloxGamesApiModelsResponseGameSort';
-export * from '../models/RobloxGamesApiModelsResponseGameSortTopicLayoutData';
-export * from '../models/RobloxGamesApiModelsResponseGameSortsResponse';
 export * from '../models/RobloxGamesApiModelsResponseGameSpotlightResponse';
 export * from '../models/RobloxGamesApiModelsResponseGameVoteResponse';
-export * from '../models/RobloxGamesApiModelsResponseGamesSearchResponse';
-export * from '../models/RobloxGamesApiModelsResponseGenreFilter';
-export * from '../models/RobloxGamesApiModelsResponsePageContext';
 export * from '../models/RobloxGamesApiModelsResponsePlaceDetails';
 export * from '../models/RobloxGamesApiModelsResponsePlayabilityStatusResponse';
 export * from '../models/RobloxGamesApiModelsResponsePrivateServersEnabledInUniverseResponse';
 export * from '../models/RobloxGamesApiModelsResponseThumbnail';
-export * from '../models/RobloxGamesApiModelsResponseTimeFilter';
 export * from '../models/RobloxGamesApiModelsResponseUserGameVoteResponse';
 export * from '../models/RobloxGamesApiModelsResponseVerifiedBadgeUserResponse';
 export * from '../models/RobloxGamesApiPlaceResponse';
@@ -57,30 +48,21 @@ import { RobloxGamesApiGameResponse } from '../models/RobloxGamesApiGameResponse
 import { RobloxGamesApiGameServerPlayerResponse } from '../models/RobloxGamesApiGameServerPlayerResponse';
 import { RobloxGamesApiModelsRequestGameFavoritesRequest } from '../models/RobloxGamesApiModelsRequestGameFavoritesRequest';
 import { RobloxGamesApiModelsRequestSetUserGameVoteRequest } from '../models/RobloxGamesApiModelsRequestSetUserGameVoteRequest';
-import { RobloxGamesApiModelsResponseElasticSearchDebugInfoModel } from '../models/RobloxGamesApiModelsResponseElasticSearchDebugInfoModel';
 import { RobloxGamesApiModelsResponseGameCreator } from '../models/RobloxGamesApiModelsResponseGameCreator';
 import { RobloxGamesApiModelsResponseGameDetailResponse                   , RobloxGamesApiModelsResponseGameDetailResponseUniverseAvatarTypeEnum       } from '../models/RobloxGamesApiModelsResponseGameDetailResponse';
 import { RobloxGamesApiModelsResponseGameFavoriteResponse } from '../models/RobloxGamesApiModelsResponseGameFavoriteResponse';
 import { RobloxGamesApiModelsResponseGameFavoritesCountResponse } from '../models/RobloxGamesApiModelsResponseGameFavoritesCountResponse';
-import { RobloxGamesApiModelsResponseGameFilter } from '../models/RobloxGamesApiModelsResponseGameFilter';
 import { RobloxGamesApiModelsResponseGameMediaItem } from '../models/RobloxGamesApiModelsResponseGameMediaItem';
 import { RobloxGamesApiModelsResponseGamePassResponse } from '../models/RobloxGamesApiModelsResponseGamePassResponse';
 import { RobloxGamesApiModelsResponseGameProductResponse } from '../models/RobloxGamesApiModelsResponseGameProductResponse';
 import { RobloxGamesApiModelsResponseGameRecommendationsResponse } from '../models/RobloxGamesApiModelsResponseGameRecommendationsResponse';
 import { RobloxGamesApiModelsResponseGameResponseModel } from '../models/RobloxGamesApiModelsResponseGameResponseModel';
-import { RobloxGamesApiModelsResponseGameSort } from '../models/RobloxGamesApiModelsResponseGameSort';
-import { RobloxGamesApiModelsResponseGameSortTopicLayoutData } from '../models/RobloxGamesApiModelsResponseGameSortTopicLayoutData';
-import { RobloxGamesApiModelsResponseGameSortsResponse } from '../models/RobloxGamesApiModelsResponseGameSortsResponse';
 import { RobloxGamesApiModelsResponseGameSpotlightResponse } from '../models/RobloxGamesApiModelsResponseGameSpotlightResponse';
 import { RobloxGamesApiModelsResponseGameVoteResponse } from '../models/RobloxGamesApiModelsResponseGameVoteResponse';
-import { RobloxGamesApiModelsResponseGamesSearchResponse } from '../models/RobloxGamesApiModelsResponseGamesSearchResponse';
-import { RobloxGamesApiModelsResponseGenreFilter } from '../models/RobloxGamesApiModelsResponseGenreFilter';
-import { RobloxGamesApiModelsResponsePageContext } from '../models/RobloxGamesApiModelsResponsePageContext';
 import { RobloxGamesApiModelsResponsePlaceDetails } from '../models/RobloxGamesApiModelsResponsePlaceDetails';
 import { RobloxGamesApiModelsResponsePlayabilityStatusResponse, RobloxGamesApiModelsResponsePlayabilityStatusResponsePlayabilityStatusEnum     } from '../models/RobloxGamesApiModelsResponsePlayabilityStatusResponse';
 import { RobloxGamesApiModelsResponsePrivateServersEnabledInUniverseResponse } from '../models/RobloxGamesApiModelsResponsePrivateServersEnabledInUniverseResponse';
 import { RobloxGamesApiModelsResponseThumbnail } from '../models/RobloxGamesApiModelsResponseThumbnail';
-import { RobloxGamesApiModelsResponseTimeFilter } from '../models/RobloxGamesApiModelsResponseTimeFilter';
 import { RobloxGamesApiModelsResponseUserGameVoteResponse } from '../models/RobloxGamesApiModelsResponseUserGameVoteResponse';
 import { RobloxGamesApiModelsResponseVerifiedBadgeUserResponse } from '../models/RobloxGamesApiModelsResponseVerifiedBadgeUserResponse';
 import { RobloxGamesApiPlaceResponse } from '../models/RobloxGamesApiPlaceResponse';
@@ -131,30 +113,21 @@ let typeMap: {[index: string]: any} = {
     "RobloxGamesApiGameServerPlayerResponse": RobloxGamesApiGameServerPlayerResponse,
     "RobloxGamesApiModelsRequestGameFavoritesRequest": RobloxGamesApiModelsRequestGameFavoritesRequest,
     "RobloxGamesApiModelsRequestSetUserGameVoteRequest": RobloxGamesApiModelsRequestSetUserGameVoteRequest,
-    "RobloxGamesApiModelsResponseElasticSearchDebugInfoModel": RobloxGamesApiModelsResponseElasticSearchDebugInfoModel,
     "RobloxGamesApiModelsResponseGameCreator": RobloxGamesApiModelsResponseGameCreator,
     "RobloxGamesApiModelsResponseGameDetailResponse": RobloxGamesApiModelsResponseGameDetailResponse,
     "RobloxGamesApiModelsResponseGameFavoriteResponse": RobloxGamesApiModelsResponseGameFavoriteResponse,
     "RobloxGamesApiModelsResponseGameFavoritesCountResponse": RobloxGamesApiModelsResponseGameFavoritesCountResponse,
-    "RobloxGamesApiModelsResponseGameFilter": RobloxGamesApiModelsResponseGameFilter,
     "RobloxGamesApiModelsResponseGameMediaItem": RobloxGamesApiModelsResponseGameMediaItem,
     "RobloxGamesApiModelsResponseGamePassResponse": RobloxGamesApiModelsResponseGamePassResponse,
     "RobloxGamesApiModelsResponseGameProductResponse": RobloxGamesApiModelsResponseGameProductResponse,
     "RobloxGamesApiModelsResponseGameRecommendationsResponse": RobloxGamesApiModelsResponseGameRecommendationsResponse,
     "RobloxGamesApiModelsResponseGameResponseModel": RobloxGamesApiModelsResponseGameResponseModel,
-    "RobloxGamesApiModelsResponseGameSort": RobloxGamesApiModelsResponseGameSort,
-    "RobloxGamesApiModelsResponseGameSortTopicLayoutData": RobloxGamesApiModelsResponseGameSortTopicLayoutData,
-    "RobloxGamesApiModelsResponseGameSortsResponse": RobloxGamesApiModelsResponseGameSortsResponse,
     "RobloxGamesApiModelsResponseGameSpotlightResponse": RobloxGamesApiModelsResponseGameSpotlightResponse,
     "RobloxGamesApiModelsResponseGameVoteResponse": RobloxGamesApiModelsResponseGameVoteResponse,
-    "RobloxGamesApiModelsResponseGamesSearchResponse": RobloxGamesApiModelsResponseGamesSearchResponse,
-    "RobloxGamesApiModelsResponseGenreFilter": RobloxGamesApiModelsResponseGenreFilter,
-    "RobloxGamesApiModelsResponsePageContext": RobloxGamesApiModelsResponsePageContext,
     "RobloxGamesApiModelsResponsePlaceDetails": RobloxGamesApiModelsResponsePlaceDetails,
     "RobloxGamesApiModelsResponsePlayabilityStatusResponse": RobloxGamesApiModelsResponsePlayabilityStatusResponse,
     "RobloxGamesApiModelsResponsePrivateServersEnabledInUniverseResponse": RobloxGamesApiModelsResponsePrivateServersEnabledInUniverseResponse,
     "RobloxGamesApiModelsResponseThumbnail": RobloxGamesApiModelsResponseThumbnail,
-    "RobloxGamesApiModelsResponseTimeFilter": RobloxGamesApiModelsResponseTimeFilter,
     "RobloxGamesApiModelsResponseUserGameVoteResponse": RobloxGamesApiModelsResponseUserGameVoteResponse,
     "RobloxGamesApiModelsResponseVerifiedBadgeUserResponse": RobloxGamesApiModelsResponseVerifiedBadgeUserResponse,
     "RobloxGamesApiPlaceResponse": RobloxGamesApiPlaceResponse,

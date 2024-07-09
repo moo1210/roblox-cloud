@@ -58,6 +58,7 @@ export * from '../models/RobloxGroupsApiUpdatePermissionsRequestPermissions';
 export * from '../models/RobloxGroupsApiUpdateUserRoleRequest';
 export * from '../models/RobloxGroupsApiUserGroupMembershipResponse';
 export * from '../models/RobloxGroupsApiUserGroupRoleResponse';
+export * from '../models/RobloxGroupsClientGroupFeaturedContentResponse';
 export * from '../models/RobloxPagingExclusiveStartKeyCursorSystemString';
 export * from '../models/RobloxPagingStartIndexCursor';
 export * from '../models/RobloxPlatformCoreExclusiveStartPagingIExclusiveStartKeyInfoSystemInt32';
@@ -143,6 +144,7 @@ import { RobloxGroupsApiUpdatePermissionsRequestPermissions } from '../models/Ro
 import { RobloxGroupsApiUpdateUserRoleRequest } from '../models/RobloxGroupsApiUpdateUserRoleRequest';
 import { RobloxGroupsApiUserGroupMembershipResponse } from '../models/RobloxGroupsApiUserGroupMembershipResponse';
 import { RobloxGroupsApiUserGroupRoleResponse } from '../models/RobloxGroupsApiUserGroupRoleResponse';
+import { RobloxGroupsClientGroupFeaturedContentResponse } from '../models/RobloxGroupsClientGroupFeaturedContentResponse';
 import { RobloxPagingExclusiveStartKeyCursorSystemString , RobloxPagingExclusiveStartKeyCursorSystemStringSortOrderEnum  , RobloxPagingExclusiveStartKeyCursorSystemStringPagingDirectionEnum      } from '../models/RobloxPagingExclusiveStartKeyCursorSystemString';
 import { RobloxPagingStartIndexCursor } from '../models/RobloxPagingStartIndexCursor';
 import { RobloxPlatformCoreExclusiveStartPagingIExclusiveStartKeyInfoSystemInt32, RobloxPlatformCoreExclusiveStartPagingIExclusiveStartKeyInfoSystemInt32SortOrderEnum  , RobloxPlatformCoreExclusiveStartPagingIExclusiveStartKeyInfoSystemInt32PagingDirectionEnum    } from '../models/RobloxPlatformCoreExclusiveStartPagingIExclusiveStartKeyInfoSystemInt32';
@@ -257,6 +259,7 @@ let typeMap: {[index: string]: any} = {
     "RobloxGroupsApiUpdateUserRoleRequest": RobloxGroupsApiUpdateUserRoleRequest,
     "RobloxGroupsApiUserGroupMembershipResponse": RobloxGroupsApiUserGroupMembershipResponse,
     "RobloxGroupsApiUserGroupRoleResponse": RobloxGroupsApiUserGroupRoleResponse,
+    "RobloxGroupsClientGroupFeaturedContentResponse": RobloxGroupsClientGroupFeaturedContentResponse,
     "RobloxPagingExclusiveStartKeyCursorSystemString": RobloxPagingExclusiveStartKeyCursorSystemString,
     "RobloxPagingStartIndexCursor": RobloxPagingStartIndexCursor,
     "RobloxPlatformCoreExclusiveStartPagingIExclusiveStartKeyInfoSystemInt32": RobloxPlatformCoreExclusiveStartPagingIExclusiveStartKeyInfoSystemInt32,

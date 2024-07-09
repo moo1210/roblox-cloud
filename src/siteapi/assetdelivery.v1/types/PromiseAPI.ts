@@ -124,48 +124,6 @@ export class PromiseAssetFetchApi {
     }
 
     /**
-     * Retrieves an asset by its hash.
-     * @param hash the hash of the asset to retrieve.
-     * @param acceptEncoding 
-     * @param robloxPlaceId 
-     * @param assetType 
-     * @param accept 
-     * @param assetFormat 
-     * @param robloxAssetFormat 
-     * @param skipSigningScripts 
-     * @param clientInsert 
-     * @param scriptinsert 
-     * @param modulePlaceId 
-     * @param serverplaceid 
-     * @param expectedAssetType 
-     */
-    public v1AssetHashHashGetWithHttpInfo(hash: string, acceptEncoding: string, robloxPlaceId: number, assetType: string, accept: string, assetFormat: string, robloxAssetFormat: string, skipSigningScripts?: boolean, clientInsert?: number, scriptinsert?: number, modulePlaceId?: number, serverplaceid?: number, expectedAssetType?: string, _options?: Configuration): Promise<HttpInfo<RobloxWebAssetsIAssetResponseItem>> {
-        const result = this.api.v1AssetHashHashGetWithHttpInfo(hash, acceptEncoding, robloxPlaceId, assetType, accept, assetFormat, robloxAssetFormat, skipSigningScripts, clientInsert, scriptinsert, modulePlaceId, serverplaceid, expectedAssetType, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * Retrieves an asset by its hash.
-     * @param hash the hash of the asset to retrieve.
-     * @param acceptEncoding 
-     * @param robloxPlaceId 
-     * @param assetType 
-     * @param accept 
-     * @param assetFormat 
-     * @param robloxAssetFormat 
-     * @param skipSigningScripts 
-     * @param clientInsert 
-     * @param scriptinsert 
-     * @param modulePlaceId 
-     * @param serverplaceid 
-     * @param expectedAssetType 
-     */
-    public v1AssetHashHashGet(hash: string, acceptEncoding: string, robloxPlaceId: number, assetType: string, accept: string, assetFormat: string, robloxAssetFormat: string, skipSigningScripts?: boolean, clientInsert?: number, scriptinsert?: number, modulePlaceId?: number, serverplaceid?: number, expectedAssetType?: string, _options?: Configuration): Promise<RobloxWebAssetsIAssetResponseItem> {
-        const result = this.api.v1AssetHashHashGet(hash, acceptEncoding, robloxPlaceId, assetType, accept, assetFormat, robloxAssetFormat, skipSigningScripts, clientInsert, scriptinsert, modulePlaceId, serverplaceid, expectedAssetType, _options);
-        return result.toPromise();
-    }
-
-    /**
      * Retrieves an asset by its ID
      * @param assetId The ID of the asset to retrieve.
      * @param acceptEncoding 

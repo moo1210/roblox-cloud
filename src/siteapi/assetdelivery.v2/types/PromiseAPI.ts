@@ -124,46 +124,6 @@ export class PromiseAssetFetchV2Api {
     }
 
     /**
-     * @param hash 
-     * @param acceptEncoding 
-     * @param robloxPlaceId 
-     * @param assetType 
-     * @param accept 
-     * @param assetFormat 
-     * @param robloxAssetFormat 
-     * @param skipSigningScripts 
-     * @param clientInsert 
-     * @param scriptinsert 
-     * @param modulePlaceId 
-     * @param serverplaceid 
-     * @param expectedAssetType 
-     */
-    public v2AssetHashHashGetWithHttpInfo(hash: string, acceptEncoding: string, robloxPlaceId: number, assetType: string, accept: string, assetFormat: string, robloxAssetFormat: string, skipSigningScripts?: boolean, clientInsert?: number, scriptinsert?: number, modulePlaceId?: number, serverplaceid?: number, expectedAssetType?: string, _options?: Configuration): Promise<HttpInfo<RobloxWebAssetsIAssetResponseItemV2>> {
-        const result = this.api.v2AssetHashHashGetWithHttpInfo(hash, acceptEncoding, robloxPlaceId, assetType, accept, assetFormat, robloxAssetFormat, skipSigningScripts, clientInsert, scriptinsert, modulePlaceId, serverplaceid, expectedAssetType, _options);
-        return result.toPromise();
-    }
-
-    /**
-     * @param hash 
-     * @param acceptEncoding 
-     * @param robloxPlaceId 
-     * @param assetType 
-     * @param accept 
-     * @param assetFormat 
-     * @param robloxAssetFormat 
-     * @param skipSigningScripts 
-     * @param clientInsert 
-     * @param scriptinsert 
-     * @param modulePlaceId 
-     * @param serverplaceid 
-     * @param expectedAssetType 
-     */
-    public v2AssetHashHashGet(hash: string, acceptEncoding: string, robloxPlaceId: number, assetType: string, accept: string, assetFormat: string, robloxAssetFormat: string, skipSigningScripts?: boolean, clientInsert?: number, scriptinsert?: number, modulePlaceId?: number, serverplaceid?: number, expectedAssetType?: string, _options?: Configuration): Promise<RobloxWebAssetsIAssetResponseItemV2> {
-        const result = this.api.v2AssetHashHashGet(hash, acceptEncoding, robloxPlaceId, assetType, accept, assetFormat, robloxAssetFormat, skipSigningScripts, clientInsert, scriptinsert, modulePlaceId, serverplaceid, expectedAssetType, _options);
-        return result.toPromise();
-    }
-
-    /**
      * @param assetId 
      * @param acceptEncoding 
      * @param robloxPlaceId 

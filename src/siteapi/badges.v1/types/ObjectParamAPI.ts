@@ -239,6 +239,12 @@ export interface BadgesApiV1UniversesUniverseIdBadgesPostRequest {
      * @memberof BadgesApiv1UniversesUniverseIdBadgesPost
      */
     expectedCost?: number
+    /**
+     * Whether or not the badge should be created in the active state.
+     * @type boolean
+     * @memberof BadgesApiv1UniversesUniverseIdBadgesPost
+     */
+    isActive?: boolean
 }
 
 export interface BadgesApiV1UniversesUniverseIdFreeBadgesQuotaGetRequest {
@@ -353,7 +359,7 @@ export class ObjectBadgesApi {
      * @param param the request object
      */
     public v1UniversesUniverseIdBadgesPostWithHttpInfo(param: BadgesApiV1UniversesUniverseIdBadgesPostRequest, options?: Configuration): Promise<HttpInfo<RobloxWebResponsesBadgesBadgeResponseV2>> {
-        return this.api.v1UniversesUniverseIdBadgesPostWithHttpInfo(param.universeId, param.name, param.description, param.paymentSourceType, param.files, param.expectedCost,  options).toPromise();
+        return this.api.v1UniversesUniverseIdBadgesPostWithHttpInfo(param.universeId, param.name, param.description, param.paymentSourceType, param.files, param.expectedCost, param.isActive,  options).toPromise();
     }
 
     /**
@@ -361,7 +367,7 @@ export class ObjectBadgesApi {
      * @param param the request object
      */
     public v1UniversesUniverseIdBadgesPost(param: BadgesApiV1UniversesUniverseIdBadgesPostRequest, options?: Configuration): Promise<RobloxWebResponsesBadgesBadgeResponseV2> {
-        return this.api.v1UniversesUniverseIdBadgesPost(param.universeId, param.name, param.description, param.paymentSourceType, param.files, param.expectedCost,  options).toPromise();
+        return this.api.v1UniversesUniverseIdBadgesPost(param.universeId, param.name, param.description, param.paymentSourceType, param.files, param.expectedCost, param.isActive,  options).toPromise();
     }
 
     /**

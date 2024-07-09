@@ -1,3 +1,4 @@
+FeaturedContentApi.md
 GroupSearchApi.md
 GroupsApi.md
 MembershipApi.md
@@ -9,6 +10,7 @@ RoleSetsApi.md
 RolesApi.md
 SocialLinksApi.md
 WallApi.md
+apis/FeaturedContentApi.ts
 apis/GroupSearchApi.ts
 apis/GroupsApi.ts
 apis/MembershipApi.ts
@@ -82,6 +84,7 @@ models/RobloxGroupsApiUpdatePermissionsRequestPermissions.ts
 models/RobloxGroupsApiUpdateUserRoleRequest.ts
 models/RobloxGroupsApiUserGroupMembershipResponse.ts
 models/RobloxGroupsApiUserGroupRoleResponse.ts
+models/RobloxGroupsClientGroupFeaturedContentResponse.ts
 models/RobloxPagingExclusiveStartKeyCursorSystemString.ts
 models/RobloxPagingStartIndexCursor.ts
 models/RobloxPlatformCoreExclusiveStartPagingIExclusiveStartKeyInfoSystemInt32.ts

@@ -25,15 +25,15 @@ export class UserRestrictionGameJoinRestriction {
     */
     'startTime'?: Date;
     /**
-    * The duration of the restriction.   If not specified, the restriction is permanent.
+    * The duration of the restriction.   If not specified, the restriction is permanent. If specified, the range  must be from 1 second to 315,576,000,000 seconds, inclusive. Durations  with sub-second precision are not permitted.
     */
     'duration'?: string;
     /**
-    * The reason the restriction was created.   This field *is not* displayed to the user.
+    * The reason the restriction was created.   This field *is not* displayed to the user. 1,000 character maximum.
     */
     'privateReason'?: string;
     /**
-    * The user-facing reason the restriction was created.   This field *is* displayed to the user.
+    * The user-facing reason the restriction was created.   This field *is* displayed to the user. 400 character maximum.
     */
     'displayReason'?: string;
     /**

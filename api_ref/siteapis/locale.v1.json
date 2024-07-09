@@ -5,13 +5,20 @@
     "version": "v1"
   },
   "host": "locale.roblox.com",
-  "schemes": ["https"],
+  "schemes": [
+    "https"
+  ],
   "paths": {
     "/v1/country-regions": {
       "get": {
-        "tags": ["CountryRegions"],
+        "tags": [
+          "CountryRegions"
+        ],
         "summary": "Get list of country regions sorted by localized name",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -35,15 +42,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["CountryRegions:ListCountryRegions"]
+          "metricIds": [
+            "CountryRegions:ListCountryRegions"
+          ]
         }
       }
     },
     "/v1/locales": {
       "get": {
-        "tags": ["Locale"],
+        "tags": [
+          "Locale"
+        ],
         "summary": "Get list of Supported locales with user locus information.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -67,15 +81,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Locale:GetLocales"]
+          "metricIds": [
+            "Locale:GetLocales"
+          ]
         }
       }
     },
     "/v1/locales/supported-locales": {
       "get": {
-        "tags": ["Locale"],
+        "tags": [
+          "Locale"
+        ],
         "summary": "Get list of supported locales sorted by the Native Name property.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -92,14 +113,21 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Locale:GetSupportedLocales"]
+          "metricIds": [
+            "Locale:GetSupportedLocales"
+          ]
         }
       }
     },
     "/v1/locales/supported-locales-for-creators": {
       "get": {
-        "tags": ["Locale"],
-        "produces": ["application/json", "text/json"],
+        "tags": [
+          "Locale"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -117,15 +145,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Locale:GetSupportedLocalesForCreators"]
+          "metricIds": [
+            "Locale:GetSupportedLocalesForCreators"
+          ]
         }
       }
     },
     "/v1/locales/user-locale": {
       "get": {
-        "tags": ["Locale"],
+        "tags": [
+          "Locale"
+        ],
         "summary": "Gets user locale. If user is absent returns, locale from http request object.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -139,15 +174,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Locale:GetUserLocale"]
+          "metricIds": [
+            "Locale:GetUserLocale"
+          ]
         }
       }
     },
     "/v1/locales/user-localization-locus-supported-locales": {
       "get": {
-        "tags": ["Locale"],
+        "tags": [
+          "Locale"
+        ],
         "summary": "Gets each of a user's localization locus supported locales. A localization locus supported locale is a page (or group of pages) that\r\nhave been defined by the International team which need independent locale support.\r\nIf the user is null we will attempt to return the locales appropriate for the user's device language.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -161,16 +203,26 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Locale:GetUserLocalizationLocusSupportedLocales"]
+          "metricIds": [
+            "Locale:GetUserLocalizationLocusSupportedLocales"
+          ]
         }
       }
     },
     "/v1/locales/set-user-supported-locale": {
       "post": {
-        "tags": ["Locale"],
+        "tags": [
+          "Locale"
+        ],
         "summary": "Sets user's supported locale.\r\nNull supported locale will clear out user's supported locale (set users' supported locale to null)",
-        "consumes": ["application/json", "text/json"],
-        "produces": ["application/json", "text/json"],
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "body",
@@ -204,7 +256,9 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Locale:SetSupportedLocaleForUser"]
+          "metricIds": [
+            "Locale:SetSupportedLocaleForUser"
+          ]
         }
       }
     }

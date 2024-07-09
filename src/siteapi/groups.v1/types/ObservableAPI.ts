@@ -62,6 +62,7 @@ import { RobloxGroupsApiUpdatePermissionsRequestPermissions } from '../models/Ro
 import { RobloxGroupsApiUpdateUserRoleRequest } from '../models/RobloxGroupsApiUpdateUserRoleRequest';
 import { RobloxGroupsApiUserGroupMembershipResponse } from '../models/RobloxGroupsApiUserGroupMembershipResponse';
 import { RobloxGroupsApiUserGroupRoleResponse } from '../models/RobloxGroupsApiUserGroupRoleResponse';
+import { RobloxGroupsClientGroupFeaturedContentResponse } from '../models/RobloxGroupsClientGroupFeaturedContentResponse';
 import { RobloxPagingExclusiveStartKeyCursorSystemString } from '../models/RobloxPagingExclusiveStartKeyCursorSystemString';
 import { RobloxPagingStartIndexCursor } from '../models/RobloxPagingStartIndexCursor';
 import { RobloxPlatformCoreExclusiveStartPagingIExclusiveStartKeyInfoSystemInt32 } from '../models/RobloxPlatformCoreExclusiveStartPagingIExclusiveStartKeyInfoSystemInt32';
@@ -86,6 +87,121 @@ import { RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiModelsResponseUserMo
 import { RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiUserGroupRoleResponse } from '../models/RobloxWebWebAPIModelsApiPageResponseRobloxGroupsApiUserGroupRoleResponse';
 import { SystemIOStream } from '../models/SystemIOStream';
 import { SystemValueTupleRobloxWebWebAPIExclusiveStartRequestSystemInt64RobloxPagingExclusiveStartKeyCursorSystemString } from '../models/SystemValueTupleRobloxWebWebAPIExclusiveStartRequestSystemInt64RobloxPagingExclusiveStartKeyCursorSystemString';
+
+import { FeaturedContentApiRequestFactory, FeaturedContentApiResponseProcessor} from "../apis/FeaturedContentApi";
+export class ObservableFeaturedContentApi {
+    private requestFactory: FeaturedContentApiRequestFactory;
+    private responseProcessor: FeaturedContentApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: FeaturedContentApiRequestFactory,
+        responseProcessor?: FeaturedContentApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new FeaturedContentApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new FeaturedContentApiResponseProcessor();
+    }
+
+    /**
+     * Deletes the featured event for a group
+     * @param groupId The group Id.
+     * @param eventId The event Id.
+     */
+    public v1FeaturedContentEventDeleteWithHttpInfo(groupId: number, eventId: number, _options?: Configuration): Observable<HttpInfo<void>> {
+        const requestContextPromise = this.requestFactory.v1FeaturedContentEventDelete(groupId, eventId, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1FeaturedContentEventDeleteWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes the featured event for a group
+     * @param groupId The group Id.
+     * @param eventId The event Id.
+     */
+    public v1FeaturedContentEventDelete(groupId: number, eventId: number, _options?: Configuration): Observable<void> {
+        return this.v1FeaturedContentEventDeleteWithHttpInfo(groupId, eventId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Gets the featured event for a group
+     * @param groupId The group Id.
+     */
+    public v1FeaturedContentEventGetWithHttpInfo(groupId: number, _options?: Configuration): Observable<HttpInfo<RobloxGroupsClientGroupFeaturedContentResponse>> {
+        const requestContextPromise = this.requestFactory.v1FeaturedContentEventGet(groupId, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1FeaturedContentEventGetWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Gets the featured event for a group
+     * @param groupId The group Id.
+     */
+    public v1FeaturedContentEventGet(groupId: number, _options?: Configuration): Observable<RobloxGroupsClientGroupFeaturedContentResponse> {
+        return this.v1FeaturedContentEventGetWithHttpInfo(groupId, _options).pipe(map((apiResponse: HttpInfo<RobloxGroupsClientGroupFeaturedContentResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Sets the featured event for a group
+     * @param groupId The group Id.
+     * @param eventId The event Id.
+     */
+    public v1FeaturedContentEventPostWithHttpInfo(groupId: number, eventId: number, _options?: Configuration): Observable<HttpInfo<RobloxGroupsClientGroupFeaturedContentResponse>> {
+        const requestContextPromise = this.requestFactory.v1FeaturedContentEventPost(groupId, eventId, _options);
+
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (let middleware of this.configuration.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (let middleware of this.configuration.middleware) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1FeaturedContentEventPostWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Sets the featured event for a group
+     * @param groupId The group Id.
+     * @param eventId The event Id.
+     */
+    public v1FeaturedContentEventPost(groupId: number, eventId: number, _options?: Configuration): Observable<RobloxGroupsClientGroupFeaturedContentResponse> {
+        return this.v1FeaturedContentEventPostWithHttpInfo(groupId, eventId, _options).pipe(map((apiResponse: HttpInfo<RobloxGroupsClientGroupFeaturedContentResponse>) => apiResponse.data));
+    }
+
+}
 
 import { GroupSearchApiRequestFactory, GroupSearchApiResponseProcessor} from "../apis/GroupSearchApi";
 export class ObservableGroupSearchApi {

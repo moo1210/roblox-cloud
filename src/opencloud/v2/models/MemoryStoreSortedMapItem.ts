@@ -29,13 +29,13 @@ export class MemoryStoreSortedMapItem {
     */
     'etag'?: string;
     /**
-    * The expiration time of an item.
-    */
-    'expireTime'?: Date;
-    /**
-    * Input only. The TTL for the item.
+    * The TTL for the item.
     */
     'ttl'?: string;
+    /**
+    * The expiration time of the item.
+    */
+    'expireTime'?: Date;
     /**
     * The name of the item.
     */
@@ -71,16 +71,16 @@ export class MemoryStoreSortedMapItem {
             "format": ""
         },
         {
-            "name": "expireTime",
-            "baseName": "expireTime",
-            "type": "Date",
-            "format": "date-time"
-        },
-        {
             "name": "ttl",
             "baseName": "ttl",
             "type": "string",
             "format": "duration"
+        },
+        {
+            "name": "expireTime",
+            "baseName": "expireTime",
+            "type": "Date",
+            "format": "date-time"
         },
         {
             "name": "id",

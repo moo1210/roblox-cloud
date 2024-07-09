@@ -5,13 +5,20 @@
     "version": "v1"
   },
   "host": "itemconfiguration.roblox.com",
-  "schemes": ["https"],
+  "schemes": [
+    "https"
+  ],
   "paths": {
     "/v1/creations/get-assets": {
       "get": {
-        "tags": ["Item"],
+        "tags": [
+          "Item"
+        ],
         "summary": "Gets the user created asset information filtered by the given asset type",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -40,7 +47,12 @@
             "type": "integer",
             "format": "int32",
             "default": 10,
-            "enum": [10, 25, 50, 100]
+            "enum": [
+              10,
+              25,
+              50,
+              100
+            ]
           },
           {
             "in": "query",
@@ -74,16 +86,23 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Item:GetAssetCreationsByAssetType"]
+          "metricIds": [
+            "Item:GetAssetCreationsByAssetType"
+          ]
         }
       }
     },
     "/v1/collectibles/commission-rates": {
       "get": {
-        "tags": ["Item"],
+        "tags": [
+          "Item"
+        ],
         "summary": "Gets the collectibles commission rate",
         "consumes": [],
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -104,16 +123,23 @@
         },
         "properties": {
           "internal": true,
-          "metricIds": ["Item:GetCollectiableCommissionRates"]
+          "metricIds": [
+            "Item:GetCollectiableCommissionRates"
+          ]
         }
       }
     },
     "/v1/get-commission-rates": {
       "get": {
-        "tags": ["Item"],
+        "tags": [
+          "Item"
+        ],
         "summary": "Gets the commission rates related to assetTypes",
         "consumes": [],
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -134,15 +160,22 @@
         },
         "properties": {
           "internal": true,
-          "metricIds": ["Item:GetCommissionRates"]
+          "metricIds": [
+            "Item:GetCommissionRates"
+          ]
         }
       }
     },
     "/v1/item-tags": {
       "get": {
-        "tags": ["ItemTags"],
+        "tags": [
+          "ItemTags"
+        ],
         "summary": "Gets all related item tags for each item id listed",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -172,14 +205,24 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["ItemTags:MultiGetItemsWithTags"]
+          "metricIds": [
+            "ItemTags:MultiGetItemsWithTags"
+          ]
         }
       },
       "post": {
-        "tags": ["ItemTags"],
+        "tags": [
+          "ItemTags"
+        ],
         "summary": "Creates a new item tag",
-        "consumes": ["application/json", "text/json"],
-        "produces": ["application/json", "text/json"],
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "body",
@@ -213,16 +256,23 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["ItemTags:CreateItemTag"]
+          "metricIds": [
+            "ItemTags:CreateItemTag"
+          ]
         }
       }
     },
     "/v1/bundles/{bundleId}": {
       "get": {
-        "tags": ["Item"],
+        "tags": [
+          "Item"
+        ],
         "summary": "Gets the bundles details",
         "consumes": [],
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -244,16 +294,23 @@
         },
         "properties": {
           "internal": true,
-          "metricIds": ["Item:GetBundleDetails"]
+          "metricIds": [
+            "Item:GetBundleDetails"
+          ]
         }
       }
     },
     "/v1/bundles/metadata": {
       "get": {
-        "tags": ["Item"],
+        "tags": [
+          "Item"
+        ],
         "summary": "Gets the metadata related to bundles",
         "consumes": [],
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -268,16 +325,23 @@
         },
         "properties": {
           "internal": true,
-          "metricIds": ["Item:ItemMetadataBundle"]
+          "metricIds": [
+            "Item:ItemMetadataBundle"
+          ]
         }
       }
     },
     "/v1/collectibles/metadata": {
       "get": {
-        "tags": ["Item"],
+        "tags": [
+          "Item"
+        ],
         "summary": "Gets the metadata related to collectibles",
         "consumes": [],
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -292,16 +356,23 @@
         },
         "properties": {
           "internal": true,
-          "metricIds": ["Item:ItemMetadataCollectible"]
+          "metricIds": [
+            "Item:ItemMetadataCollectible"
+          ]
         }
       }
     },
     "/v1/metadata": {
       "get": {
-        "tags": ["Item"],
+        "tags": [
+          "Item"
+        ],
         "summary": "Gets the metadata related to assets and bundles",
         "consumes": [],
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [],
         "responses": {
           "200": {
@@ -316,15 +387,22 @@
         },
         "properties": {
           "internal": true,
-          "metricIds": ["Item:ItemMetadataAsset"]
+          "metricIds": [
+            "Item:ItemMetadataAsset"
+          ]
         }
       }
     },
     "/v1/item-tags/metadata": {
       "get": {
-        "tags": ["ItemTags"],
+        "tags": [
+          "ItemTags"
+        ],
         "summary": "Gets the metadata related to item tags",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -335,15 +413,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["ItemTags:ItemMetadata"]
+          "metricIds": [
+            "ItemTags:ItemMetadata"
+          ]
         }
       }
     },
     "/v1/tags": {
       "get": {
-        "tags": ["Tags"],
+        "tags": [
+          "Tags"
+        ],
         "summary": "Gets the information for a list of tag Ids",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -373,15 +458,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Tags:MultiGetTags"]
+          "metricIds": [
+            "Tags:MultiGetTags"
+          ]
         }
       }
     },
     "/v1/tags/prefix-search": {
       "get": {
-        "tags": ["Tags"],
+        "tags": [
+          "Tags"
+        ],
         "summary": "Searches for up to numberOfResults tags based on the given prefix",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "query",
@@ -421,16 +513,26 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Tags:PrefixTagSearch"]
+          "metricIds": [
+            "Tags:PrefixTagSearch"
+          ]
         }
       }
     },
     "/v1/creations/get-asset-details": {
       "post": {
-        "tags": ["Item"],
+        "tags": [
+          "Item"
+        ],
         "summary": "Gets the asset status and other configuration details for the given assetIds list",
-        "consumes": ["application/json", "text/json"],
-        "produces": ["application/json", "text/json"],
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "body",
@@ -473,15 +575,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Item:GetAssetDetails"]
+          "metricIds": [
+            "Item:GetAssetDetails"
+          ]
         }
       }
     },
     "/v1/item-tags/{itemTagId}": {
       "delete": {
-        "tags": ["ItemTags"],
+        "tags": [
+          "ItemTags"
+        ],
         "summary": "Deletes an item tag from an item",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -510,7 +619,9 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["ItemTags:DeleteItemTag"]
+          "metricIds": [
+            "ItemTags:DeleteItemTag"
+          ]
         }
       }
     }
@@ -560,7 +671,11 @@
         },
         "creatorType": {
           "description": "The creator type ['Unknown' = 0, 'User' = 1, 'Group' = 2]",
-          "enum": ["Unknown", "User", "Group"],
+          "enum": [
+            "Unknown",
+            "User",
+            "Group"
+          ],
           "type": "string"
         },
         "creatorTargetId": {
@@ -713,7 +828,12 @@
           "type": "array",
           "items": {
             "description": " ['Undefined' = 0, 'Catalog' = 1, 'AllUniverses' = 2, 'MyUniverses' = 3]",
-            "enum": ["Undefined", "Catalog", "AllUniverses", "MyUniverses"],
+            "enum": [
+              "Undefined",
+              "Catalog",
+              "AllUniverses",
+              "MyUniverses"
+            ],
             "type": "string"
           }
         }
@@ -737,7 +857,10 @@
         },
         "status": {
           "description": "Gets or sets the status for the fetch of this tag ['Success' = 0, 'MissingItem' = 1]",
-          "enum": ["Success", "MissingItem"],
+          "enum": [
+            "Success",
+            "MissingItem"
+          ],
           "type": "string"
         }
       }
@@ -800,7 +923,6 @@
         }
       }
     },
-
     "Roblox.ItemConfiguration.Api.ItemMetadataResponse": {
       "description": "Item related metadata response model",
       "type": "object",
@@ -913,7 +1035,10 @@
       "type": "object",
       "properties": {
         "itemType": {
-          "enum": ["Undefined", "Asset"],
+          "enum": [
+            "Undefined",
+            "Asset"
+          ],
           "type": "string"
         }
       }

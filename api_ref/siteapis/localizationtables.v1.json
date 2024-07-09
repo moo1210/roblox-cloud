@@ -5,13 +5,20 @@
     "version": "v1"
   },
   "host": "localizationtables.roblox.com",
-  "schemes": ["https"],
+  "schemes": [
+    "https"
+  ],
   "paths": {
     "/v1/autolocalization/metadata": {
       "get": {
-        "tags": ["Autolocalization"],
+        "tags": [
+          "Autolocalization"
+        ],
         "summary": "Metadata for AutoLocalization Configuration",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -25,15 +32,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Autolocalization:GetMetadata"]
+          "metricIds": [
+            "Autolocalization:GetMetadata"
+          ]
         }
       }
     },
     "/v1/localization-table/available-languages": {
       "get": {
-        "tags": ["LocalizationTable"],
+        "tags": [
+          "LocalizationTable"
+        ],
         "summary": "Gets the supported language codes that can be used by localization tables.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -54,9 +68,14 @@
     },
     "/v1/localization-table/limits": {
       "get": {
-        "tags": ["LocalizationTable"],
+        "tags": [
+          "LocalizationTable"
+        ],
         "summary": "Get limits for translation table entries operations",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -70,15 +89,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["LocalizationTable:GetLimits"]
+          "metricIds": [
+            "LocalizationTable:GetLimits"
+          ]
         }
       }
     },
     "/v1/localization-table/metadata": {
       "get": {
-        "tags": ["LocalizationTable"],
+        "tags": [
+          "LocalizationTable"
+        ],
         "summary": "Get metadata for localization UI",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "responses": {
           "200": {
             "description": "OK",
@@ -89,15 +115,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["LocalizationTable:GetMetadata"]
+          "metricIds": [
+            "LocalizationTable:GetMetadata"
+          ]
         }
       }
     },
     "/v1/localization-table/tables/{assetId}": {
       "get": {
-        "tags": ["LocalizationTable"],
+        "tags": [
+          "LocalizationTable"
+        ],
         "summary": "Get table information by the assetId of the table.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -127,15 +160,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["LocalizationTable:GetTableByAssetId"]
+          "metricIds": [
+            "LocalizationTable:GetTableByAssetId"
+          ]
         }
       }
     },
     "/v1/localization-table/tables/{tableId}": {
       "get": {
-        "tags": ["LocalizationTable"],
+        "tags": [
+          "LocalizationTable"
+        ],
         "summary": "Get table information by the id of the table.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -165,14 +205,24 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["LocalizationTable:GetTableByTableId"]
+          "metricIds": [
+            "LocalizationTable:GetTableByTableId"
+          ]
         }
       },
       "patch": {
-        "tags": ["LocalizationTable"],
+        "tags": [
+          "LocalizationTable"
+        ],
         "summary": "Updates the tables contents based on what is provided.",
-        "consumes": ["application/json", "text/json"],
-        "produces": ["application/json", "text/json"],
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -221,15 +271,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["LocalizationTable:UpdateTableContents"]
+          "metricIds": [
+            "LocalizationTable:UpdateTableContents"
+          ]
         }
       }
     },
     "/v1/localization-table/tables/{tableId}/entries": {
       "get": {
-        "tags": ["LocalizationTable"],
+        "tags": [
+          "LocalizationTable"
+        ],
         "summary": "Gets a batch of entries for a table.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -272,15 +329,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["LocalizationTable:GetTableEntriesPaged"]
+          "metricIds": [
+            "LocalizationTable:GetTableEntriesPaged"
+          ]
         }
       }
     },
     "/v1/localization-table/tables/{tableId}/entry-count": {
       "get": {
-        "tags": ["LocalizationTable"],
+        "tags": [
+          "LocalizationTable"
+        ],
         "summary": "Gets the number of entries in the specified table",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -317,15 +381,22 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["LocalizationTable:GetTableEntryCount"]
+          "metricIds": [
+            "LocalizationTable:GetTableEntryCount"
+          ]
         }
       }
     },
     "/v1/localization-table/tables/{tableId}/language-translation-counts": {
       "get": {
-        "tags": ["LocalizationTable"],
+        "tags": [
+          "LocalizationTable"
+        ],
         "summary": "Gets the language translation counts for the specified table.\r\nThe languages to retrieve must be provided.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -381,9 +452,14 @@
     },
     "/v1/auto-localization-table/games/{gameId}/assets-generation-request": {
       "post": {
-        "tags": ["AutoLocalizationTable"],
+        "tags": [
+          "AutoLocalizationTable"
+        ],
         "summary": "Generates localization asset of a game.",
-        "produces": ["application/json", "text/json"],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -416,16 +492,26 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["AutoLocalizationTable:RaiseEventForAssetRegeneration"]
+          "metricIds": [
+            "AutoLocalizationTable:RaiseEventForAssetRegeneration"
+          ]
         }
       }
     },
     "/v1/auto-localization-table/games/{gameId}/auto-scrape-cleanup-request": {
       "post": {
-        "tags": ["AutoLocalizationTable"],
+        "tags": [
+          "AutoLocalizationTable"
+        ],
         "summary": "Enqueues an event to flush the auto scraped entries which doesn't have translations.",
-        "consumes": ["application/json", "text/json"],
-        "produces": ["application/json", "text/json"],
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -474,9 +560,17 @@
     },
     "/v1/autolocalization/games/{gameId}/autolocalizationtable": {
       "patch": {
-        "tags": ["Autolocalization"],
-        "consumes": ["application/json", "text/json"],
-        "produces": ["application/json", "text/json"],
+        "tags": [
+          "Autolocalization"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -510,12 +604,19 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Autolocalization:SetAutolocalizationTableForGame"]
+          "metricIds": [
+            "Autolocalization:SetAutolocalizationTableForGame"
+          ]
         }
       },
       "post": {
-        "tags": ["Autolocalization"],
-        "produces": ["application/json", "text/json"],
+        "tags": [
+          "Autolocalization"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -549,10 +650,18 @@
     },
     "/v1/localization-table/tables": {
       "post": {
-        "tags": ["LocalizationTable"],
+        "tags": [
+          "LocalizationTable"
+        ],
         "summary": "Creates a Localization Table with the given data.",
-        "consumes": ["application/json", "text/json"],
-        "produces": ["application/json", "text/json"],
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "body",
@@ -580,16 +689,26 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["LocalizationTable:CreateTable"]
+          "metricIds": [
+            "LocalizationTable:CreateTable"
+          ]
         }
       }
     },
     "/v1/localization-table/tables/{tableId}/entries/translation-feedback": {
       "post": {
-        "tags": ["LocalizationTable"],
+        "tags": [
+          "LocalizationTable"
+        ],
         "summary": "Gets the translation feedback for each entry passed in.",
-        "consumes": ["application/json", "text/json"],
-        "produces": ["application/json", "text/json"],
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -641,16 +760,26 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["LocalizationTable:GetTableEntriesTranslationFeedback"]
+          "metricIds": [
+            "LocalizationTable:GetTableEntriesTranslationFeedback"
+          ]
         }
       }
     },
     "/v1/localization-table/tables/{tableId}/entries/translation-history": {
       "post": {
-        "tags": ["LocalizationTable"],
+        "tags": [
+          "LocalizationTable"
+        ],
         "summary": "Gets the translation history for each entry passed in.",
-        "consumes": ["application/json", "text/json"],
-        "produces": ["application/json", "text/json"],
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -702,16 +831,26 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["LocalizationTable:GetTableEntriesTranslationHistory"]
+          "metricIds": [
+            "LocalizationTable:GetTableEntriesTranslationHistory"
+          ]
         }
       }
     },
     "/v1/autolocalization/games/{gameId}/settings": {
       "patch": {
-        "tags": ["Autolocalization"],
+        "tags": [
+          "Autolocalization"
+        ],
         "summary": "Sets a game's auto-localization related settings",
-        "consumes": ["application/json", "text/json"],
-        "produces": ["application/json", "text/json"],
+        "consumes": [
+          "application/json",
+          "text/json"
+        ],
+        "produces": [
+          "application/json",
+          "text/json"
+        ],
         "parameters": [
           {
             "in": "path",
@@ -753,7 +892,9 @@
         },
         "properties": {
           "internal": false,
-          "metricIds": ["Autolocalization:SetAutolocalizationSettingsForGame"]
+          "metricIds": [
+            "Autolocalization:SetAutolocalizationSettingsForGame"
+          ]
         }
       }
     }
@@ -795,7 +936,10 @@
           "type": "string"
         },
         "ownerType": {
-          "enum": ["User", "Group"],
+          "enum": [
+            "User",
+            "Group"
+          ],
           "type": "string"
         },
         "ownerId": {
@@ -835,7 +979,10 @@
         },
         "sortOrder": {
           "description": "In which order the data is sorted. ['Asc' = 1, 'Desc' = 2]",
-          "enum": ["Asc", "Desc"],
+          "enum": [
+            "Asc",
+            "Desc"
+          ],
           "type": "string"
         }
       }
@@ -1221,7 +1368,10 @@
         },
         "ownerType": {
           "description": "Enum for valid OwnerTypes. ['User' = 0, 'Group' = 1]",
-          "enum": ["User", "Group"],
+          "enum": [
+            "User",
+            "Group"
+          ],
           "type": "string"
         },
         "ownerId": {
@@ -1438,7 +1588,10 @@
         },
         "agentType": {
           "description": " ['User' = 0, 'Automation' = 1]",
-          "enum": ["User", "Automation"],
+          "enum": [
+            "User",
+            "Automation"
+          ],
           "type": "string"
         }
       }
@@ -1479,7 +1632,12 @@
       "properties": {
         "ChangeAgentType": {
           "description": " ['Invalid' = 0, 'User' = 1, 'Automation' = 2, 'Default' = 3]",
-          "enum": ["Invalid", "User", "Automation", "Default"],
+          "enum": [
+            "Invalid",
+            "User",
+            "Automation",
+            "Default"
+          ],
           "type": "string"
         },
         "Id": {
@@ -1487,7 +1645,10 @@
         },
         "OptionalIdCase": {
           "description": " ['None' = 0, 'Id' = 2]",
-          "enum": ["None", "Id"],
+          "enum": [
+            "None",
+            "Id"
+          ],
           "type": "string",
           "readOnly": true
         }

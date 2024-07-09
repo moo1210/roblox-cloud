@@ -7,30 +7,21 @@ import { RobloxGamesApiGameResponse } from '../models/RobloxGamesApiGameResponse
 import { RobloxGamesApiGameServerPlayerResponse } from '../models/RobloxGamesApiGameServerPlayerResponse';
 import { RobloxGamesApiModelsRequestGameFavoritesRequest } from '../models/RobloxGamesApiModelsRequestGameFavoritesRequest';
 import { RobloxGamesApiModelsRequestSetUserGameVoteRequest } from '../models/RobloxGamesApiModelsRequestSetUserGameVoteRequest';
-import { RobloxGamesApiModelsResponseElasticSearchDebugInfoModel } from '../models/RobloxGamesApiModelsResponseElasticSearchDebugInfoModel';
 import { RobloxGamesApiModelsResponseGameCreator } from '../models/RobloxGamesApiModelsResponseGameCreator';
 import { RobloxGamesApiModelsResponseGameDetailResponse } from '../models/RobloxGamesApiModelsResponseGameDetailResponse';
 import { RobloxGamesApiModelsResponseGameFavoriteResponse } from '../models/RobloxGamesApiModelsResponseGameFavoriteResponse';
 import { RobloxGamesApiModelsResponseGameFavoritesCountResponse } from '../models/RobloxGamesApiModelsResponseGameFavoritesCountResponse';
-import { RobloxGamesApiModelsResponseGameFilter } from '../models/RobloxGamesApiModelsResponseGameFilter';
 import { RobloxGamesApiModelsResponseGameMediaItem } from '../models/RobloxGamesApiModelsResponseGameMediaItem';
 import { RobloxGamesApiModelsResponseGamePassResponse } from '../models/RobloxGamesApiModelsResponseGamePassResponse';
 import { RobloxGamesApiModelsResponseGameProductResponse } from '../models/RobloxGamesApiModelsResponseGameProductResponse';
 import { RobloxGamesApiModelsResponseGameRecommendationsResponse } from '../models/RobloxGamesApiModelsResponseGameRecommendationsResponse';
 import { RobloxGamesApiModelsResponseGameResponseModel } from '../models/RobloxGamesApiModelsResponseGameResponseModel';
-import { RobloxGamesApiModelsResponseGameSort } from '../models/RobloxGamesApiModelsResponseGameSort';
-import { RobloxGamesApiModelsResponseGameSortTopicLayoutData } from '../models/RobloxGamesApiModelsResponseGameSortTopicLayoutData';
-import { RobloxGamesApiModelsResponseGameSortsResponse } from '../models/RobloxGamesApiModelsResponseGameSortsResponse';
 import { RobloxGamesApiModelsResponseGameSpotlightResponse } from '../models/RobloxGamesApiModelsResponseGameSpotlightResponse';
 import { RobloxGamesApiModelsResponseGameVoteResponse } from '../models/RobloxGamesApiModelsResponseGameVoteResponse';
-import { RobloxGamesApiModelsResponseGamesSearchResponse } from '../models/RobloxGamesApiModelsResponseGamesSearchResponse';
-import { RobloxGamesApiModelsResponseGenreFilter } from '../models/RobloxGamesApiModelsResponseGenreFilter';
-import { RobloxGamesApiModelsResponsePageContext } from '../models/RobloxGamesApiModelsResponsePageContext';
 import { RobloxGamesApiModelsResponsePlaceDetails } from '../models/RobloxGamesApiModelsResponsePlaceDetails';
 import { RobloxGamesApiModelsResponsePlayabilityStatusResponse } from '../models/RobloxGamesApiModelsResponsePlayabilityStatusResponse';
 import { RobloxGamesApiModelsResponsePrivateServersEnabledInUniverseResponse } from '../models/RobloxGamesApiModelsResponsePrivateServersEnabledInUniverseResponse';
 import { RobloxGamesApiModelsResponseThumbnail } from '../models/RobloxGamesApiModelsResponseThumbnail';
-import { RobloxGamesApiModelsResponseTimeFilter } from '../models/RobloxGamesApiModelsResponseTimeFilter';
 import { RobloxGamesApiModelsResponseUserGameVoteResponse } from '../models/RobloxGamesApiModelsResponseUserGameVoteResponse';
 import { RobloxGamesApiModelsResponseVerifiedBadgeUserResponse } from '../models/RobloxGamesApiModelsResponseVerifiedBadgeUserResponse';
 import { RobloxGamesApiPlaceResponse } from '../models/RobloxGamesApiPlaceResponse';
@@ -469,67 +460,6 @@ export class ObservableGamesApi {
     }
 
     /**
-     * Gets a list of games
-     * @param sortToken Sort token.
-     * @param gameFilter Game filter.
-     * @param timeFilter Time filter.
-     * @param genreFilter Genre filter.
-     * @param exclusiveStartId Id to start getting entities.
-     * @param sortOrder Sort order.
-     * @param gameSetTargetId Extra id needed for specific Game Sets.
-     * @param keyword Keyword
-     * @param startRows StartRows
-     * @param maxRows MaxRows
-     * @param contextCountryRegionId ContextCountryRegionId
-     * @param contextUniverseId ContextUniverseId
-     * @param pageContextPageId Id to identify the page as shown to the user.
-     * @param pageContextIsSeeAllPage SortPosition
-     * @param sortPosition SortPosition
-     * @param sessionId SessionId
-     */
-    public v1GamesListGetWithHttpInfo(sortToken: string, gameFilter: string, timeFilter: string, genreFilter: string, exclusiveStartId: number, sortOrder: number, gameSetTargetId: number, keyword: string, startRows: number, maxRows: number, contextCountryRegionId: number, contextUniverseId: number, pageContextPageId: string, pageContextIsSeeAllPage: boolean, sortPosition: number, sessionId: string, _options?: Configuration): Observable<HttpInfo<RobloxGamesApiModelsResponseGamesSearchResponse>> {
-        const requestContextPromise = this.requestFactory.v1GamesListGet(sortToken, gameFilter, timeFilter, genreFilter, exclusiveStartId, sortOrder, gameSetTargetId, keyword, startRows, maxRows, contextCountryRegionId, contextUniverseId, pageContextPageId, pageContextIsSeeAllPage, sortPosition, sessionId, _options);
-
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (let middleware of this.configuration.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (let middleware of this.configuration.middleware) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1GamesListGetWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Gets a list of games
-     * @param sortToken Sort token.
-     * @param gameFilter Game filter.
-     * @param timeFilter Time filter.
-     * @param genreFilter Genre filter.
-     * @param exclusiveStartId Id to start getting entities.
-     * @param sortOrder Sort order.
-     * @param gameSetTargetId Extra id needed for specific Game Sets.
-     * @param keyword Keyword
-     * @param startRows StartRows
-     * @param maxRows MaxRows
-     * @param contextCountryRegionId ContextCountryRegionId
-     * @param contextUniverseId ContextUniverseId
-     * @param pageContextPageId Id to identify the page as shown to the user.
-     * @param pageContextIsSeeAllPage SortPosition
-     * @param sortPosition SortPosition
-     * @param sessionId SessionId
-     */
-    public v1GamesListGet(sortToken: string, gameFilter: string, timeFilter: string, genreFilter: string, exclusiveStartId: number, sortOrder: number, gameSetTargetId: number, keyword: string, startRows: number, maxRows: number, contextCountryRegionId: number, contextUniverseId: number, pageContextPageId: string, pageContextIsSeeAllPage: boolean, sortPosition: number, sessionId: string, _options?: Configuration): Observable<RobloxGamesApiModelsResponseGamesSearchResponse> {
-        return this.v1GamesListGetWithHttpInfo(sortToken, gameFilter, timeFilter, genreFilter, exclusiveStartId, sortOrder, gameSetTargetId, keyword, startRows, maxRows, contextCountryRegionId, contextUniverseId, pageContextPageId, pageContextIsSeeAllPage, sortPosition, sessionId, _options).pipe(map((apiResponse: HttpInfo<RobloxGamesApiModelsResponseGamesSearchResponse>) => apiResponse.data));
-    }
-
-    /**
      * Gets games that the client should spotlight.
      */
     public v1GamesListSpotlightGetWithHttpInfo(_options?: Configuration): Observable<HttpInfo<RobloxWebWebAPIModelsApiArrayResponseRobloxGamesApiModelsResponseGameSpotlightResponse>> {
@@ -692,37 +622,6 @@ export class ObservableGamesApi {
      */
     public v1GamesRecommendationsGameUniverseIdGet(universeId: number, paginationKey: string, maxRows: number, isTruncatedResultsEnabled: boolean, _options?: Configuration): Observable<RobloxGamesApiModelsResponseGameRecommendationsResponse> {
         return this.v1GamesRecommendationsGameUniverseIdGetWithHttpInfo(universeId, paginationKey, maxRows, isTruncatedResultsEnabled, _options).pipe(map((apiResponse: HttpInfo<RobloxGamesApiModelsResponseGameRecommendationsResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Gets an ordered list of all sorts
-     * @param gameSortsContext Context to determine which game sorts are being requested.
-     */
-    public v1GamesSortsGetWithHttpInfo(gameSortsContext: 0 | 1 | 2 | 3 | 4 | 6 | 7, _options?: Configuration): Observable<HttpInfo<RobloxGamesApiModelsResponseGameSortsResponse>> {
-        const requestContextPromise = this.requestFactory.v1GamesSortsGet(gameSortsContext, _options);
-
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (let middleware of this.configuration.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => this.configuration.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (let middleware of this.configuration.middleware) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v1GamesSortsGetWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Gets an ordered list of all sorts
-     * @param gameSortsContext Context to determine which game sorts are being requested.
-     */
-    public v1GamesSortsGet(gameSortsContext: 0 | 1 | 2 | 3 | 4 | 6 | 7, _options?: Configuration): Observable<RobloxGamesApiModelsResponseGameSortsResponse> {
-        return this.v1GamesSortsGetWithHttpInfo(gameSortsContext, _options).pipe(map((apiResponse: HttpInfo<RobloxGamesApiModelsResponseGameSortsResponse>) => apiResponse.data));
     }
 
     /**
