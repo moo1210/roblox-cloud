@@ -152,7 +152,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ToolBoxServiceSearchV1Result"
+                  "$ref": "#/components/schemas/ToolBoxServiceSearchResult"
                 }
               }
             }
@@ -278,7 +278,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ToolBoxServiceSearchV1Result"
+                  "$ref": "#/components/schemas/ToolBoxServiceSearchResult"
                 }
               }
             }
@@ -404,7 +404,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ToolBoxServiceSearchV1Result"
+                  "$ref": "#/components/schemas/ToolBoxServiceSearchResult"
                 }
               }
             }
@@ -530,7 +530,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ToolBoxServiceSearchV1Result"
+                  "$ref": "#/components/schemas/ToolBoxServiceSearchResult"
                 }
               }
             }
@@ -656,7 +656,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ToolBoxServiceSearchV1Result"
+                  "$ref": "#/components/schemas/ToolBoxServiceSearchResult"
                 }
               }
             }
@@ -720,7 +720,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ToolBoxServiceSearchV1Result"
+                  "$ref": "#/components/schemas/ToolBoxServiceSearchResult"
                 }
               }
             }
@@ -791,7 +791,59 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ToolBoxServiceSearchV1Result"
+                  "$ref": "#/components/schemas/ToolBoxServiceSearchResult"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/ToolBoxServiceError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication cookie is missing."
+          }
+        }
+      }
+    },
+    "/v1/items/details": {
+      "get": {
+        "tags": [
+          "ToolBoxService"
+        ],
+        "summary": "Get details of assets",
+        "operationId": "ToolboxService_SearchGetAssets",
+        "parameters": [
+          {
+            "name": "assetIds",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "requests": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/ToolBoxServiceDetailsItem"
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -999,7 +1051,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ToolBoxServiceSearchV1Result"
+                  "$ref": "#/components/schemas/ToolBoxServiceSearchResult"
                 }
               }
             }
@@ -1147,7 +1199,7 @@
                   "type": "object",
                   "properties": {
                     "sections": {
-                        "type": "array"
+                      "type": "array"
                     }
                   }
                 }
@@ -1216,7 +1268,7 @@
                   "type": "object",
                   "properties": {
                     "sections": {
-                        "type": "array"
+                      "type": "array"
                     }
                   }
                 }
@@ -1243,8 +1295,20 @@
       "ToolBoxServiceAssetTypes": {
         "type": "integer",
         "description": "[ 'Audio' = 3, 'Plugin' = 38, 'MeshPart' = 40, 'Video' = 62, 'FontFamily' = 73  ] ",
-        "enum": [3, 38, 40, 62, 73],
-        "x-enum-varnames": ["Audio", "Plugin", "MeshPart", "Video", "FontFamily"]
+        "enum": [
+          3,
+          38,
+          40,
+          62,
+          73
+        ],
+        "x-enum-varnames": [
+          "Audio",
+          "Plugin",
+          "MeshPart",
+          "Video",
+          "FontFamily"
+        ]
       },
       "ToolBoxServiceError": {
         "type": "object",
@@ -1267,7 +1331,287 @@
           }
         }
       },
-      "ToolBoxServiceSearchV1Result": {
+      "ToolBoxServiceSocialLinks": {
+        "type": "object",
+        "properties": {
+          "linkType": {
+            "type": "string",
+            "enum": [
+              "Invalid",
+              "Discord",
+              "Youtube",
+              "Twitter",
+              "Twitch",
+              "Facebook",
+              "Github",
+              "Roblox",
+              "Guilded"
+            ]
+          },
+          "url": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      },
+      "ToolBoxServiceDetailsItem": {
+        "type": "object",
+        "properties": {
+          "asset": {
+            "type": "object",
+            "properties": {
+              "asset": {
+                "type": "object",
+                "properties": {
+                  "audioDetails": {
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                      "audioType": {
+                        "type": "string",
+                        "enum": [
+                          "Unknown",
+                          "Music",
+                          "SoundEffect"
+                        ]
+                      },
+                      "artist": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "title": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "musicAlbum": {
+                        "type": "string",
+                        "default": ""
+                      },
+                      "musicGenre": {
+                        "nullable": true,
+                        "type": "string"
+                      },
+                      "soundEffectCategory": {
+                        "type": "string"
+                      },
+                      "soundEffectSubCatergory": {
+                        "type": "string"
+                      },
+                      "tags": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "id": {
+                    "type": "number"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "typeId": {
+                    "type": "number"
+                  },
+                  "assetSubTypes": {
+                    "type": "array"
+                  },
+                  "assetGenres": {
+                    "type": "array"
+                  },
+                  "ageGuidelines": {
+                    "type": "array",
+                    "nullable": true,
+                    "properties": {
+                      "blood": {
+                        "nullable": true,
+                        "type": "object",
+                        "properties": {
+                          "realism": {
+                            "type": "string"
+                          },
+                          "level": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "violence": {
+                        "nullable": true,
+                        "type": "object",
+                        "properties": {
+                          "intensity": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "profanity": {
+                        "nullable": true,
+                        "type": "object",
+                        "properties": {
+                          "presence": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "alcohol": {
+                        "nullable": true,
+                        "type": "object",
+                        "properties": {
+                          "presence": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "romance": {
+                        "nullable": true,
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "isEndorsed": {
+                    "type": "boolean"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "duration": {
+                    "type": "number"
+                  },
+                  "hasScripts": {
+                    "type": "boolean"
+                  },
+                  "createdUtc": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "updatedUtc": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "creatingUniverseId": {
+                    "nullable": true,
+                    "type": "number"
+                  },
+                  "isAssetHashApproved": {
+                    "type": "boolean"
+                  },
+                  "visibilityStatus": {
+                    "type": "number"
+                  },
+                  "socialLinks": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/ToolBoxServiceSocialLinks"
+                  }
+                }
+              },
+              "creator": {
+                "type": "object",
+                "items": {
+                  "properties": {
+                    "id": {
+                      "type": "number"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "number"
+                    },
+                    "isVerifiedCreator": {
+                      "description": "Whether the creator is id/phone verified",
+                      "type": "boolean"
+                    },
+                    "latestGroupUpdaterUserId": {
+                      "type": "number",
+                      "nullable": true
+                    },
+                    "latestGroupUpdaterUserName": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  }
+                }
+              },
+              "voting": {
+                "type": "object",
+                "properties": {
+                  "showVotes": {
+                    "type": "boolean"
+                  },
+                  "upVotes": {
+                    "type": "number"
+                  },
+                  "downVotes": {
+                    "type": "number"
+                  },
+                  "canVote": {
+                    "type": "boolean"
+                  },
+                  "voteCount": {
+                    "type": "number",
+                    "description": "Currently only shows goes up to 1000"
+                  },
+                  "upVotePercent": {
+                    "type": "number"
+                  }
+                }
+              },
+              "product": {
+                "type": "object",
+                "properties": {
+                  "productId": {
+                    "type": "number"
+                  },
+                  "price": {
+                    "type": "number"
+                  },
+                  "isForSaleOrIsPublicDomain": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "fiatProduct": {
+                "type": "object",
+                "properties": {
+                  "purchasePrice": {
+                    "properties": {
+                      "currencyCode": {
+                        "type": "string"
+                      },
+                      "quantity": {
+                        "nullable": true,
+                        "properties": {
+                          "significand": {
+                            "type": "number"
+                          },
+                          "exponent": {
+                            "type": "number"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "published": {
+                    "type": "boolean"
+                  },
+                  "purchasable": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ToolBoxServiceSearchResult": {
         "type": "object",
         "properties": {
           "totalResults": {
@@ -1334,12 +1678,12 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ToolBoxServiceSearchV1ResultItem"
+              "$ref": "#/components/schemas/ToolBoxServiceSearchResultItem"
             }
           }
         }
       },
-      "ToolBoxServiceSearchV1ResultItem": {
+      "ToolBoxServiceSearchResultItem": {
         "type": "object",
         "properties": {
           "id": {

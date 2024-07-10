@@ -1,18 +1,42 @@
 export * from '../models/ToolBoxServiceAssetTypes';
+export * from '../models/ToolBoxServiceDetailsItem';
+export * from '../models/ToolBoxServiceDetailsItemAsset';
+export * from '../models/ToolBoxServiceDetailsItemAssetAsset';
+export * from '../models/ToolBoxServiceDetailsItemAssetAssetAudioDetails';
+export * from '../models/ToolBoxServiceDetailsItemAssetCreatorInner';
+export * from '../models/ToolBoxServiceDetailsItemAssetFiatProduct';
+export * from '../models/ToolBoxServiceDetailsItemAssetFiatProductPurchasePrice';
+export * from '../models/ToolBoxServiceDetailsItemAssetFiatProductPurchasePriceQuantity';
+export * from '../models/ToolBoxServiceDetailsItemAssetProduct';
+export * from '../models/ToolBoxServiceDetailsItemAssetVoting';
 export * from '../models/ToolBoxServiceError';
-export * from '../models/ToolBoxServiceSearchV1Result';
-export * from '../models/ToolBoxServiceSearchV1ResultItem';
-export * from '../models/ToolBoxServiceSearchV1ResultQueryFacets';
-export * from '../models/ToolBoxServiceSearchV1ResultSpellCheckerResult';
+export * from '../models/ToolBoxServiceSearchResult';
+export * from '../models/ToolBoxServiceSearchResultItem';
+export * from '../models/ToolBoxServiceSearchResultQueryFacets';
+export * from '../models/ToolBoxServiceSearchResultSpellCheckerResult';
+export * from '../models/ToolBoxServiceSocialLinks';
 export * from '../models/ToolboxServiceGetHomePageAssetsForSection200Response';
+export * from '../models/ToolboxServiceSearchGetAssets200Response';
 
 import { ToolBoxServiceAssetTypes } from '../models/ToolBoxServiceAssetTypes';
+import { ToolBoxServiceDetailsItem } from '../models/ToolBoxServiceDetailsItem';
+import { ToolBoxServiceDetailsItemAsset } from '../models/ToolBoxServiceDetailsItemAsset';
+import { ToolBoxServiceDetailsItemAssetAsset } from '../models/ToolBoxServiceDetailsItemAssetAsset';
+import { ToolBoxServiceDetailsItemAssetAssetAudioDetails, ToolBoxServiceDetailsItemAssetAssetAudioDetailsAudioTypeEnum          } from '../models/ToolBoxServiceDetailsItemAssetAssetAudioDetails';
+import { ToolBoxServiceDetailsItemAssetCreatorInner } from '../models/ToolBoxServiceDetailsItemAssetCreatorInner';
+import { ToolBoxServiceDetailsItemAssetFiatProduct } from '../models/ToolBoxServiceDetailsItemAssetFiatProduct';
+import { ToolBoxServiceDetailsItemAssetFiatProductPurchasePrice } from '../models/ToolBoxServiceDetailsItemAssetFiatProductPurchasePrice';
+import { ToolBoxServiceDetailsItemAssetFiatProductPurchasePriceQuantity } from '../models/ToolBoxServiceDetailsItemAssetFiatProductPurchasePriceQuantity';
+import { ToolBoxServiceDetailsItemAssetProduct } from '../models/ToolBoxServiceDetailsItemAssetProduct';
+import { ToolBoxServiceDetailsItemAssetVoting } from '../models/ToolBoxServiceDetailsItemAssetVoting';
 import { ToolBoxServiceError } from '../models/ToolBoxServiceError';
-import { ToolBoxServiceSearchV1Result } from '../models/ToolBoxServiceSearchV1Result';
-import { ToolBoxServiceSearchV1ResultItem } from '../models/ToolBoxServiceSearchV1ResultItem';
-import { ToolBoxServiceSearchV1ResultQueryFacets } from '../models/ToolBoxServiceSearchV1ResultQueryFacets';
-import { ToolBoxServiceSearchV1ResultSpellCheckerResult } from '../models/ToolBoxServiceSearchV1ResultSpellCheckerResult';
+import { ToolBoxServiceSearchResult } from '../models/ToolBoxServiceSearchResult';
+import { ToolBoxServiceSearchResultItem } from '../models/ToolBoxServiceSearchResultItem';
+import { ToolBoxServiceSearchResultQueryFacets } from '../models/ToolBoxServiceSearchResultQueryFacets';
+import { ToolBoxServiceSearchResultSpellCheckerResult } from '../models/ToolBoxServiceSearchResultSpellCheckerResult';
+import { ToolBoxServiceSocialLinks, ToolBoxServiceSocialLinksLinkTypeEnum     } from '../models/ToolBoxServiceSocialLinks';
 import { ToolboxServiceGetHomePageAssetsForSection200Response } from '../models/ToolboxServiceGetHomePageAssetsForSection200Response';
+import { ToolboxServiceSearchGetAssets200Response } from '../models/ToolboxServiceSearchGetAssets200Response';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -28,15 +52,29 @@ let primitives = [
 
 let enumsMap: Set<string> = new Set<string>([
     "ToolBoxServiceAssetTypes",
+    "ToolBoxServiceDetailsItemAssetAssetAudioDetailsAudioTypeEnum",
+    "ToolBoxServiceSocialLinksLinkTypeEnum",
 ]);
 
 let typeMap: {[index: string]: any} = {
+    "ToolBoxServiceDetailsItem": ToolBoxServiceDetailsItem,
+    "ToolBoxServiceDetailsItemAsset": ToolBoxServiceDetailsItemAsset,
+    "ToolBoxServiceDetailsItemAssetAsset": ToolBoxServiceDetailsItemAssetAsset,
+    "ToolBoxServiceDetailsItemAssetAssetAudioDetails": ToolBoxServiceDetailsItemAssetAssetAudioDetails,
+    "ToolBoxServiceDetailsItemAssetCreatorInner": ToolBoxServiceDetailsItemAssetCreatorInner,
+    "ToolBoxServiceDetailsItemAssetFiatProduct": ToolBoxServiceDetailsItemAssetFiatProduct,
+    "ToolBoxServiceDetailsItemAssetFiatProductPurchasePrice": ToolBoxServiceDetailsItemAssetFiatProductPurchasePrice,
+    "ToolBoxServiceDetailsItemAssetFiatProductPurchasePriceQuantity": ToolBoxServiceDetailsItemAssetFiatProductPurchasePriceQuantity,
+    "ToolBoxServiceDetailsItemAssetProduct": ToolBoxServiceDetailsItemAssetProduct,
+    "ToolBoxServiceDetailsItemAssetVoting": ToolBoxServiceDetailsItemAssetVoting,
     "ToolBoxServiceError": ToolBoxServiceError,
-    "ToolBoxServiceSearchV1Result": ToolBoxServiceSearchV1Result,
-    "ToolBoxServiceSearchV1ResultItem": ToolBoxServiceSearchV1ResultItem,
-    "ToolBoxServiceSearchV1ResultQueryFacets": ToolBoxServiceSearchV1ResultQueryFacets,
-    "ToolBoxServiceSearchV1ResultSpellCheckerResult": ToolBoxServiceSearchV1ResultSpellCheckerResult,
+    "ToolBoxServiceSearchResult": ToolBoxServiceSearchResult,
+    "ToolBoxServiceSearchResultItem": ToolBoxServiceSearchResultItem,
+    "ToolBoxServiceSearchResultQueryFacets": ToolBoxServiceSearchResultQueryFacets,
+    "ToolBoxServiceSearchResultSpellCheckerResult": ToolBoxServiceSearchResultSpellCheckerResult,
+    "ToolBoxServiceSocialLinks": ToolBoxServiceSocialLinks,
     "ToolboxServiceGetHomePageAssetsForSection200Response": ToolboxServiceGetHomePageAssetsForSection200Response,
+    "ToolboxServiceSearchGetAssets200Response": ToolboxServiceSearchGetAssets200Response,
 }
 
 type MimeTypeDescriptor = {

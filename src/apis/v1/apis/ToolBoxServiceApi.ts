@@ -9,8 +9,9 @@ import {SecurityAuthentication} from '../../../common/auth/auth';
 
 import { ToolBoxServiceAssetTypes } from '../models/ToolBoxServiceAssetTypes';
 import { ToolBoxServiceError } from '../models/ToolBoxServiceError';
-import { ToolBoxServiceSearchV1Result } from '../models/ToolBoxServiceSearchV1Result';
+import { ToolBoxServiceSearchResult } from '../models/ToolBoxServiceSearchResult';
 import { ToolboxServiceGetHomePageAssetsForSection200Response } from '../models/ToolboxServiceGetHomePageAssetsForSection200Response';
+import { ToolboxServiceSearchGetAssets200Response } from '../models/ToolboxServiceSearchGetAssets200Response';
 
 /**
  * no description
@@ -612,6 +613,42 @@ export class ToolBoxServiceApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Get details of assets
+     * @param assetIds 
+     */
+    public async toolboxServiceSearchGetAssets(assetIds?: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+
+        // Path Params
+        const localVarPath = '/v1/items/details';
+
+        // Make Request Context
+        const requestContext = _config.getServer('https://apis.roblox.com/toolbox-service').makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (assetIds !== undefined) {
+            requestContext.setQueryParam("assetIds", ObjectSerializer.serialize(assetIds, "string", ""));
+        }
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["roblox-auth-cookie"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _options?.authMethods?.default || this.configuration?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Search for assets
      * @param assetType 
      * @param sortOrder 
@@ -638,12 +675,12 @@ export class ToolBoxServiceApiRequestFactory extends BaseAPIRequestFactory {
      * @param qualityFilter 
      * @param robloxPlaceId 
      */
-    public async toolboxServiceSearchGetAssets(assetType: ToolBoxServiceAssetTypes, sortOrder?: string, limit?: number, cursor?: string, pageNumber?: number, keyword?: string, assetSubTypes?: string, excludeAssetSubTypes?: string, creatorType?: string, creatorTargetId?: number, minDuration?: number, maxDuration?: number, sortDirection?: string, artist?: string, album?: string, uiSortIntent?: string, tags?: string, includeOnlyVerifiedCreators?: string, searchSource?: string, querySource?: string, originalUserQuery?: string, originalCorrection?: string, qualityFilter?: string, robloxPlaceId?: number, _options?: Configuration): Promise<RequestContext> {
+    public async toolboxServiceSearchGetAssets_1(assetType: ToolBoxServiceAssetTypes, sortOrder?: string, limit?: number, cursor?: string, pageNumber?: number, keyword?: string, assetSubTypes?: string, excludeAssetSubTypes?: string, creatorType?: string, creatorTargetId?: number, minDuration?: number, maxDuration?: number, sortDirection?: string, artist?: string, album?: string, uiSortIntent?: string, tags?: string, includeOnlyVerifiedCreators?: string, searchSource?: string, querySource?: string, originalUserQuery?: string, originalCorrection?: string, qualityFilter?: string, robloxPlaceId?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'assetType' is not null or undefined
         if (assetType === null || assetType === undefined) {
-            throw new RequiredError("ToolBoxServiceApi", "toolboxServiceSearchGetAssets", "assetType");
+            throw new RequiredError("ToolBoxServiceApi", "toolboxServiceSearchGetAssets_1", "assetType");
         }
 
 
@@ -1178,13 +1215,13 @@ export class ToolBoxServiceApiResponseProcessor {
      * @params response Response returned by the server for a request to toolboxServiceGetGroupCreations
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async toolboxServiceGetGroupCreationsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ToolBoxServiceSearchV1Result >> {
+     public async toolboxServiceGetGroupCreationsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ToolBoxServiceSearchResult >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ToolBoxServiceSearchV1Result = ObjectSerializer.deserialize(
+            const body: ToolBoxServiceSearchResult = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ToolBoxServiceSearchV1Result", ""
-            ) as ToolBoxServiceSearchV1Result;
+                "ToolBoxServiceSearchResult", ""
+            ) as ToolBoxServiceSearchResult;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -1197,10 +1234,10 @@ export class ToolBoxServiceApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ToolBoxServiceSearchV1Result = ObjectSerializer.deserialize(
+            const body: ToolBoxServiceSearchResult = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ToolBoxServiceSearchV1Result", ""
-            ) as ToolBoxServiceSearchV1Result;
+                "ToolBoxServiceSearchResult", ""
+            ) as ToolBoxServiceSearchResult;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -1286,13 +1323,13 @@ export class ToolBoxServiceApiResponseProcessor {
      * @params response Response returned by the server for a request to toolboxServiceGetUserCreations
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async toolboxServiceGetUserCreationsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ToolBoxServiceSearchV1Result >> {
+     public async toolboxServiceGetUserCreationsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ToolBoxServiceSearchResult >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ToolBoxServiceSearchV1Result = ObjectSerializer.deserialize(
+            const body: ToolBoxServiceSearchResult = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ToolBoxServiceSearchV1Result", ""
-            ) as ToolBoxServiceSearchV1Result;
+                "ToolBoxServiceSearchResult", ""
+            ) as ToolBoxServiceSearchResult;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -1308,10 +1345,10 @@ export class ToolBoxServiceApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ToolBoxServiceSearchV1Result = ObjectSerializer.deserialize(
+            const body: ToolBoxServiceSearchResult = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ToolBoxServiceSearchV1Result", ""
-            ) as ToolBoxServiceSearchV1Result;
+                "ToolBoxServiceSearchResult", ""
+            ) as ToolBoxServiceSearchResult;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -1325,13 +1362,13 @@ export class ToolBoxServiceApiResponseProcessor {
      * @params response Response returned by the server for a request to toolboxServiceSearchAudios
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async toolboxServiceSearchAudiosWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ToolBoxServiceSearchV1Result >> {
+     public async toolboxServiceSearchAudiosWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ToolBoxServiceSearchResult >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ToolBoxServiceSearchV1Result = ObjectSerializer.deserialize(
+            const body: ToolBoxServiceSearchResult = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ToolBoxServiceSearchV1Result", ""
-            ) as ToolBoxServiceSearchV1Result;
+                "ToolBoxServiceSearchResult", ""
+            ) as ToolBoxServiceSearchResult;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -1344,10 +1381,10 @@ export class ToolBoxServiceApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ToolBoxServiceSearchV1Result = ObjectSerializer.deserialize(
+            const body: ToolBoxServiceSearchResult = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ToolBoxServiceSearchV1Result", ""
-            ) as ToolBoxServiceSearchV1Result;
+                "ToolBoxServiceSearchResult", ""
+            ) as ToolBoxServiceSearchResult;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -1361,13 +1398,13 @@ export class ToolBoxServiceApiResponseProcessor {
      * @params response Response returned by the server for a request to toolboxServiceSearchDecals
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async toolboxServiceSearchDecalsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ToolBoxServiceSearchV1Result >> {
+     public async toolboxServiceSearchDecalsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ToolBoxServiceSearchResult >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ToolBoxServiceSearchV1Result = ObjectSerializer.deserialize(
+            const body: ToolBoxServiceSearchResult = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ToolBoxServiceSearchV1Result", ""
-            ) as ToolBoxServiceSearchV1Result;
+                "ToolBoxServiceSearchResult", ""
+            ) as ToolBoxServiceSearchResult;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -1380,10 +1417,10 @@ export class ToolBoxServiceApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ToolBoxServiceSearchV1Result = ObjectSerializer.deserialize(
+            const body: ToolBoxServiceSearchResult = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ToolBoxServiceSearchV1Result", ""
-            ) as ToolBoxServiceSearchV1Result;
+                "ToolBoxServiceSearchResult", ""
+            ) as ToolBoxServiceSearchResult;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -1397,13 +1434,13 @@ export class ToolBoxServiceApiResponseProcessor {
      * @params response Response returned by the server for a request to toolboxServiceSearchGetAssets
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async toolboxServiceSearchGetAssetsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ToolBoxServiceSearchV1Result >> {
+     public async toolboxServiceSearchGetAssetsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ToolboxServiceSearchGetAssets200Response >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ToolBoxServiceSearchV1Result = ObjectSerializer.deserialize(
+            const body: ToolboxServiceSearchGetAssets200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ToolBoxServiceSearchV1Result", ""
-            ) as ToolBoxServiceSearchV1Result;
+                "ToolboxServiceSearchGetAssets200Response", ""
+            ) as ToolboxServiceSearchGetAssets200Response;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -1419,10 +1456,49 @@ export class ToolBoxServiceApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ToolBoxServiceSearchV1Result = ObjectSerializer.deserialize(
+            const body: ToolboxServiceSearchGetAssets200Response = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ToolBoxServiceSearchV1Result", ""
-            ) as ToolBoxServiceSearchV1Result;
+                "ToolboxServiceSearchGetAssets200Response", ""
+            ) as ToolboxServiceSearchGetAssets200Response;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to toolboxServiceSearchGetAssets_1
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async toolboxServiceSearchGetAssets_1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<ToolBoxServiceSearchResult >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: ToolBoxServiceSearchResult = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ToolBoxServiceSearchResult", ""
+            ) as ToolBoxServiceSearchResult;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: ToolBoxServiceError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ToolBoxServiceError", ""
+            ) as ToolBoxServiceError;
+            throw new ApiException<ToolBoxServiceError>(response.httpStatusCode, "Invalid Request", body, response.headers);
+        }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            throw new ApiException<undefined>(response.httpStatusCode, "Authentication cookie is missing.", undefined, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: ToolBoxServiceSearchResult = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ToolBoxServiceSearchResult", ""
+            ) as ToolBoxServiceSearchResult;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -1436,13 +1512,13 @@ export class ToolBoxServiceApiResponseProcessor {
      * @params response Response returned by the server for a request to toolboxServiceSearchMeshes
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async toolboxServiceSearchMeshesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ToolBoxServiceSearchV1Result >> {
+     public async toolboxServiceSearchMeshesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ToolBoxServiceSearchResult >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ToolBoxServiceSearchV1Result = ObjectSerializer.deserialize(
+            const body: ToolBoxServiceSearchResult = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ToolBoxServiceSearchV1Result", ""
-            ) as ToolBoxServiceSearchV1Result;
+                "ToolBoxServiceSearchResult", ""
+            ) as ToolBoxServiceSearchResult;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -1455,10 +1531,10 @@ export class ToolBoxServiceApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ToolBoxServiceSearchV1Result = ObjectSerializer.deserialize(
+            const body: ToolBoxServiceSearchResult = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ToolBoxServiceSearchV1Result", ""
-            ) as ToolBoxServiceSearchV1Result;
+                "ToolBoxServiceSearchResult", ""
+            ) as ToolBoxServiceSearchResult;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -1472,13 +1548,13 @@ export class ToolBoxServiceApiResponseProcessor {
      * @params response Response returned by the server for a request to toolboxServiceSearchPlugins
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async toolboxServiceSearchPluginsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ToolBoxServiceSearchV1Result >> {
+     public async toolboxServiceSearchPluginsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ToolBoxServiceSearchResult >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ToolBoxServiceSearchV1Result = ObjectSerializer.deserialize(
+            const body: ToolBoxServiceSearchResult = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ToolBoxServiceSearchV1Result", ""
-            ) as ToolBoxServiceSearchV1Result;
+                "ToolBoxServiceSearchResult", ""
+            ) as ToolBoxServiceSearchResult;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -1491,10 +1567,10 @@ export class ToolBoxServiceApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ToolBoxServiceSearchV1Result = ObjectSerializer.deserialize(
+            const body: ToolBoxServiceSearchResult = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ToolBoxServiceSearchV1Result", ""
-            ) as ToolBoxServiceSearchV1Result;
+                "ToolBoxServiceSearchResult", ""
+            ) as ToolBoxServiceSearchResult;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -1508,13 +1584,13 @@ export class ToolBoxServiceApiResponseProcessor {
      * @params response Response returned by the server for a request to toolboxServiceSearchVideos
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async toolboxServiceSearchVideosWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ToolBoxServiceSearchV1Result >> {
+     public async toolboxServiceSearchVideosWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ToolBoxServiceSearchResult >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ToolBoxServiceSearchV1Result = ObjectSerializer.deserialize(
+            const body: ToolBoxServiceSearchResult = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ToolBoxServiceSearchV1Result", ""
-            ) as ToolBoxServiceSearchV1Result;
+                "ToolBoxServiceSearchResult", ""
+            ) as ToolBoxServiceSearchResult;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -1527,10 +1603,10 @@ export class ToolBoxServiceApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ToolBoxServiceSearchV1Result = ObjectSerializer.deserialize(
+            const body: ToolBoxServiceSearchResult = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "ToolBoxServiceSearchV1Result", ""
-            ) as ToolBoxServiceSearchV1Result;
+                "ToolBoxServiceSearchResult", ""
+            ) as ToolBoxServiceSearchResult;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

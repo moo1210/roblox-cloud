@@ -2,12 +2,24 @@ import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../../../co
 import { Configuration} from '../../../common/configuration'
 
 import { ToolBoxServiceAssetTypes } from '../models/ToolBoxServiceAssetTypes';
+import { ToolBoxServiceDetailsItem } from '../models/ToolBoxServiceDetailsItem';
+import { ToolBoxServiceDetailsItemAsset } from '../models/ToolBoxServiceDetailsItemAsset';
+import { ToolBoxServiceDetailsItemAssetAsset } from '../models/ToolBoxServiceDetailsItemAssetAsset';
+import { ToolBoxServiceDetailsItemAssetAssetAudioDetails } from '../models/ToolBoxServiceDetailsItemAssetAssetAudioDetails';
+import { ToolBoxServiceDetailsItemAssetCreatorInner } from '../models/ToolBoxServiceDetailsItemAssetCreatorInner';
+import { ToolBoxServiceDetailsItemAssetFiatProduct } from '../models/ToolBoxServiceDetailsItemAssetFiatProduct';
+import { ToolBoxServiceDetailsItemAssetFiatProductPurchasePrice } from '../models/ToolBoxServiceDetailsItemAssetFiatProductPurchasePrice';
+import { ToolBoxServiceDetailsItemAssetFiatProductPurchasePriceQuantity } from '../models/ToolBoxServiceDetailsItemAssetFiatProductPurchasePriceQuantity';
+import { ToolBoxServiceDetailsItemAssetProduct } from '../models/ToolBoxServiceDetailsItemAssetProduct';
+import { ToolBoxServiceDetailsItemAssetVoting } from '../models/ToolBoxServiceDetailsItemAssetVoting';
 import { ToolBoxServiceError } from '../models/ToolBoxServiceError';
-import { ToolBoxServiceSearchV1Result } from '../models/ToolBoxServiceSearchV1Result';
-import { ToolBoxServiceSearchV1ResultItem } from '../models/ToolBoxServiceSearchV1ResultItem';
-import { ToolBoxServiceSearchV1ResultQueryFacets } from '../models/ToolBoxServiceSearchV1ResultQueryFacets';
-import { ToolBoxServiceSearchV1ResultSpellCheckerResult } from '../models/ToolBoxServiceSearchV1ResultSpellCheckerResult';
+import { ToolBoxServiceSearchResult } from '../models/ToolBoxServiceSearchResult';
+import { ToolBoxServiceSearchResultItem } from '../models/ToolBoxServiceSearchResultItem';
+import { ToolBoxServiceSearchResultQueryFacets } from '../models/ToolBoxServiceSearchResultQueryFacets';
+import { ToolBoxServiceSearchResultSpellCheckerResult } from '../models/ToolBoxServiceSearchResultSpellCheckerResult';
+import { ToolBoxServiceSocialLinks } from '../models/ToolBoxServiceSocialLinks';
 import { ToolboxServiceGetHomePageAssetsForSection200Response } from '../models/ToolboxServiceGetHomePageAssetsForSection200Response';
+import { ToolboxServiceSearchGetAssets200Response } from '../models/ToolboxServiceSearchGetAssets200Response';
 
 import { ObservableToolBoxServiceApi } from "./ObservableAPI";
 import { ToolBoxServiceApiRequestFactory, ToolBoxServiceApiResponseProcessor} from "../apis/ToolBoxServiceApi";
@@ -387,146 +399,155 @@ export interface ToolBoxServiceApiToolboxServiceSearchDecalsRequest {
 export interface ToolBoxServiceApiToolboxServiceSearchGetAssetsRequest {
     /**
      * 
-     * @type ToolBoxServiceAssetTypes
+     * @type string
      * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     */
+    assetIds?: string
+}
+
+export interface ToolBoxServiceApiToolboxServiceSearchGetAssets0Request {
+    /**
+     * 
+     * @type ToolBoxServiceAssetTypes
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     assetType: ToolBoxServiceAssetTypes
     /**
      * 
      * @type string
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     sortOrder?: string
     /**
      * 
      * @type number
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     limit?: number
     /**
      * 
      * @type string
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     cursor?: string
     /**
      * 
      * @type number
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     pageNumber?: number
     /**
      * 
      * @type string
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     keyword?: string
     /**
      * 
      * @type string
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     assetSubTypes?: string
     /**
      * 
      * @type string
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     excludeAssetSubTypes?: string
     /**
      * 
      * @type string
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     creatorType?: string
     /**
      * 
      * @type number
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     creatorTargetId?: number
     /**
      * 
      * @type number
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     minDuration?: number
     /**
      * 
      * @type number
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     maxDuration?: number
     /**
      * 
      * @type string
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     sortDirection?: string
     /**
      * 
      * @type string
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     artist?: string
     /**
      * 
      * @type string
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     album?: string
     /**
      * 
      * @type string
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     uiSortIntent?: string
     /**
      * 
      * @type string
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     tags?: string
     /**
      * 
      * @type string
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     includeOnlyVerifiedCreators?: string
     /**
      * 
      * @type string
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     searchSource?: string
     /**
      * 
      * @type string
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     querySource?: string
     /**
      * 
      * @type string
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     originalUserQuery?: string
     /**
      * 
      * @type string
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     originalCorrection?: string
     /**
      * 
      * @type string
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     qualityFilter?: string
     /**
      * 
      * @type number
-     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets
+     * @memberof ToolBoxServiceApitoolboxServiceSearchGetAssets_1
      */
     robloxPlaceId?: number
 }
@@ -785,7 +806,7 @@ export class ObjectToolBoxServiceApi {
      * Get group creations
      * @param param the request object
      */
-    public toolboxServiceGetGroupCreationsWithHttpInfo(param: ToolBoxServiceApiToolboxServiceGetGroupCreationsRequest, options?: Configuration): Promise<HttpInfo<ToolBoxServiceSearchV1Result>> {
+    public toolboxServiceGetGroupCreationsWithHttpInfo(param: ToolBoxServiceApiToolboxServiceGetGroupCreationsRequest, options?: Configuration): Promise<HttpInfo<ToolBoxServiceSearchResult>> {
         return this.api.toolboxServiceGetGroupCreationsWithHttpInfo(param.ownerId, param.assetType, param.limit, param.cursor,  options).toPromise();
     }
 
@@ -793,7 +814,7 @@ export class ObjectToolBoxServiceApi {
      * Get group creations
      * @param param the request object
      */
-    public toolboxServiceGetGroupCreations(param: ToolBoxServiceApiToolboxServiceGetGroupCreationsRequest, options?: Configuration): Promise<ToolBoxServiceSearchV1Result> {
+    public toolboxServiceGetGroupCreations(param: ToolBoxServiceApiToolboxServiceGetGroupCreationsRequest, options?: Configuration): Promise<ToolBoxServiceSearchResult> {
         return this.api.toolboxServiceGetGroupCreations(param.ownerId, param.assetType, param.limit, param.cursor,  options).toPromise();
     }
 
@@ -833,7 +854,7 @@ export class ObjectToolBoxServiceApi {
      * Get user creations
      * @param param the request object
      */
-    public toolboxServiceGetUserCreationsWithHttpInfo(param: ToolBoxServiceApiToolboxServiceGetUserCreationsRequest, options?: Configuration): Promise<HttpInfo<ToolBoxServiceSearchV1Result>> {
+    public toolboxServiceGetUserCreationsWithHttpInfo(param: ToolBoxServiceApiToolboxServiceGetUserCreationsRequest, options?: Configuration): Promise<HttpInfo<ToolBoxServiceSearchResult>> {
         return this.api.toolboxServiceGetUserCreationsWithHttpInfo(param.userId, param.assetType, param.limit, param.cursor, param.separateModelsAndPackages,  options).toPromise();
     }
 
@@ -841,7 +862,7 @@ export class ObjectToolBoxServiceApi {
      * Get user creations
      * @param param the request object
      */
-    public toolboxServiceGetUserCreations(param: ToolBoxServiceApiToolboxServiceGetUserCreationsRequest, options?: Configuration): Promise<ToolBoxServiceSearchV1Result> {
+    public toolboxServiceGetUserCreations(param: ToolBoxServiceApiToolboxServiceGetUserCreationsRequest, options?: Configuration): Promise<ToolBoxServiceSearchResult> {
         return this.api.toolboxServiceGetUserCreations(param.userId, param.assetType, param.limit, param.cursor, param.separateModelsAndPackages,  options).toPromise();
     }
 
@@ -849,7 +870,7 @@ export class ObjectToolBoxServiceApi {
      * Search for audios
      * @param param the request object
      */
-    public toolboxServiceSearchAudiosWithHttpInfo(param: ToolBoxServiceApiToolboxServiceSearchAudiosRequest = {}, options?: Configuration): Promise<HttpInfo<ToolBoxServiceSearchV1Result>> {
+    public toolboxServiceSearchAudiosWithHttpInfo(param: ToolBoxServiceApiToolboxServiceSearchAudiosRequest = {}, options?: Configuration): Promise<HttpInfo<ToolBoxServiceSearchResult>> {
         return this.api.toolboxServiceSearchAudiosWithHttpInfo(param.sortOrder, param.limit, param.cursor, param.pageNumber, param.keyword, param.creatorType, param.creatorTargetId, param.minDuration, param.maxDuration, param.sortDirection, param.artist, param.album, param.uiSortIntent, param.tags, param.includeOnlyVerifiedCreators, param.querySource, param.originalUserQuery, param.originalCorrection,  options).toPromise();
     }
 
@@ -857,7 +878,7 @@ export class ObjectToolBoxServiceApi {
      * Search for audios
      * @param param the request object
      */
-    public toolboxServiceSearchAudios(param: ToolBoxServiceApiToolboxServiceSearchAudiosRequest = {}, options?: Configuration): Promise<ToolBoxServiceSearchV1Result> {
+    public toolboxServiceSearchAudios(param: ToolBoxServiceApiToolboxServiceSearchAudiosRequest = {}, options?: Configuration): Promise<ToolBoxServiceSearchResult> {
         return this.api.toolboxServiceSearchAudios(param.sortOrder, param.limit, param.cursor, param.pageNumber, param.keyword, param.creatorType, param.creatorTargetId, param.minDuration, param.maxDuration, param.sortDirection, param.artist, param.album, param.uiSortIntent, param.tags, param.includeOnlyVerifiedCreators, param.querySource, param.originalUserQuery, param.originalCorrection,  options).toPromise();
     }
 
@@ -865,7 +886,7 @@ export class ObjectToolBoxServiceApi {
      * Search for decals
      * @param param the request object
      */
-    public toolboxServiceSearchDecalsWithHttpInfo(param: ToolBoxServiceApiToolboxServiceSearchDecalsRequest = {}, options?: Configuration): Promise<HttpInfo<ToolBoxServiceSearchV1Result>> {
+    public toolboxServiceSearchDecalsWithHttpInfo(param: ToolBoxServiceApiToolboxServiceSearchDecalsRequest = {}, options?: Configuration): Promise<HttpInfo<ToolBoxServiceSearchResult>> {
         return this.api.toolboxServiceSearchDecalsWithHttpInfo(param.sortOrder, param.limit, param.cursor, param.pageNumber, param.keyword, param.creatorType, param.creatorTargetId, param.uiSortIntent, param.tags, param.includeOnlyVerifiedCreators, param.querySource, param.originalUserQuery, param.originalCorrection,  options).toPromise();
     }
 
@@ -873,31 +894,47 @@ export class ObjectToolBoxServiceApi {
      * Search for decals
      * @param param the request object
      */
-    public toolboxServiceSearchDecals(param: ToolBoxServiceApiToolboxServiceSearchDecalsRequest = {}, options?: Configuration): Promise<ToolBoxServiceSearchV1Result> {
+    public toolboxServiceSearchDecals(param: ToolBoxServiceApiToolboxServiceSearchDecalsRequest = {}, options?: Configuration): Promise<ToolBoxServiceSearchResult> {
         return this.api.toolboxServiceSearchDecals(param.sortOrder, param.limit, param.cursor, param.pageNumber, param.keyword, param.creatorType, param.creatorTargetId, param.uiSortIntent, param.tags, param.includeOnlyVerifiedCreators, param.querySource, param.originalUserQuery, param.originalCorrection,  options).toPromise();
     }
 
     /**
-     * Search for assets
+     * Get details of assets
      * @param param the request object
      */
-    public toolboxServiceSearchGetAssetsWithHttpInfo(param: ToolBoxServiceApiToolboxServiceSearchGetAssetsRequest, options?: Configuration): Promise<HttpInfo<ToolBoxServiceSearchV1Result>> {
-        return this.api.toolboxServiceSearchGetAssetsWithHttpInfo(param.assetType, param.sortOrder, param.limit, param.cursor, param.pageNumber, param.keyword, param.assetSubTypes, param.excludeAssetSubTypes, param.creatorType, param.creatorTargetId, param.minDuration, param.maxDuration, param.sortDirection, param.artist, param.album, param.uiSortIntent, param.tags, param.includeOnlyVerifiedCreators, param.searchSource, param.querySource, param.originalUserQuery, param.originalCorrection, param.qualityFilter, param.robloxPlaceId,  options).toPromise();
+    public toolboxServiceSearchGetAssetsWithHttpInfo(param: ToolBoxServiceApiToolboxServiceSearchGetAssetsRequest = {}, options?: Configuration): Promise<HttpInfo<ToolboxServiceSearchGetAssets200Response>> {
+        return this.api.toolboxServiceSearchGetAssetsWithHttpInfo(param.assetIds,  options).toPromise();
+    }
+
+    /**
+     * Get details of assets
+     * @param param the request object
+     */
+    public toolboxServiceSearchGetAssets(param: ToolBoxServiceApiToolboxServiceSearchGetAssetsRequest = {}, options?: Configuration): Promise<ToolboxServiceSearchGetAssets200Response> {
+        return this.api.toolboxServiceSearchGetAssets(param.assetIds,  options).toPromise();
     }
 
     /**
      * Search for assets
      * @param param the request object
      */
-    public toolboxServiceSearchGetAssets(param: ToolBoxServiceApiToolboxServiceSearchGetAssetsRequest, options?: Configuration): Promise<ToolBoxServiceSearchV1Result> {
-        return this.api.toolboxServiceSearchGetAssets(param.assetType, param.sortOrder, param.limit, param.cursor, param.pageNumber, param.keyword, param.assetSubTypes, param.excludeAssetSubTypes, param.creatorType, param.creatorTargetId, param.minDuration, param.maxDuration, param.sortDirection, param.artist, param.album, param.uiSortIntent, param.tags, param.includeOnlyVerifiedCreators, param.searchSource, param.querySource, param.originalUserQuery, param.originalCorrection, param.qualityFilter, param.robloxPlaceId,  options).toPromise();
+    public toolboxServiceSearchGetAssets_1WithHttpInfo(param: ToolBoxServiceApiToolboxServiceSearchGetAssets0Request, options?: Configuration): Promise<HttpInfo<ToolBoxServiceSearchResult>> {
+        return this.api.toolboxServiceSearchGetAssets_1WithHttpInfo(param.assetType, param.sortOrder, param.limit, param.cursor, param.pageNumber, param.keyword, param.assetSubTypes, param.excludeAssetSubTypes, param.creatorType, param.creatorTargetId, param.minDuration, param.maxDuration, param.sortDirection, param.artist, param.album, param.uiSortIntent, param.tags, param.includeOnlyVerifiedCreators, param.searchSource, param.querySource, param.originalUserQuery, param.originalCorrection, param.qualityFilter, param.robloxPlaceId,  options).toPromise();
+    }
+
+    /**
+     * Search for assets
+     * @param param the request object
+     */
+    public toolboxServiceSearchGetAssets_1(param: ToolBoxServiceApiToolboxServiceSearchGetAssets0Request, options?: Configuration): Promise<ToolBoxServiceSearchResult> {
+        return this.api.toolboxServiceSearchGetAssets_1(param.assetType, param.sortOrder, param.limit, param.cursor, param.pageNumber, param.keyword, param.assetSubTypes, param.excludeAssetSubTypes, param.creatorType, param.creatorTargetId, param.minDuration, param.maxDuration, param.sortDirection, param.artist, param.album, param.uiSortIntent, param.tags, param.includeOnlyVerifiedCreators, param.searchSource, param.querySource, param.originalUserQuery, param.originalCorrection, param.qualityFilter, param.robloxPlaceId,  options).toPromise();
     }
 
     /**
      * Search for meshes
      * @param param the request object
      */
-    public toolboxServiceSearchMeshesWithHttpInfo(param: ToolBoxServiceApiToolboxServiceSearchMeshesRequest = {}, options?: Configuration): Promise<HttpInfo<ToolBoxServiceSearchV1Result>> {
+    public toolboxServiceSearchMeshesWithHttpInfo(param: ToolBoxServiceApiToolboxServiceSearchMeshesRequest = {}, options?: Configuration): Promise<HttpInfo<ToolBoxServiceSearchResult>> {
         return this.api.toolboxServiceSearchMeshesWithHttpInfo(param.sortOrder, param.limit, param.cursor, param.pageNumber, param.keyword, param.creatorType, param.creatorTargetId, param.uiSortIntent, param.tags, param.includeOnlyVerifiedCreators, param.querySource, param.originalUserQuery, param.originalCorrection,  options).toPromise();
     }
 
@@ -905,7 +942,7 @@ export class ObjectToolBoxServiceApi {
      * Search for meshes
      * @param param the request object
      */
-    public toolboxServiceSearchMeshes(param: ToolBoxServiceApiToolboxServiceSearchMeshesRequest = {}, options?: Configuration): Promise<ToolBoxServiceSearchV1Result> {
+    public toolboxServiceSearchMeshes(param: ToolBoxServiceApiToolboxServiceSearchMeshesRequest = {}, options?: Configuration): Promise<ToolBoxServiceSearchResult> {
         return this.api.toolboxServiceSearchMeshes(param.sortOrder, param.limit, param.cursor, param.pageNumber, param.keyword, param.creatorType, param.creatorTargetId, param.uiSortIntent, param.tags, param.includeOnlyVerifiedCreators, param.querySource, param.originalUserQuery, param.originalCorrection,  options).toPromise();
     }
 
@@ -913,7 +950,7 @@ export class ObjectToolBoxServiceApi {
      * Search for plugins
      * @param param the request object
      */
-    public toolboxServiceSearchPluginsWithHttpInfo(param: ToolBoxServiceApiToolboxServiceSearchPluginsRequest = {}, options?: Configuration): Promise<HttpInfo<ToolBoxServiceSearchV1Result>> {
+    public toolboxServiceSearchPluginsWithHttpInfo(param: ToolBoxServiceApiToolboxServiceSearchPluginsRequest = {}, options?: Configuration): Promise<HttpInfo<ToolBoxServiceSearchResult>> {
         return this.api.toolboxServiceSearchPluginsWithHttpInfo(param.sortOrder, param.limit, param.cursor, param.pageNumber, param.keyword, param.creatorType, param.creatorTargetId, param.uiSortIntent, param.tags, param.includeOnlyVerifiedCreators, param.querySource, param.originalUserQuery, param.originalCorrection,  options).toPromise();
     }
 
@@ -921,7 +958,7 @@ export class ObjectToolBoxServiceApi {
      * Search for plugins
      * @param param the request object
      */
-    public toolboxServiceSearchPlugins(param: ToolBoxServiceApiToolboxServiceSearchPluginsRequest = {}, options?: Configuration): Promise<ToolBoxServiceSearchV1Result> {
+    public toolboxServiceSearchPlugins(param: ToolBoxServiceApiToolboxServiceSearchPluginsRequest = {}, options?: Configuration): Promise<ToolBoxServiceSearchResult> {
         return this.api.toolboxServiceSearchPlugins(param.sortOrder, param.limit, param.cursor, param.pageNumber, param.keyword, param.creatorType, param.creatorTargetId, param.uiSortIntent, param.tags, param.includeOnlyVerifiedCreators, param.querySource, param.originalUserQuery, param.originalCorrection,  options).toPromise();
     }
 
@@ -929,7 +966,7 @@ export class ObjectToolBoxServiceApi {
      * Search for videos
      * @param param the request object
      */
-    public toolboxServiceSearchVideosWithHttpInfo(param: ToolBoxServiceApiToolboxServiceSearchVideosRequest = {}, options?: Configuration): Promise<HttpInfo<ToolBoxServiceSearchV1Result>> {
+    public toolboxServiceSearchVideosWithHttpInfo(param: ToolBoxServiceApiToolboxServiceSearchVideosRequest = {}, options?: Configuration): Promise<HttpInfo<ToolBoxServiceSearchResult>> {
         return this.api.toolboxServiceSearchVideosWithHttpInfo(param.sortOrder, param.limit, param.cursor, param.pageNumber, param.keyword, param.creatorType, param.creatorTargetId, param.uiSortIntent, param.tags, param.includeOnlyVerifiedCreators, param.querySource, param.originalUserQuery, param.originalCorrection,  options).toPromise();
     }
 
@@ -937,7 +974,7 @@ export class ObjectToolBoxServiceApi {
      * Search for videos
      * @param param the request object
      */
-    public toolboxServiceSearchVideos(param: ToolBoxServiceApiToolboxServiceSearchVideosRequest = {}, options?: Configuration): Promise<ToolBoxServiceSearchV1Result> {
+    public toolboxServiceSearchVideos(param: ToolBoxServiceApiToolboxServiceSearchVideosRequest = {}, options?: Configuration): Promise<ToolBoxServiceSearchResult> {
         return this.api.toolboxServiceSearchVideos(param.sortOrder, param.limit, param.cursor, param.pageNumber, param.keyword, param.creatorType, param.creatorTargetId, param.uiSortIntent, param.tags, param.includeOnlyVerifiedCreators, param.querySource, param.originalUserQuery, param.originalCorrection,  options).toPromise();
     }
 
